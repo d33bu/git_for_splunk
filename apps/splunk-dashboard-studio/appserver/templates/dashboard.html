@@ -1,0 +1,52 @@
+<%!
+from splunk.appserver.mrsparkle.lib import util
+
+app_name = cherrypy.request.path_info.split('/')[3]
+app_root = "/" + "/".join(["static","app",app_name])
+config_qs = dict(autoload=1)
+%>\
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <title>Dashboard</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="listen to your data" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="${util.getFaviconURL()}" />
+    <link id="enterprise-bootstrap-stylesheet" rel="stylesheet" type="text/css" href="${make_url('/static/build/css/bootstrap-enterprise.css')}" />
+    <style>
+        #layout-header-container {
+            height: auto;
+        }
+
+        #layout-header-container:not(.splunk-bar-shown) #layout-splunk-bar-fallback {
+            display: none;
+        }
+
+        #layout-header-container:not(.splunk-bar-shown) [data-view="views/shared/splunkbar/Master"] {
+            display: none;
+        }
+
+        #layout-header-container:not(.app-bar-shown) #layout-app-bar-fallback {
+            display: none;
+        }
+
+        #layout-header-container:not(.app-bar-shown) [data-view="views/shared/appbar/Master"] {
+            display: none;
+        }
+    </style>
+    ## This is loaded by a fetch in pages/dashboard/index.jsx which is later used for the
+    ## redirection modal and configuring the charting library
+    <link rel="preload" href="${make_url('/splunkd/__raw/services/web-features?output_mode=json')}" as="fetch" crossorigin="use-credentials" />
+</head>
+<body>
+    <script id="config-script" src="${make_url('/config', _qs=config_qs)}"></script>
+    <script id="i18n-script" src="${make_url('/static/js/i18n.js')}"></script>
+    <script id="i18n-catalog-script" src="${make_url('/i18ncatalog?autoload=1')}"></script>
+    <script id="splunkd-partials-script">
+        __splunkd_partials__ = ${json_decode(splunkd)};
+    </script>
+    <script type="module" src="${make_url('/static/app/splunk-dashboard-studio/build/%s.js' % (page))}"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# Application-level permissions
+[]
+
+access = read : [ admin ], write : [ admin ]
+[savedsearches]
+access = read : [ admin ], write : [ admin ]
+owner = admin
+[views/audit_trail_home_simple_xml]
+access = read : [*], write : [nobody]
+[]
+access = read : [admin], write : [admin]
+export = none

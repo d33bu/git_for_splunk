@@ -1,0 +1,1 @@
+import{e as n}from"./chunk-ME4V5RLK.js";function o(t){if(typeof document!="undefined"){var e=document.createElement("style"),d=document.createTextNode(t);e.appendChild(d),document.head.appendChild(e)}}var c=n(()=>{});export{o as a,c as b};

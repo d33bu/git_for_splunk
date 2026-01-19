@@ -1,0 +1,31 @@
+[app/install/state]
+version = 10.0.2
+modtime = 1768746150.805580000
+
+[lookups/customers-100.csv]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = nobody
+version = 10.0.2
+modtime = 1768752711.864057000
+
+[lookups/people-2000000.csv]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = nobody
+version = 10.0.2
+modtime = 1768752717.687578000
+
+[transforms/customers]
+access = read : [ * ], write : [ * ]
+export = system
+owner = admin
+version = 10.0.2
+modtime = 1768752914.787176000
+
+[transforms/people]
+access = read : [ * ], write : [ * ]
+export = system
+owner = admin
+version = 10.0.2
+modtime = 1768752923.509854000

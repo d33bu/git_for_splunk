@@ -1,0 +1,297 @@
+packages:
+- file: identity-0.0.1-9a2461d.tar.gz
+  name: identity
+  signature: '-----BEGIN PGP SIGNATURE-----
+
+
+    iQIzBAABCgAdFiEEWMMzELejVMEnnbZpXvoB7bPNRCAFAmiaW3oACgkQXvoB7bPN
+
+    RCAT+hAAlc8Q6fI/GNxSuK2N5uie0+cAeO8++SGU/92i7E3v2vaBn/IhZoGEs7ce
+
+    DOvF/k+jevGr71fmOQTWTiB3TonSFqPNwJMPwXCbB8IzTbLmHZz3mch3DpXuXv2A
+
+    NrHELGDHP2Ag8dVs4AhcVeDLFT6apEQtEvl7Teqj24aIetmcgiRR15gdjGWH/IC4
+
+    /PYXfZkCxH1UPLZM/BNiHlLc7PCxiadZQd6hGucwZnBEj8v7AaGvHzzWQuMQ8gtg
+
+    LL7orFv2GYg1Gnbf7836YRWrSv/jVYcLNdDjPfHz3ScaxKAs4GRWglsNEYTYu2lc
+
+    oon1bZMeJOimRcVdb5dHM7cCVw/qW1nnBULv3byByFuU1l1yqq2KCM7zMmPMngZX
+
+    nMFjkZXVDF4lhWI0e9y5PIjyUZFn2MT1gc9p05aSty3PBFbqqKl6kvG7n4K9Olfq
+
+    xGguoJOzyDgrzttGEY2mO5WxQvoQlSkRBt4Ew5CIgn2Bd344Mlg0yX16uJ6H6ETV
+
+    +kqckkRRcNtgAPwCb5PixZCLcwoMl1nTjdn2qXfXfQEaiFc4fLMdixn1WSljo3Wm
+
+    0FPWaRbOVrCmWY8b5+h2kpnZbb/+Egc0dXScl8GR8OMN+j/9w58KkXcoaRpIQLlJ
+
+    78hjIgE681sqNjPpGJ+al7QotzuhKR7Qn6HLJ6duJAWGowrY+ww=
+
+    =Aae6
+
+    -----END PGP SIGNATURE-----
+
+    '
+  version:
+    id: 0.0.1-9a2461d
+    semver: v0.1.1
+- file: postgres-v0.0.1-d7940caf-20250527t211108.tar.gz
+  name: postgres
+  signature: '-----BEGIN PGP SIGNATURE-----
+
+
+    iQIzBAABCgAdFiEEWMMzELejVMEnnbZpXvoB7bPNRCAFAmg2LFYACgkQXvoB7bPN
+
+    RCBAyBAA254PngxPNAaD23e9AQ/8E7vBobLUAWAS5e6vH0KFQ2WyfH7XeTaN6Qt3
+
+    eFOWrrkDuFI1OK+3wbB5Xy9uUO0qKYB7pdBMnKvDuDIJktG0puct7DsNWILpixJy
+
+    aM+4v3pjRClhzLtf+20jdysJauQN9ifi8xjbZRVX1ezyMWCCEVpqWGiDrsBRogUe
+
+    kY2QPiDHiWwYbqwbOcDhnJniojLKABFrsZNq4IhnGxETSkNP2lqOBdukgZF6jsyQ
+
+    BFHdD62N988hNtShIewkya6WgdKKkRLyXYumonMtoqN/J0afZds8S05B81suWHpo
+
+    ++38Dkqw0IK5C8yKoq6N1//dn6mijW3FA4KRA3XrdUoDhkmGlJvG3p2cuA0Twrnj
+
+    LxGwdXNp/TbEutaIJ1HQrx9lDW6K6V3uaYqj20/yjpX0/MxyhKS21iJ1Qi71jwVg
+
+    dxTKUWKs9RcwhQWedeq4v7Mr/LiRGWQpMKkcC/SUDakI6rg32g/wVLE64W0HT0Bq
+
+    6EGjtm21GsVtXpQGSRJQdsQfklrlSTlkr2Y6JxOYCDMIzgU0X3wPpZB68SytBMRK
+
+    6gIZXxMAuKsG5vszXybi6nyO5brcGF+DOAYyiM06ZSmPg+VFE8TQyh13mUd6rtPp
+
+    PJO3lCDeQ4pEuTzzJvjFvkYCCXyItUD3p90B1PjRQOCZu51LnS8=
+
+    =7NSS
+
+    -----END PGP SIGNATURE-----
+
+    '
+  version:
+    id: d7940caf-20250527t211108
+    semver: v0.0.1
+- file: agentmanager-1.1.2+27230832.20250623t080938Z.c918712d.tar.gz
+  name: agent-manager
+  signature: '-----BEGIN PGP SIGNATURE-----
+
+
+    iQIzBAABCgAdFiEEWMMzELejVMEnnbZpXvoB7bPNRCAFAmhZFKAACgkQXvoB7bPN
+
+    RCC+Tg//VmSc6EAJ5dbhr6ShpTRiag0o6N0P81tUuWT09YZgNRauW+7eRWF4p6c9
+
+    VmtRJQT/s9n19XbWV7gAvC0nVEmbCiGhlpd+EyXFl6qcJ72vrUP+Z0q30fPnT4su
+
+    yNIlxHyexriDnkbIvx370YxZKmpGaVrVUe0OED9hW+8SbdDD4ML+XsRBfWBTIuQw
+
+    L/VL6mEWt4LK/20mrwqHIEHqZ/yuGsz5iFrz2MfvpUZljrdNJLaR/owI8c5+igBs
+
+    TYv3Q7tV4d5hnKhZAilxDKU7fSaQ33wB7dKPZDa0XCa5G9OaLPageauu8PPzMwr5
+
+    I+ns39BUGPnz6j9lw835uzfHe75qW6BO2ZGg0qoZ/xgZgRiJHeRi+7BL11n8cRDi
+
+    ultRf82naLDw3l/vybWJ2rwPHPUvJ7RITjWIcSXxQG3Y2o+x1fxDteN5zTIPvOyJ
+
+    Sgbm4vklsYECsMxEG5i1Ri3V1ia7wCaBEHlVB2R8MxqwZoYEgVOhBVA9imuRM1AZ
+
+    SxN5SXNh638654KBMUl2IKyJQ6Xp/Vw8xW5oXGPnqo9KkXjnoJr6QWV5p8p3GXJL
+
+    4ub/vu4BwPHR7bDPrqmYgMkq6uI84Bp3/Iu95lryDu3o1bpvJ4zLr5c2bNz1GZMZ
+
+    keoXdUL9BGzFaS9mDtedPjPrnSJTb35tfMORmNZrVljRohAqvxc=
+
+    =X1t3
+
+    -----END PGP SIGNATURE-----
+
+    '
+  version:
+    id: 27230832.20250623t080938Z.c918712d
+    semver: 1.1.2
+- file: cmp-orchestrator-0.0.10+7f302d6e-20250828t174715.tar.gz
+  name: cmp-orchestrator
+  signature: '-----BEGIN PGP SIGNATURE-----
+
+
+    iQIzBAABCgAdFiEEWMMzELejVMEnnbZpXvoB7bPNRCAFAmiwl74ACgkQXvoB7bPN
+
+    RCCAYg//S9T9qsha+uxQxKKMQ3kTslFvPGdUNhOsf7SaFuvr4qAfOy/IGrl8Pb6P
+
+    9AHgal5LSyKvbk+UnhY3fcJJ2St2pvjocCgNpFh3y3sKK0GzL5RQ6GhcdVW6FQMV
+
+    Ru38XoD50m8SYjLIFv1xQkg6LftxtQ3PAI8T1eOUhnBSelXnA4Ig+RE6n8nQ8GEk
+
+    G+rwioEZzRYltQrmlOaAbGb9V6MLOmr8jCloKKOf9JLqe6SMvVQv8nlORe7dRjYi
+
+    G1hanc3n5jxbbfhpfssVN+vvfh6kPzXZ8jMcxlvimtFE12sl2C1z+vrhnoKItih9
+
+    a3cjfiwIda8NkITDND7LwWurenI8+Gn8ZIlB4PRpExI51JdefBgBCF3nSFXKjNB4
+
+    T8AQ/yBKE8wa7eRBG6/vJ+vqQGh8ypy4/fa72/pcB8c28eWuCRRt0+xiTUtjpVUL
+
+    mnbhz7yO08capUFfZkXi42dGBDvCsA5ctz1l5OjwHl8zY02NKgNEDT0iMoHIdWUL
+
+    /fM1WAAWXWFIlOTnp1goPj72J9m0es/W2/SxO8TiSB6Dq0CCQPHzOaAgNVV9WJjR
+
+    CeX1DdnjnfmPUWObwOWgbqgIiH5zlIPPrCElmRK6zwSWZj/f6aBaOGaqlW4a9Ptq
+
+    e9XV65CcCfVlpHoKOCIptzINhMRstp8is2cQUTVPbAV47C9yf60=
+
+    =sL7l
+
+    -----END PGP SIGNATURE-----
+
+    '
+  version:
+    id: 7f302d6e-20250828t174715
+    semver: 0.0.10
+- file: edge-processor-config-v1.0.0-76383842-20250407t213521.tar.gz
+  name: edge-processor-config
+  signature: '-----BEGIN PGP SIGNATURE-----
+
+
+    iQIzBAABCgAdFiEEWMMzELejVMEnnbZpXvoB7bPNRCAFAmf0TBAACgkQXvoB7bPN
+
+    RCBXPRAAp5Wy3e5rIo+CIm6TECWq+984PXve4l4ML64FtSr+SkGznQcLTnSSFFex
+
+    MYE9D/83N7a6GyDBLJ+V5mrCU1p1S+fI94pjUAqszODdixSszG1+e08edLtZJhP2
+
+    Mv3kd61gO0ztzfyyv93LlARBt346l10mzaKes0rP+PZP9Fq/X4XpFkfM7zO0LqOy
+
+    wpXeY/vGkC6CxP4/C/KhOM5XOrTl0MHj09Uj72ryKI0HUfftl7QUImHtSAbWApAz
+
+    Ao4HpO/ORuxR0Dr6Sy3K3cdeuH8NAPcbMdbxU3bYatUui5/NXYDDfC6CMK+6jU0F
+
+    7e9SgfJasoXSt11/XY/c4f8jPEMBsHSH9Yw/IE+r7p9nfP2HHl8N/W+qYqVrlxLE
+
+    MT5qnRe1VFuEKMRuxy2MsZfh9x77hybtGBrDv3vsxVsrybTMSWVxUrW0eKAEGu1T
+
+    08JkCS4y/KvAwzkhQqMfoIyH2yeqX2K3al1WZionWdizbtds795hs9wtB0BnIEDX
+
+    An9g6btedcKRPMH/dEx1gLYJfW+WtIG4Ag2GBfWwNCJDKVIGFJlDVvDGQIJY71zD
+
+    8fKov/Vy5+LM/Nxobc4qstoIOe20hOqdLdvQokP5BGCFOXt5L39KajWB7HzPw37B
+
+    fP9svfRztR7KLlhaadPHSCEisFJwn2haWWqvGDJTQSMFjnrpPok=
+
+    =6mK0
+
+    -----END PGP SIGNATURE-----
+
+    '
+  version:
+    id: 76383842-20250407t213521
+    semver: v1.0.0
+- file: ipc_broker-v0.0.1-fee1c638-20250324t181532.tar.gz
+  name: ipc_broker
+  signature: '-----BEGIN PGP SIGNATURE-----
+
+
+    iQIzBAABCgAdFiEEWMMzELejVMEnnbZpXvoB7bPNRCAFAmfhpE0ACgkQXvoB7bPN
+
+    RCBvGg//ShztVktDfzAHuxpVfoi+WNs76DHllSxzqEHeeK/M3OdEnVkolJTFdbkL
+
+    ssCswhbzT+nYh3JP7IzCgrxsiIA5KRTR6mvdB6O0iaBNa/OqhMamxZI9kAJFzk58
+
+    3HYP7lQaE7N5d7LEuDtJsjkgU/8Vx6xD4eNr6mU6UpmcsbqkPVPiEgyk3GOZO3D5
+
+    ofZadgjJGDLd2gIF4v1It3Ez2gTCWfo+P/UTCzcvTe7w8RzdGx/LjtTCfW5M2JS0
+
+    DrNFcz8UFoafMuZWjUX3i7GOYq+124VnFZ+TD8mGxTA8+R7JypkluoWZmvHNhzNs
+
+    h8aMztDewkRUslgqC525fojEIEzSNjWYD6GPAuOBY5ckYa4XZXCxFasMUk/N1uVA
+
+    uw8y4sMUFUq7BMTJwTBB2IdEQVZ5rJru//6xjAvNmBuiW5djWZ6DervcZb/kCa2k
+
+    Ag+aNyLTIDc1QaeEplmNbUVPSy/H4cLQP9oIBsmxcjXiFRazuyg65gzgtSx9iRBv
+
+    2FsAKC5H7a6i/FZg6SJs+XKq7qNG2/h7J9G/qiszKvPkY6acLNullDSCBzHVfv0l
+
+    pYLkUmxbN1Dmz5dm8yPet5QcZs3J/4kILygIFErNHNmWZpi8cz4yRYQs2Apqld8b
+
+    t+7QgmIxBSlBGD1Sr9gymFpJzwbCt1cjLtc9eza8Wp4Jlk/r/iQ=
+
+    =BThU
+
+    -----END PGP SIGNATURE-----
+
+    '
+  version:
+    id: fee1c638-20250324t181532
+    semver: v0.0.1
+- file: spotlight-collector-v1.2.2-bfd92d98-20250325t102739.tar.gz
+  name: spotlight-collector
+  signature: '-----BEGIN PGP SIGNATURE-----
+
+
+    iQIzBAABCgAdFiEEWMMzELejVMEnnbZpXvoB7bPNRCAFAmfii5sACgkQXvoB7bPN
+
+    RCDtlQ/9GvMZtR4MpR83OFqx9bmf4e6X545PSG1B1S9oxCKhWRgeMnQgG/TdMqsg
+
+    2ryDLghAvcg3FBdmTkZkuWnipjOwFpYxAJIC83iABFqeIz08vVPbiF94O/emqLKJ
+
+    TbVbisaeTHEEOzSeLVkFrlQLx2YC0SboiAzh7XBdGQCCTp/fsJRovJJmjhXBebAF
+
+    ImqzELCiC190t1FPV3sjm60bZJluwSAx6W8R/qx49to+e7/b6GQhi/G2qRzkI4Df
+
+    1ts0T2fR3RES4xMelFJaificmHGP5va7gHkkxPpRGZc/yP2H41cyXQNLta0bC68L
+
+    6w0rMZA8Gx98mdLgeEKVbIRaNkJRNu/1GLu3qwYBiBdiYkrM0Ngg6qI53OH7GuJQ
+
+    dpfC6GPTOWAHiclUOuTvvf4RvM2iH3wEok7ohEDjhupHKEBq1/yCgJZFBc4yXlzS
+
+    USIRWSD0hVQ2M9P/XKY+HXKk3LsJrdTqXawtN7Z+uctOUo2PBgv2PXD2cGqW9zj6
+
+    lUt7TEyKOTxFKFqLWMw4o80JrtDTkj5CmoYr5I2UprZN/3HlNSkWzxCACjODDqUB
+
+    H6v1eaCdGGvgyo8nNWzfJf48u3vHxA3milPSq0E05axPDrPEC9WidCa0poPfKl1U
+
+    7Vhweix2OX5oBPqqUFPP6Nvjlq7U1ydp4H6l59sz3pstOdjIsCk=
+
+    =oXv7
+
+    -----END PGP SIGNATURE-----
+
+    '
+  version:
+    id: bfd92d98-20250325t102739
+    semver: v1.2.2
+- file: opamp-svc-v1.0.0-ac1ba893-20250427t060340.tar.gz
+  name: opamp-svc
+  signature: '-----BEGIN PGP SIGNATURE-----
+
+
+    iQIzBAABCgAdFiEEWMMzELejVMEnnbZpXvoB7bPNRCAFAmgNzBgACgkQXvoB7bPN
+
+    RCD6vxAAvZkC460eaHPjwh3bJo4fPwCeOnoLVmmtxDJt67+Ys/jEc3yASXcNjhOy
+
+    d/b9lv3SXFNFUldNBxuWzU9MmZXr/x0+6/ihHFpsdURMirpwu5Nf4mgFZuJ1QdOB
+
+    mlw4JbNE9NUSWlvtg3bA/PkOwzp7NMZDhpG6DqjQAk8o5Xf+8PlIv9nsqvGNKzR2
+
+    Ig4HyZKl/wk4QHOj9he+wOSmE210aCk8ydJKZrGiQzp+Hs7ltKtNqqBbPLdJmYgn
+
+    JHXo4mg+ix4SlodXmvNhmyo3Q+Lj/PtHW435KIxL9TTMiHYig5QIEeV31amj4tBs
+
+    fVGBxmDAZPv6wb+bmZk7eyXMS9hv78RmadUSVSf8WOWbG+ludpcOzEkbvXOYy2Af
+
+    Dh/z8F+Rmxhab6zyMa2EE53xaZerUMXvkeNMyhWRnN7Lh4NVSIhdGC+aaSs3JRWH
+
+    Hpt8X0V5ellhSE/SZysyt0pJZLCekdA1xfdSmYZl1ktNXlaQu8s5j4rb8Y8N7Pf8
+
+    WIWQW+pCSUBUvcux0Pn4CEytWPtGncenv/Z016pVeIwPLJlWt+QA/8UNDoj7SP9v
+
+    yIqPAAIDY9+DgPsR5oaUxajfysMV0v6f/wdIoFO99Uicx0vZdCNJ2KVKeTRera/Z
+
+    8mhu5/OvoUzTLgTo/SIw+Ts2S9rjynQxH8j3JZih7U4cNDG8s2c=
+
+    =QbCj
+
+    -----END PGP SIGNATURE-----
+
+    '
+  version:
+    id: ac1ba893-20250427t060340
+    semver: v1.0.0

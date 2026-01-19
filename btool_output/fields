@@ -1,0 +1,120 @@
+/mnt/data/opt/splunk/etc/system/default/fields.conf [_indextime]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [_sourcetype]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [date_hour]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [date_mday]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [date_minute]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [date_month]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [date_second]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [date_wday]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [date_year]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [date_zone]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [default]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [evtlog_account]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [evtlog_category]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [evtlog_domain]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [evtlog_id]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [evtlog_severity]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [evtlog_sid]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [evtlog_sid_type]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [host]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [index]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [linecount]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [punct]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [source]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [sourcetype]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [sourcetype::splunk_resource_usage::data*]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [splunk_federated_provider]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [splunk_server]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [splunk_server_group]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [timeendpos]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 
+/mnt/data/opt/splunk/etc/system/default/fields.conf [timestartpos]
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED = True
+/mnt/data/opt/splunk/etc/system/default/fields.conf INDEXED_VALUE = False
+/mnt/data/opt/splunk/etc/system/default/fields.conf TOKENIZER = 

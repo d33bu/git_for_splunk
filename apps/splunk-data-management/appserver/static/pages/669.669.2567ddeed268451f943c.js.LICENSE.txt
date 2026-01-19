@@ -1,0 +1,16 @@
+/* commonmark 0.30.0 https://github.com/commonmark/commonmark.js @license BSD3 */
+
+/*!
+ * Copyright © 2018 Splunk Inc.
+ * SPLUNK CONFIDENTIAL – Use or disclosure of this material in whole or
+ * in part without a valid written license from Splunk Inc. is PROHIBITED.
+ */
+
+/*!
+ * pascalcase <https://github.com/jonschlinkert/pascalcase>
+ *
+ * Copyright (c) 2015, Jon Schlinkert.
+ * Licensed under the MIT License.
+ */
+
+/*! http://mths.be/repeat v0.2.0 by @mathias */

@@ -1,0 +1,32 @@
+[app/install/install_source_checksum]
+version = 10.0.2
+modtime = 1768235933.597186000
+
+[indexes/git]
+owner = admin
+version = 10.0.2
+modtime = 1768244699.380939000
+
+[inputs/splunkversioncontrol_restore%3A%2F%2Fgitrestore]
+owner = admin
+version = 10.0.2
+modtime = 1768710264.079922000
+
+[inputs/splunkversioncontrol_backup%3A%2F%2Fgit_backup2]
+owner = admin
+version = 10.0.2
+modtime = 1768789429.437222000
+
+[lookups/splunkversioncontrol_globalexclusionlist.csv]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = nobody
+version = 10.0.2
+modtime = 1768752128.603391000
+
+[lookups/splunkversioncontrol_taglist.csv]
+access = read : [ * ], write : [ admin ]
+export = system
+owner = nobody
+version = 10.0.2
+modtime = 1768752141.028937000

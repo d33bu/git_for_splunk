@@ -1,0 +1,7 @@
+<nav>
+    <view name="config" default="true"/>
+    <collection label="Discover">
+        <view name = "home" />
+        <view name="usecases" />
+    </collection>
+</nav>

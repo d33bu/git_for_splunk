@@ -1,0 +1,3 @@
+/*! For license information please see 7887.7887.js.LICENSE.txt */
+"use strict";(self.webpackChunkdmx=self.webpackChunkdmx||[]).push([[7887],{57887:(e,t,s)=>{s.r(t),s.d(t,{DefaultDestination:()=>d,default:()=>a});var n=s(15185),o=s(93002),i=s(12650),r=s.n(i),u=s(4480),c=s(52946);const d=({nodeId:e,type:t=o.xQ.log})=>{const s=(0,u.sJ)((0,c.Ou)({processorId:e,type:t}));return r().createElement(n.u,{destination:s,iconWidth:"15",iconHeight:"15",type:t,__self:void 0,__source:{fileName:"/builds/swp/ui-platform/projects/remotes/px-dmx/src/components/Sidebars/ViewNodeSidebar/subcomponents/DefaultDestination.tsx",lineNumber:22,columnNumber:9}})},a=d}}]);
+//# sourceMappingURL=7887.7887.js.map?4ffb6601ee32600fde7a
