@@ -1,0 +1,9 @@
+./apps/splunk_pipeline_builders/binaries/edge/1.6.0-067ec9cb-25851389/linux-amd64/edge.tar.gz
+./apps/splunk_pipeline_builders/appserver/static/remotes/search/1.0.0-20250826-1828Z-0ca78b0d/index.js.map
+./apps/splunk-visual-exporter/bin/native/linux/x86_64/chromium/usr/lib/chromium/headless_shell
+./apps/example_csv/lookups/people-2000000.csv
+./apps/example_csv1/lookups/people-2000000.csv
+./apps/splunk-dashboard-studio/lookups/customers-2000000.csv
+./apps/splunk_archiver/java-bin/jars/thirdparty/hive_4_0/hive-exec-*.jar
+./apps/splunk_archiver/java-bin/jars/thirdparty/aws/aws-java-sdk-models-1.12.261.jar
+./.git/objects/pack/pack-46c0842fcd5bf087c142a25f76a85215397458a1.pack
