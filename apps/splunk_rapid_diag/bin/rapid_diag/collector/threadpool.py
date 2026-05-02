@@ -5,7 +5,7 @@ import threading
 import sys
 from time import time
 from typing import Optional, Callable, Any, List
-from splunklib.six.moves.queue import Queue, Empty
+from queue import Queue, Empty
 
 # local imports
 import logger_manager as log
@@ -30,7 +30,7 @@ class SubscribableQueue(Queue):
             count = self.pending_count
         self.subscribers.adjust_threadpool_size(count)
 
-    def put(self, item : Any, block : bool = True, timeout : Optional[int] = None) -> None:
+    def put(self, item : Any, block : bool = True, timeout : Optional[float] = None) -> None:
         super().put(item, block, timeout)
         self._alter_pending_count(1)
 

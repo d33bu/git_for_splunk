@@ -116,11 +116,11 @@ class Packager(object):
                 "stop": datetime.combine(stop + timedelta(days=1), time.max).replace(tzinfo=local).astimezone(utc)
             }
         return self._send_package(
-            events, start, stop, method='manual', visibility=visibility, time_range=time_range)
+            events, start, stop, batchNum=None, method='manual', visibility=visibility, time_range=time_range)
 
     def build_package(self, start, stop, visiblity, forExport=False):
         return self._query_events(
-            start, stop, visiblity, forExport)
+            start, stop, batchNum=None, visibility=visiblity, forExport=forExport)
 
     def get_transactionID(self):
         if self.transaction_id:

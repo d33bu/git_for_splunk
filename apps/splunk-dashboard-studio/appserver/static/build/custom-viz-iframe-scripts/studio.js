@@ -305,10 +305,10 @@ var require_coreJsData = __commonJS({
 var require_isMasked = __commonJS({
   "../../node_modules/lodash/_isMasked.js"(exports, module2) {
     var coreJsData = require_coreJsData();
-    var maskSrcKey = function() {
+    var maskSrcKey = (function() {
       var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || "");
       return uid ? "Symbol(src)_1." + uid : "";
-    }();
+    })();
     function isMasked(func) {
       return !!maskSrcKey && maskSrcKey in func;
     }
@@ -1543,7 +1543,7 @@ var require_lodash = __commonJS({
       var freeModule = freeExports && typeof module2 == "object" && module2 && !module2.nodeType && module2;
       var moduleExports = freeModule && freeModule.exports === freeExports;
       var freeProcess = moduleExports && freeGlobal.process;
-      var nodeUtil = function() {
+      var nodeUtil = (function() {
         try {
           var types = freeModule && freeModule.require && freeModule.require("util").types;
           if (types) {
@@ -1552,7 +1552,7 @@ var require_lodash = __commonJS({
           return freeProcess && freeProcess.binding && freeProcess.binding("util");
         } catch (e) {
         }
-      }();
+      })();
       var nodeIsArrayBuffer = nodeUtil && nodeUtil.isArrayBuffer, nodeIsDate = nodeUtil && nodeUtil.isDate, nodeIsMap = nodeUtil && nodeUtil.isMap, nodeIsRegExp = nodeUtil && nodeUtil.isRegExp, nodeIsSet = nodeUtil && nodeUtil.isSet, nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
       function apply(func, thisArg, args) {
         switch (args.length) {
@@ -1898,7 +1898,7 @@ var require_lodash = __commonJS({
       function unicodeWords(string) {
         return string.match(reUnicodeWord) || [];
       }
-      var runInContext = function runInContext2(context) {
+      var runInContext = (function runInContext2(context) {
         context = context == null ? root : _.defaults(root.Object(), context, _.pick(root, contextProps));
         var Array2 = context.Array, Date = context.Date, Error2 = context.Error, Function2 = context.Function, Math2 = context.Math, Object2 = context.Object, RegExp2 = context.RegExp, String2 = context.String, TypeError2 = context.TypeError;
         var arrayProto = Array2.prototype, funcProto = Function2.prototype, objectProto = Object2.prototype;
@@ -1906,10 +1906,10 @@ var require_lodash = __commonJS({
         var funcToString = funcProto.toString;
         var hasOwnProperty = objectProto.hasOwnProperty;
         var idCounter = 0;
-        var maskSrcKey = function() {
+        var maskSrcKey = (function() {
           var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || "");
           return uid ? "Symbol(src)_1." + uid : "";
-        }();
+        })();
         var nativeObjectToString = objectProto.toString;
         var objectCtorString = funcToString.call(Object2);
         var oldDash = root._;
@@ -1917,14 +1917,14 @@ var require_lodash = __commonJS({
           "^" + funcToString.call(hasOwnProperty).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
         );
         var Buffer2 = moduleExports ? context.Buffer : undefined2, Symbol2 = context.Symbol, Uint8Array2 = context.Uint8Array, allocUnsafe = Buffer2 ? Buffer2.allocUnsafe : undefined2, getPrototype = overArg(Object2.getPrototypeOf, Object2), objectCreate = Object2.create, propertyIsEnumerable = objectProto.propertyIsEnumerable, splice = arrayProto.splice, spreadableSymbol = Symbol2 ? Symbol2.isConcatSpreadable : undefined2, symIterator = Symbol2 ? Symbol2.iterator : undefined2, symToStringTag = Symbol2 ? Symbol2.toStringTag : undefined2;
-        var defineProperty = function() {
+        var defineProperty = (function() {
           try {
             var func = getNative(Object2, "defineProperty");
             func({}, "", {});
             return func;
           } catch (e) {
           }
-        }();
+        })();
         var ctxClearTimeout = context.clearTimeout !== root.clearTimeout && context.clearTimeout, ctxNow = Date && Date.now !== root.Date.now && Date.now, ctxSetTimeout = context.setTimeout !== root.setTimeout && context.setTimeout;
         var nativeCeil = Math2.ceil, nativeFloor = Math2.floor, nativeGetSymbols = Object2.getOwnPropertySymbols, nativeIsBuffer = Buffer2 ? Buffer2.isBuffer : undefined2, nativeIsFinite = context.isFinite, nativeJoin = arrayProto.join, nativeKeys = overArg(Object2.keys, Object2), nativeMax = Math2.max, nativeMin = Math2.min, nativeNow = Date.now, nativeParseInt = context.parseInt, nativeRandom = Math2.random, nativeReverse = arrayProto.reverse;
         var DataView = getNative(context, "DataView"), Map2 = getNative(context, "Map"), Promise2 = getNative(context, "Promise"), Set2 = getNative(context, "Set"), WeakMap2 = getNative(context, "WeakMap"), nativeCreate = getNative(Object2, "create");
@@ -1943,7 +1943,7 @@ var require_lodash = __commonJS({
           }
           return new LodashWrapper(value);
         }
-        var baseCreate = /* @__PURE__ */ function() {
+        var baseCreate = /* @__PURE__ */ (function() {
           function object() {
           }
           return function(proto) {
@@ -1958,7 +1958,7 @@ var require_lodash = __commonJS({
             object.prototype = undefined2;
             return result2;
           };
-        }();
+        })();
         function baseLodash() {
         }
         function LodashWrapper(value, chainAll) {
@@ -5250,9 +5250,9 @@ var require_lodash = __commonJS({
         var gte = createRelationalOperation(function(value, other) {
           return value >= other;
         });
-        var isArguments = baseIsArguments(/* @__PURE__ */ function() {
+        var isArguments = baseIsArguments(/* @__PURE__ */ (function() {
           return arguments;
-        }()) ? baseIsArguments : function(value) {
+        })()) ? baseIsArguments : function(value) {
           return isObjectLike(value) && hasOwnProperty.call(value, "callee") && !propertyIsEnumerable.call(value, "callee");
         };
         var isArray = Array2.isArray;
@@ -6504,7 +6504,7 @@ var require_lodash = __commonJS({
         lodash.each = forEach;
         lodash.eachRight = forEachRight;
         lodash.first = head;
-        mixin(lodash, function() {
+        mixin(lodash, (function() {
           var source = {};
           baseForOwn(lodash, function(func, methodName) {
             if (!hasOwnProperty.call(lodash.prototype, methodName)) {
@@ -6512,7 +6512,7 @@ var require_lodash = __commonJS({
             }
           });
           return source;
-        }(), { "chain": false });
+        })(), { "chain": false });
         lodash.VERSION = VERSION;
         arrayEach(["bind", "bindKey", "curry", "curryRight", "partial", "partialRight"], function(methodName) {
           lodash[methodName].placeholder = lodash;
@@ -6672,7 +6672,7 @@ var require_lodash = __commonJS({
           lodash.prototype[symIterator] = wrapperToIterator;
         }
         return lodash;
-      };
+      });
       var _ = runInContext();
       if (typeof define == "function" && typeof define.amd == "object" && define.amd) {
         root._ = _;
@@ -7045,12 +7045,22 @@ function initIframeFetchSetup() {
   registerMessageHandler("FETCH-PROXY-ERROR" /* FetchProxyError */, handleFetchError);
 }
 
+// src/FocusHandler/IframeFocusHandler.ts
+function initIframeFocusHandler() {
+  window.addEventListener("focus", () => {
+    const message = {
+      type: "FOCUS-HANDLER-FOCUS-EVENT" /* FocusEvent */
+    };
+    window.parent.postMessage(message, getParentOrigin());
+  });
+}
+
 // src/IframeUtils/Fonts.ts
 var import_url = __toESM(require_url(), 1);
 var urlRegex = /url\(['"]?([^'")]+\.woff)['"]?\)/g;
 var initIframeFonts = async () => {
   const bootstrapCSSUrl = (0, import_url.createURL)("/static/build/css/bootstrap-enterprise.css");
-  const response = await fetch(bootstrapCSSUrl);
+  const response = await fetch(bootstrapCSSUrl, { cache: "force-cache" });
   const bootstrapCSSText = await response.text();
   const fontMatches = bootstrapCSSText.matchAll(urlRegex) ?? [];
   const resolvedFonts = {};
@@ -7060,7 +7070,7 @@ var initIframeFonts = async () => {
       if (typeof fontUrl !== "string") {
         return;
       }
-      const response2 = await fetch(fontUrl);
+      const response2 = await fetch(fontUrl, { cache: "force-cache" });
       const arrayBuffer = await response2.arrayBuffer();
       const base64 = arrayBufferToBase64(arrayBuffer);
       resolvedFonts[fontUrl] = `url('data:application/x-font-woff;base64,${base64}')`;
@@ -7103,7 +7113,7 @@ var clearGlobalError = () => {
 var import_DataSet = __toESM(require_DataSet(), 1);
 var formatData = (dataSource, outputMode) => {
   const DataSet = "default" in import_DataSet.default ? import_DataSet.default.default : import_DataSet.default;
-  const dataSet = new DataSet(dataSource.data.fields, dataSource.data.columns);
+  const dataSet = new DataSet(dataSource.data?.fields, dataSource.data?.columns);
   switch (outputMode) {
     case "json_cols" /* COLUMN_MAJOR_OUTPUT_MODE */:
       return dataSet.toJSONCols();
@@ -7118,7 +7128,17 @@ var formatData = (dataSource, outputMode) => {
 function transformData(viz, dataSourcesFromUDF) {
   const dataSources = Object.entries(dataSourcesFromUDF).reduce((acc, [key, dataSource]) => {
     const { outputMode } = viz.getInitialDataParams();
-    acc[key] = formatData(dataSource, outputMode);
+    acc[key] = {
+      ...formatData(dataSource, outputMode),
+      meta: {
+        ...dataSource.meta,
+        done: dataSource.meta?.status === "done",
+        fetchOptions: {
+          ...dataSource.requestParams,
+          output_mode: outputMode
+        }
+      }
+    };
     return acc;
   }, {});
   return dataSources;
@@ -7173,4 +7193,5 @@ initIframeMessageHandler();
 initIframeFetchSetup();
 intiIframePropsSetup();
 initIframeFonts();
+initIframeFocusHandler();
 //# sourceMappingURL=studio.js.map

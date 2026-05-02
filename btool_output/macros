@@ -451,8 +451,12 @@ round(($runtime$ % 3600) / 60 - 0.5) > 0, round(($runtime$ % 3600) / 60 - 0.5)."
 /mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/macros.conf    definition = inputlookup dmc_assets 
 | fields search_group 
 | dedup search_group 
-| search search_group="dmc_indexerclustergroup_*" 
-| eval label = replace(search_group, "dmc_indexerclustergroup_", "")
+| search search_group="dmc_indexerclustergroup_*" OR search_group="dmc_group_cluster_master" 
+| eval label = search_group 
+| rex field=label mode=sed "s/dmc_indexerclustergroup_//g s/dmc_group_//g" 
+| eval priority = if(search_group="dmc_group_cluster_master", 0, 1) 
+| sort priority, label 
+| fields - priority
 /mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/macros.conf    [dmc_get_instance_info(1)]
 /mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/macros.conf    args = group
 /mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/macros.conf    definition = inputlookup dmc_assets | mvcombine search_group | search search_group="$group$"
@@ -1054,3 +1058,6 @@ default="0 cores"
 /mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/macros.conf    iseval = 1
 /mnt/data/opt/splunk/etc/apps/search/default/macros.conf                       [truncate_search]
 /mnt/data/opt/splunk/etc/apps/search/default/macros.conf                       definition = eval search=if(length(search) > 150, substr(search, 0, 150) + "...", search)
+/mnt/data/opt/splunk/etc/apps/TA-workday/default/macros.conf                   [workday_indexes]
+/mnt/data/opt/splunk/etc/apps/TA-workday/default/macros.conf                   definition = index=workday
+/mnt/data/opt/splunk/etc/apps/TA-workday/default/macros.conf                   iseval = 0

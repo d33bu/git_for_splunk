@@ -15,8 +15,10 @@
 """Python library for Splunk."""
 
 from __future__ import absolute_import
-from splunk_instrumentation.splunklib.six.moves import map
+from . import six
 import logging
+
+map = six.moves.map
 
 DEFAULT_LOG_FORMAT = '%(asctime)s, Level=%(levelname)s, Pid=%(process)s, Logger=%(name)s, File=%(filename)s, ' \
                  'Line=%(lineno)s, %(message)s'
@@ -31,5 +33,5 @@ def setup_logging(level, log_format=DEFAULT_LOG_FORMAT, date_format=DEFAULT_DATE
                         format=log_format,
                         datefmt=date_format)
 
-__version_info__ = (1, 7, 2)
+__version_info__ = (2, 1, 0)
 __version__ = ".".join(map(str, __version_info__))

@@ -1,0 +1,1 @@
+import{b as n,d as i}from"./chunk-NP2JWUYQ.js";import{b as y}from"./chunk-YESDDU4C.js";import{a as r,d as t,h as l}from"./chunk-ME4V5RLK.js";var e=l(y(),1);var C=new n,c=o=>m=>{var u=t(m,[]);return e.default.createElement(i,{client:C,contextSharing:!0},e.default.createElement(o,r({},u)))},d=c;export{d as a};

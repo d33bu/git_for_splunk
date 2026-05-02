@@ -34,7 +34,7 @@
           <view name="edit"/>
           <key name="processValueEdit">'XML' if value=="views" else 'HTML'</key>
         </element>
-        <element name="eai:data" type="textarea" label="View">
+        <element name="eai:data" type="textarea" maxlength="20000000" label="View">
           <view name="edit"/>
           <view name="create"/>
           <key name="class">huge</key>

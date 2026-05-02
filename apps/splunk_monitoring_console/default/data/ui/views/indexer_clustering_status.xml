@@ -13,14 +13,14 @@
     </input>
   </fieldset>
   <search id="peers_base_search">
-    <query>| rest splunk_server_group=dmc_group_cluster_master splunk_server_group="$group$" /services/cluster/master/peers</query>
+    <query>| rest splunk_server_group=$group$ /services/cluster/master/peers</query>
   </search>
   <search id="indexes_base_search">
-    <query>| rest splunk_server_group=dmc_group_cluster_master splunk_server_group="$group$" /services/cluster/master/indexes</query>
+    <query>| rest splunk_server_group=$group$ /services/cluster/master/indexes</query>
   </search>
   <search id="statusSummaryBaseSearch">
     <query>
-      | rest splunk_server_group=dmc_group_cluster_master splunk_server_group="$group$" /services/cluster/master/generation/master
+      | rest splunk_server_group=$group$ /services/cluster/master/generation/master
       | fields pending_last_reason, search_factor_met, replication_factor_met
       | eval all_data_searchable_icon = if(isnull(pending_last_reason) or pending_last_reason=="", "icon-check", "icon-alert")
       | eval all_data_searchable = if (isnull(pending_last_reason) or pending_last_reason=="", "All Data Searchable", "Some Data Not Searchable")
@@ -40,7 +40,7 @@
   </search>
   <search id="cluster_master_base_search">
     <query>
-      | rest splunk_server_group=dmc_group_cluster_master splunk_server_group="$group$" /services/server/info
+      | rest splunk_server_group=$group$ /services/server/info
       | stats count
       | eval cluster_master_icon = if(count&gt;=1, "icon-check", "icon-alert")
       | eval cluster_master_indicator = case(count=1, "1 Cluster Manager Reachable", count&gt;1, count . " Cluster Managers Reachable", 1=1, "Cluster Manager Not Reachable")
@@ -278,7 +278,7 @@
       <title>Search Heads ($searchHeadCount$)</title>
       <search id="searchHeadBaseSearch">
         <query>
-          | rest splunk_server_group=dmc_group_cluster_master splunk_server_group="$group$" /services/cluster/master/searchheads
+          | rest splunk_server_group=$group$ /services/cluster/master/searchheads
           | fields label, status, site, host_port_pair, title
           </query>
         <done>

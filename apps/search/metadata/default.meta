@@ -106,6 +106,14 @@ export = system
 [views/jquery_upgrade]
 access = read : [ admin ], write : [ admin ]
 
+[views/modules]
+export = system
+access = read : [ admin, power, user ], write : [ admin ]
+
+[views/module]
+export = system
+access = read : [ admin, power, user ], write : [ admin ]
+
 ### VIEWSTATES: even normal users should be able to create shared viewstates
 
 [viewstates]

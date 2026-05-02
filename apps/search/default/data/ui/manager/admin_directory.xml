@@ -1,4 +1,4 @@
-<endpoint name="admin/directory" showAppContext="1" hideActionsColumn="1">
+<endpoint name="admin/directory" showAppContext="1" hideActionsColumn="1" template="pages/page_with_flag.html" packageName="admin-user-xp">
   <header>All configurations</header>
   <menu name="knowledge_configurations">
     <label>All configurations</label>

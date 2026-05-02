@@ -83,6 +83,7 @@ class SendemailRestHandler(admin.MConfigHandler):
     sessionKey = self.getSessionKey()
 
     sslSettings = self.getAlertActions(sessionKey)
+    allowedDomains = sslSettings.get('allowedDomainList', [])
 
     # Open debate whether we should get user and password from alert actions
     # username = sslSettings.get('auth_username', '')
@@ -127,7 +128,7 @@ class SendemailRestHandler(admin.MConfigHandler):
             # always post any errors / feedback to UI so user knows about it
             sec.SplunkEmailMessage(sessionKey,
                                    message,
-                                   sslSettings.get('allowedDomainList'),
+                                   allowedDomains,
                                    audit_msg,
                                    emailSettings,
                                    cLogger=logger).send(
@@ -172,15 +173,20 @@ class SendemailRestHandler(admin.MConfigHandler):
     # This can only be determined if SMTPNotSupportedError is raised. 
     # Try without SMTPUTF8 option if raised.
     logger.info('Sending %s, sender = %s' % (audit_msg, sender))
+    
+    validRecipients = sec.filterRecipientsByAllowedDomains(recipients, allowedDomains)    
+    if not validRecipients:
+        smtp.smtp_connection.quit()
+        raise Exception("Email has no valid recipients or there are no allowed domains configured in the email server settings. This email will not be sent") 
 
     # Installed SMTP daemon may not support UTF8 as well as
     # it may throw other exceptions also.
 
-    error = sec.sendEmailWithUTF8(smtp.smtp_connection, sender, recipients, message.as_string())
+    error = sec.sendEmailWithUTF8(smtp.smtp_connection, sender, validRecipients, message.as_string())
 
     if error is not None:
         logger.debug('send mail with utf8 failed. retrying without utf8 option. Error: %s', str(error))
-        smtp.smtp_connection.sendmail(sender, recipients, message.as_string())
+        smtp.smtp_connection.sendmail(sender, validRecipients, message.as_string())
 
     smtp.smtp_connection.quit()
 

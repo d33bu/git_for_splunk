@@ -28,7 +28,7 @@ from urllib.parse import quote
 # key = apiKey, value = <your Okta API key string>
 # key = baseUrl, value =<your Okta url>
 LOG_LEVEL = 'logLevel'
-request_timeout = 10
+request_timeout = DEFAULT_REQUEST_TIMEOUT
 errMsg = ""
 def getUserInfo(args):
     username = args['username']
@@ -58,8 +58,14 @@ def getUserInfo(args):
         groupsUrl = usernameUrl + '/groups'
 
         logger.debug("Okta username url is {}".format(usernameUrl))
-
-        usernameResponse = session.get(usernameUrl, timeout=request_timeout)
+        
+        try:
+            usernameResponse = session.get(usernameUrl, timeout=request_timeout)
+        except requests.exceptions.Timeout:
+            errMsg = "Request timed out while getting user info for username={}".format(username)
+            logger.error(errMsg)
+            return FAILED + " " + ERROR_MSG + errMsg
+        
         if usernameResponse.status_code != 200:
             errMsg = "Failed to get user info for username={} with status={} and response={}".format(username, usernameResponse.status_code, usernameResponse.text)
             logger.error(errMsg)
@@ -105,7 +111,14 @@ def getUserInfo(args):
         searchUrl = '/api/v1/users/?search=' + quote(query)
         usernameUrl = BASE_URL + searchUrl
         logger.debug("Okta search url is {}".format(usernameUrl))
-        usernameResponse = session.get(usernameUrl, timeout=request_timeout)
+        
+        try:
+            usernameResponse = session.get(usernameUrl, timeout=request_timeout)
+        except requests.exceptions.Timeout:
+            errMsg = "Request timed out while getting user info for username={}".format(username)
+            logger.error(errMsg)
+            return FAILED + " " + ERROR_MSG + errMsg
+        
         if usernameResponse.status_code != 200:
             errMsg = "Failed to get user info for username={} with status={} and response={}".format(username, usernameResponse.status_code, usernameResponse.text)
             logger.error(errMsg)
@@ -191,7 +204,14 @@ def getUserInfo(args):
 
     while groupsUrl:
         logger.debug("Okta group url is {}".format(groupsUrl))
-        groupsResponse = session.get(groupsUrl, timeout=request_timeout)
+        
+        try:
+            groupsResponse = session.get(groupsUrl, timeout=request_timeout)
+        except requests.exceptions.Timeout:
+            errMsg = "Request timed out while getting group info for username={}". format(username)
+            logger.error(errMsg)
+            return FAILED + " " + ERROR_MSG + errMsg
+        
         if groupsResponse.status_code == 429:
             logger.error("Rate limit reached for IdP, failed to get group info for username={} with group "
                             "response status={} and group response={}".format(username, groupsResponse.status_code, groupsResponse.text))
@@ -239,6 +259,9 @@ def getUserInfo(args):
 if __name__ == "__main__":
     callName = sys.argv[1]
     dictIn = readInputs()
+    request_timeout, warningMsg = getRequestTimeout(dictIn)
+    if warningMsg is not None:
+        logger.warning(warningMsg)
 
     # set logging level
     if LOG_LEVEL in dictIn.keys() and dictIn[LOG_LEVEL].lower() == "debug":

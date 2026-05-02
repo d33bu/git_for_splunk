@@ -45,10 +45,10 @@ REQUIRE_SP_GROUP_MAP = 'requireSPGroupMap'
 LOG_LEVEL = 'logLevel'
 # create persistent connection
 session = requests.Session()
-request_timeout = 10
+request_timeout = DEFAULT_REQUEST_TIMEOUT
 errMsg = ""
 
-def getAuthToken(tenantId, clientId, clientSecret, logger):
+def getAuthToken(tenantId, clientId, clientSecret, logger) -> tuple[Optional[str], Optional[str]]:
     tokenEndpoint = LOGIN_ENDPOINT + tenantId + "/oauth2/v2.0/token"  # To Generate OAuth2 Token
 
     # Retrieve Auth Token from Azure
@@ -59,9 +59,14 @@ def getAuthToken(tenantId, clientId, clientSecret, logger):
             'client_secret': clientSecret
              }
 
-    logger.info("Requesting Authentication Token for client={} and tenant={}".format(clientId, tenantId))
+    logger.info("Requesting Authorization Token for client={} and tenant={}, with timeout={}".format(clientId, tenantId, request_timeout))
 
-    auth_response = session.post(tokenEndpoint, data=body, timeout=request_timeout)
+    try:
+        auth_response = session.post(tokenEndpoint, data=body, timeout=request_timeout)
+    except requests.exceptions.Timeout:
+        errMsg = "Timeout occurred when requesting authorization token for client={} and tenant={}".format(clientId, tenantId)
+        logger.error(errMsg)
+        return None, FAILED + " " + ERROR_MSG + errMsg
 
     if auth_response.status_code != 200:
         errMsg = "Failed to get authorization token for client={} tenant={} with status={} and response={}".format(clientId, tenantId, auth_response.status_code, auth_response.text)
@@ -78,22 +83,28 @@ def getAuthToken(tenantId, clientId, clientSecret, logger):
                 "\"Create an Azure AD app & service principal in the portal - Microsoft identity platform\" " \
                 "/ \"Option 2: Create a new application secret\""
             logger.warning(errMsg)
-        return FAILED + " " + ERROR_MSG + errMsg
+        return None, FAILED + " " + ERROR_MSG + errMsg
 
     try:
         auth_responseSTR = json.loads(auth_response.text)
     except Exception as e:
         errMsg = "Failed to parse authorization token for client={} with error={}".format(clientId, str(e))
         logger.error(errMsg)
-        return FAILED + " " + ERROR_MSG + errMsg
-    return auth_responseSTR['access_token']
+        return None, FAILED + " " + ERROR_MSG + errMsg
+    return auth_responseSTR['access_token'], None
 
 # If azureUserFilter is set and API did not find a user, always fall back to filter by mail
 def getPrincipalNameWithMail(username, logger):
     query = "mail eq \'{}\'".format(username.replace("'", "''"))
     filterUrl = '?$filter=' + quote(query)
     usernameFilterUrl = USER_ENDPOINT + filterUrl
-    usernameFilterResponse = session.get(usernameFilterUrl, timeout=request_timeout)
+    
+    try:
+        usernameFilterResponse = session.get(usernameFilterUrl, timeout=request_timeout)
+    except requests.exceptions.Timeout:
+        errMsg = "Timeout occurred when requesting principal name for username={} when defaulting to filtering by mail".format(username)
+        logger.error(errMsg)
+        return FAILED + " " + ERROR_MSG + errMsg 
 
     if usernameFilterResponse.status_code == 200:
         try:
@@ -131,7 +142,12 @@ def getPrincipalName(username, logger, filterBy):
     usernameFilterUrl = USER_ENDPOINT + filterUrl
     logger.debug("Azure filter url is {}".format(usernameFilterUrl))
     session.headers.update({"ConsistencyLevel": "eventual"})
-    usernameFilterResponse = session.get(usernameFilterUrl, timeout=request_timeout)
+    try:
+        usernameFilterResponse = session.get(usernameFilterUrl, timeout=request_timeout)
+    except requests.exceptions.Timeout:
+        errMsg = "Timeout occurred when requesting principal name for username={} through filtering by {}".format(username, filterBy)
+        logger.error(errMsg)
+        return FAILED + " " + ERROR_MSG + errMsg
 
     if usernameFilterResponse.status_code != 200:
         if usernameFilterResponse.status_code == 403:
@@ -190,7 +206,14 @@ def getGroupsForUser(args, logger, username):
 
     while groupsUrl:
         logger.debug("Full API call to get groups info: {}".format(groupsUrl))
-        groupsResponse = session.get(groupsUrl, timeout=request_timeout)
+        
+        try:
+            groupsResponse = session.get(groupsUrl, timeout=request_timeout)
+        except requests.exceptions.Timeout:
+            errMsg = "Timeout occurred when requesting groups info for username={}".format(username)
+            logger.error(errMsg)
+            return FAILED + " " + ERROR_MSG + errMsg
+        
         if groupsResponse.status_code != 200:
             errMsg = "Failed to get user group membership for username={} with status={} and response={}".format(username, groupsResponse.status_code, groupsResponse.text)
             logger.error(errMsg)
@@ -257,7 +280,14 @@ def getAppRoleAssignments(servicePrincipalId, logger):
     appRolesAssignmentUrl = SERVICE_PRINCIPAL_ENDPOINT + servicePrincipalId + '/appRoleAssignedTo?$top=999'
     while appRolesAssignmentUrl:
         logger.debug("Full API call to get Azure service principal's appRolesAssignment info: {}".format(appRolesAssignmentUrl))
-        appRolesAssignmentResponse = session.get(appRolesAssignmentUrl, timeout=request_timeout)
+        
+        try:
+            appRolesAssignmentResponse = session.get(appRolesAssignmentUrl, timeout=request_timeout)
+        except requests.exceptions.Timeout:
+            errMsg = "Timeout occurred when requesting appRoleAssignments for service principal={}".format(servicePrincipalId)
+            logger.error(errMsg)
+            return allAssignedAppRoles
+        
         if appRolesAssignmentResponse.status_code != 200:
             errMsg = "Failed to get appRoleAssigments for service principal={} with status={} and response={}".format(servicePrincipalId, appRolesAssignmentResponse.status_code, appRolesAssignmentResponse.text)
             logger.error(errMsg)
@@ -298,7 +328,13 @@ def getUserInfo(args, logger, username):
     emailString = ''
 
     usernameUrl = USER_ENDPOINT + quote(username)
-    usernameResponse = session.get(usernameUrl, timeout=request_timeout)
+    
+    try:
+        usernameResponse = session.get(usernameUrl, timeout=request_timeout)
+    except requests.exceptions.Timeout:
+        errMsg = "Timeout occurred when requesting user info for username={}".format(originalUsername)
+        logger.error(errMsg)
+        return FAILED + " " + ERROR_MSG + errMsg
 
     if usernameResponse.status_code != 200:
         errMsg = "Failed to get user info for username={} with status={} and response={}".format(originalUsername, usernameResponse.status_code, usernameResponse.text)
@@ -374,15 +410,17 @@ def login(args, logger, username):
 if __name__ == "__main__":
     callName = sys.argv[1]
     dictIn = readInputs()
-
+    request_timeout, warningMsg = getRequestTimeout(dictIn)
+    if warningMsg is not None:
+        logger.warning(warningMsg)
     # set logging level
     if LOG_LEVEL in dictIn.keys() and dictIn[LOG_LEVEL].lower() == "debug":
         logger.setLevel(logging.DEBUG)
 
-    apiKey = getAuthToken(dictIn['tenantId'], dictIn['clientId'], dictIn['clientSecret'], logger)
+    apiKey, err = getAuthToken(dictIn['tenantId'], dictIn['clientId'], dictIn['clientSecret'], logger)
     # Exit script early and output error if we cannot retrieve API access token
-    if FAILED in apiKey:
-        print(apiKey)
+    if err is not None:
+        print(err)
 
     else:
         # Set the headers once and reuse for all API calls

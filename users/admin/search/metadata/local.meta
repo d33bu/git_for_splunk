@@ -5,3 +5,19 @@ modtime = 1768299719.397431000
 [ui-tour/search-tour]
 version = 10.0.2
 modtime = 1768299721.381924000
+
+[lookups/aaa.csv]
+version = 10.2.0
+modtime = 1771403907.888412000
+
+[lookups/bbb.csv]
+version = 10.2.0
+modtime = 1771403921.927300000
+
+[lookups/file1.csv]
+version = 10.2.0
+modtime = 1771404780.771044000
+
+[lookups/file2.csv]
+version = 10.2.0
+modtime = 1771404796.952707000

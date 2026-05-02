@@ -1,0 +1,27 @@
+{
+  "id": "dmx-content",
+  "version": "0.0.1-20251219-0344Z-284190d5",
+  "main": "index.js",
+  "apiVersion": "0.6.0",
+  "peerDependencies": {
+    "react": "~16.10.0"
+  },
+  "appName": "pxdmx",
+  "envVars": {
+    "default": {
+      "envName": "playground",
+      "authEndpoint": "https://auth.playground.scs.splunk.com",
+      "clientId": "0oa1pva8iqAGnBBjs0x7"
+    },
+    "px.staging.scs.splunk.com": {
+      "envName": "staging",
+      "authEndpoint": "https://auth.staging.scs.splunk.com",
+      "clientId": "0oa8g2mkqnWi4Ndkx357"
+    },
+    "px.scs.splunk.com": {
+      "envName": "production",
+      "authEndpoint": "https://auth.scs.splunk.com",
+      "clientId": "0oa38kmfpviynQGAx4x7"
+    }
+  }
+}

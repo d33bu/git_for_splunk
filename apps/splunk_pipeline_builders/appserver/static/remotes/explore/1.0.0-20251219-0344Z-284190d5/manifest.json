@@ -1,0 +1,28 @@
+{
+  "id": "explore",
+  "version": "1.0.0-20251219-0344Z-284190d5",
+  "main": "index.js",
+  "apiVersion": "0.6.0",
+  "peerDependencies": {
+    "react": "~16.10.0",
+    "react-dom": "~16.10.0",
+    "styled-components": "~5.1.0"
+  },
+  "envVars": {
+    "default": {
+      "authEndpoint": "https://auth.playground.scs.splunk.com",
+      "clientId": "0oa1pva8iqAGnBBjs0x7"
+    },
+    "px.playground.scs.splunk.com": {
+      "envName": "playground"
+    },
+    "px.staging.scs.splunk.com": {
+      "authEndpoint": "https://auth.staging.scs.splunk.com",
+      "clientId": "0oa8g2mkqnWi4Ndkx357"
+    },
+    "px.scs.splunk.com": {
+      "authEndpoint": "https://auth.scs.splunk.com",
+      "clientId": "0oa38kmfpviynQGAx4x7"
+    }
+  }
+}

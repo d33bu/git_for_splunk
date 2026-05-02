@@ -81,6 +81,7 @@
       <view name="edit"/>
       <key name="deleteable">True</key> <!-- user can remove items -->
       <key name="expandable">True</key> <!-- user can add more items -->
+      <key name="fieldprefixregex">lookup\.field\.output\.[0-9]*\.</key>
       <key name="fieldprefix">lookup.field.output.</key>
       <key name="submitDeleted">False</key>
       <element name="template" type="fieldmapping">

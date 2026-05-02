@@ -444,7 +444,7 @@
   }
   var isWindows = _isWindows;
   var isMacintosh = _isMacintosh;
-  var setImmediate = function defineSetImmediate() {
+  var setImmediate = (function defineSetImmediate() {
     if (globals.setImmediate) {
       return globals.setImmediate.bind(globals);
     }
@@ -477,7 +477,7 @@
     }
     const _promise = Promise.resolve();
     return (callback) => _promise.then(callback);
-  }();
+  })();
 
   // ../../node_modules/monaco-editor/esm/vs/base/common/types.js
   function getAllPropertyNames(obj) {

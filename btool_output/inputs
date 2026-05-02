@@ -1,720 +1,747 @@
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [SSL]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             allowSslRenegotiation = true
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             certLogMaxCacheEntries = 10000
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             certLogRepeatFrequency = 1d
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             cipherSuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             ecdhCurves = prime256v1, secp384r1, secp521r1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             logCertificateData = true
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             sslQuietShutdown = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             sslVersions = tls1.2
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [batch:///mnt/data/opt/splunk/var/run/splunk/search_telemetry/*search_telemetry.json]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             crcSalt = <SOURCE>
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = _introspection
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             log_on_completion = 0
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             move_policy = sinkhole
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             sourcetype = search_telemetry
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [batch:///mnt/data/opt/splunk/var/spool/splunk]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             crcSalt = <SOURCE>
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             move_policy = sinkhole
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [batch:///mnt/data/opt/splunk/var/spool/splunk/...stash_hec]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             crcSalt = <SOURCE>
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             move_policy = sinkhole
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             sourcetype = stash_hec
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [batch:///mnt/data/opt/splunk/var/spool/splunk/...stash_new]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             crcSalt = <SOURCE>
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             move_policy = sinkhole
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             queue = stashparsing
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             sourcetype = stash_new
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             time_before_close = 0
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [batch:///mnt/data/opt/splunk/var/spool/splunk/tracker.log*]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = _internal
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             move_policy = sinkhole
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             sourcetype = splunkd_latency_tracker
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [blacklist:/mnt/data/opt/splunk/etc/auth]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [blacklist:/mnt/data/opt/splunk/etc/passwd]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [fschange:/mnt/data/opt/splunk/etc]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             delayInMills = 100
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             filesPerDelay = 10
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             followLinks = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             fullEvent = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             hashMaxSize = -1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             pollPeriod = 600
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             recurse = true
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             sendEventMaxSize = -1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             signedaudit = true
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [fschange:/mnt/data/opt/splunk/var/lib/splunk/modinputs]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             delayInMills = 1000
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             filesPerDelay = 500
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             followLinks = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             fullEvent = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             hashMaxSize = -1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = _internal
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             pollPeriod = 86400
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             recurse = true
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             sendEventMaxSize = -1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             signedaudit = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             sourcetype = modinputs_checkpoint_notification
-/mnt/data/opt/splunk/etc/apps/git_for_splunk/local/inputs.conf                  [gitforsplunk://git_vc]
-/mnt/data/opt/splunk/etc/apps/git_for_splunk/local/inputs.conf                  btool_conf_files = inputs, indexes, fields, props, limits, outputs, props, transforms, savedsearches, macros
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [SSL]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              allowSslRenegotiation = true
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              certLogMaxCacheEntries = 10000
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              certLogRepeatFrequency = 1d
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              cipherSuite = ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              ecdhCurves = prime256v1, secp384r1, secp521r1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              logCertificateData = true
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              sslQuietShutdown = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              sslVersions = tls1.2
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [batch:///mnt/data/opt/splunk/var/run/splunk/search_telemetry/*search_telemetry.json]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              crcSalt = <SOURCE>
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = _introspection
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              log_on_completion = 0
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              move_policy = sinkhole
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              sourcetype = search_telemetry
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [batch:///mnt/data/opt/splunk/var/spool/splunk]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              crcSalt = <SOURCE>
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              move_policy = sinkhole
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [batch:///mnt/data/opt/splunk/var/spool/splunk/...stash_hec]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              crcSalt = <SOURCE>
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              move_policy = sinkhole
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              sourcetype = stash_hec
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [batch:///mnt/data/opt/splunk/var/spool/splunk/...stash_new]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              crcSalt = <SOURCE>
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              move_policy = sinkhole
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              queue = stashparsing
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              sourcetype = stash_new
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              time_before_close = 0
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [batch:///mnt/data/opt/splunk/var/spool/splunk/tracker.log*]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = _internal
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              move_policy = sinkhole
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              sourcetype = splunkd_latency_tracker
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [blacklist:/mnt/data/opt/splunk/etc/auth]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [blacklist:/mnt/data/opt/splunk/etc/passwd]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [fschange:/mnt/data/opt/splunk/etc]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              delayInMills = 100
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              filesPerDelay = 10
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              followLinks = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              fullEvent = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              hashMaxSize = -1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              pollPeriod = 600
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              recurse = true
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              sendEventMaxSize = -1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              signedaudit = true
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [fschange:/mnt/data/opt/splunk/var/lib/splunk/modinputs]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              delayInMills = 1000
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              filesPerDelay = 500
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              followLinks = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              fullEvent = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              hashMaxSize = -1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = _internal
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              pollPeriod = 86400
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              recurse = true
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              sendEventMaxSize = -1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              signedaudit = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              sourcetype = modinputs_checkpoint_notification
+/mnt/data/opt/splunk/etc/apps/git_for_splunk/local/inputs.conf                   [gitforsplunk://git_vc]
+/mnt/data/opt/splunk/etc/apps/git_for_splunk/local/inputs.conf                   btool_conf_files = inputs, indexes, fields, props, limits, outputs, props, transforms, savedsearches, macros
 host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/git_for_splunk/local/inputs.conf                  include_btool_output = true
-/mnt/data/opt/splunk/etc/apps/git_for_splunk/default/inputs.conf                index = _internal
-/mnt/data/opt/splunk/etc/apps/git_for_splunk/local/inputs.conf                  interval = 60
-/mnt/data/opt/splunk/etc/apps/git_for_splunk/default/inputs.conf                python.version = python3
-/mnt/data/opt/splunk/etc/apps/git_for_splunk/local/inputs.conf                  remote_push = true
-/mnt/data/opt/splunk/etc/apps/git_for_splunk/local/inputs.conf                  repository_directory = .git/
-/mnt/data/opt/splunk/etc/apps/git_for_splunk/default/inputs.conf                sourcetype = gitforsplunk
-/mnt/data/opt/splunk/etc/apps/git_for_splunk/default/inputs.conf                start_by_shell = false
-/mnt/data/opt/splunk/etc/apps/git_for_splunk/local/inputs.conf                  working_directory = etc/
-/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf              [http]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf              ackIdleCleanup = true
-/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf              allowSslCompression = true
-/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf              allowSslRenegotiation = true
-/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf              backpressureState = disabled
-/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf              dedicatedIoThreads = 2
-/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf              disabled = 1
-/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf              enableSSL = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf              maxSockets = 0
-/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf              maxThreads = 0
-/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf              port = 8088
-/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf              rollingRestartReturnServerBusy = true
-/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf              route = has_key:_dstrx:typingQueue;has_key:_linebreaker:rulesetQueue;absent_key:_linebreaker:parsingQueue
-/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf              sslVersions = tls1.2
-/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf              useDeploymentServer = 0
-/mnt/data/opt/splunk/etc/apps/example_csv/default/inputs.conf                   [monitor:///mnt/data/opt/splunk/etc/apps/sample_app/logs]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/example_csv/default/inputs.conf                   index = sample
-/mnt/data/opt/splunk/etc/apps/example_csv/default/inputs.conf                   sourcetype = sendmail
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [monitor:///mnt/data/opt/splunk/etc/splunk.version]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _TCP_ROUTING = *
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = _internal
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             sourcetype = splunk_version
-/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf  [monitor:///mnt/data/opt/splunk/var/log/client_events/appevents*]
-/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf  _INDEX_AND_FORWARD_ROUTING = local
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf  index = _dsappevent
-/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf  sourcetype = dsappevent
-/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf  [monitor:///mnt/data/opt/splunk/var/log/client_events/clients*]
-/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf  _INDEX_AND_FORWARD_ROUTING = local
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf  index = _dsclient
-/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf  sourcetype = dsclient
-/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf  [monitor:///mnt/data/opt/splunk/var/log/client_events/phonehomes*]
-/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf  _INDEX_AND_FORWARD_ROUTING = local
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf  index = _dsphonehome
-/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf  sourcetype = dsphonehome
-/mnt/data/opt/splunk/etc/apps/introspection_generator_addon/default/inputs.conf [monitor:///mnt/data/opt/splunk/var/log/introspection]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/introspection_generator_addon/default/inputs.conf index = _introspection
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [monitor:///mnt/data/opt/splunk/var/log/splunk]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = _internal
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [monitor:///mnt/data/opt/splunk/var/log/splunk/configuration_change.log]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = _configtracker
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [monitor:///mnt/data/opt/splunk/var/log/splunk/eura_*]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  index = _internal
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = python_upgrade_readiness_app
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [monitor:///mnt/data/opt/splunk/var/log/splunk/jura_*]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  index = _internal
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = python_upgrade_readiness_app
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [monitor:///mnt/data/opt/splunk/var/log/splunk/license_usage_summary.log*]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = _telemetry
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [monitor:///mnt/data/opt/splunk/var/log/splunk/pura_*]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  index = _internal
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = python_upgrade_readiness_app
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [monitor:///mnt/data/opt/splunk/var/log/splunk/splunk_instrumentation_cloud.log*]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = _telemetry
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             sourcetype = splunk_cloud_telemetry
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [monitor:///mnt/data/opt/splunk/var/log/splunk/ura_*]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  index = _internal
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = python_upgrade_readiness_app
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [monitor:///mnt/data/opt/splunk/var/log/watchdog/watchdog.log*]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = _internal
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [script]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             interval = 60.0
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             start_by_shell = true
-/mnt/data/opt/splunk/etc/apps/introspection_generator_addon/default/inputs.conf [script:///mnt/data/opt/splunk/etc/apps/introspection_generator_addon/bin/collector.path]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/introspection_generator_addon/default/inputs.conf interval = 0
-/mnt/data/opt/splunk/etc/apps/introspection_generator_addon/default/inputs.conf sourcetype = splunk_resource_usage__internal
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/eura_email_notification_switch_scripted_input.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 0 */4 * * *
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/eura_remote_latest_report.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 0 7,19 */1 * *
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/eura_remote_scan_scripted_input.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 0 */4 * * *
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/eura_scan_apps.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 0 1 */1 * *
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/eura_send_email.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 0 6 * * 1
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/jura_remote_latest_report.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 0 7,19 */1 * *
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/jura_remote_scan_scripted_input.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 0 */4 * * *
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/jura_scan_apps.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 0 4 */1 * *
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/jura_send_email.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 0 6 * * 1
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/pura_detect_python_version.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 3600
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/pura_email_notification_switch_scripted_input.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 0 */4 * * *
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/pura_get_all_apps.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 0 6 * * *
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/pura_remote_latest_report.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 0 4,16 */1 * *
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/pura_remote_scan_scripted_input.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 0 */4 * * *
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/pura_scan_apps.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 0 1 */1 * *
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/pura_send_email.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 0 6 * * 1
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/ura_task_clear_cache.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  disabled = 1
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  interval = 42 4,16 * * *
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  python.version = python3
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  run_only_one = false
-/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf  sourcetype = script
-/mnt/data/opt/splunk/etc/apps/search/default/inputs.conf                        [script:///mnt/data/opt/splunk/etc/apps/search/bin/quarantine_files.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/search/default/inputs.conf                        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/search/default/inputs.conf                        interval = * * * * *
-/mnt/data/opt/splunk/etc/apps/search/default/inputs.conf                        passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/search/default/inputs.conf                        python.version = latest
-/mnt/data/opt/splunk/etc/apps/search/default/inputs.conf                        run_only_one = false
-/mnt/data/opt/splunk/etc/apps/splunk-dashboard-studio/default/inputs.conf       [script:///mnt/data/opt/splunk/etc/apps/splunk-dashboard-studio/bin/save_image_and_icon_on_install.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/splunk-dashboard-studio/default/inputs.conf       interval = -1
-/mnt/data/opt/splunk/etc/apps/splunk-dashboard-studio/default/inputs.conf       passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk-dashboard-studio/default/inputs.conf       python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk-dashboard-studio/default/inputs.conf       run_only_one = false
-/mnt/data/opt/splunk/etc/apps/splunk-rolling-upgrade/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk-rolling-upgrade/bin/complete.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk-rolling-upgrade/default/inputs.conf        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/splunk-rolling-upgrade/default/inputs.conf        index = main
-/mnt/data/opt/splunk/etc/apps/splunk-rolling-upgrade/default/inputs.conf        interval = -1
-/mnt/data/opt/splunk/etc/apps/splunk-rolling-upgrade/default/inputs.conf        python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=0]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        index = _telemetry
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        interval = 5 * * * *
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        source = instrumentation_scripted_input
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        sourcetype = splunk_telemetry_log
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=1]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        index = _telemetry
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        interval = 15 * * * *
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        source = instrumentation_scripted_input
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        sourcetype = splunk_telemetry_log
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=10]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        index = _telemetry
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        interval = 45 * * * *
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        source = instrumentation_scripted_input
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        sourcetype = splunk_telemetry_log
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=11]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        index = _telemetry
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        interval = 55 * * * *
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        source = instrumentation_scripted_input
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        sourcetype = splunk_telemetry_log
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=2]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        index = _telemetry
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        interval = 25 * * * *
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        source = instrumentation_scripted_input
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        sourcetype = splunk_telemetry_log
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=3]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        index = _telemetry
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        interval = 35 * * * *
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        source = instrumentation_scripted_input
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        sourcetype = splunk_telemetry_log
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=4]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        index = _telemetry
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        interval = 45 * * * *
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        source = instrumentation_scripted_input
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        sourcetype = splunk_telemetry_log
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=5]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        index = _telemetry
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        interval = 55 * * * *
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        source = instrumentation_scripted_input
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        sourcetype = splunk_telemetry_log
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=6]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        index = _telemetry
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        interval = 5 * * * *
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        source = instrumentation_scripted_input
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        sourcetype = splunk_telemetry_log
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=7]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        index = _telemetry
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        interval = 15 * * * *
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        source = instrumentation_scripted_input
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        sourcetype = splunk_telemetry_log
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=8]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        index = _telemetry
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        interval = 25 * * * *
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        source = instrumentation_scripted_input
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        sourcetype = splunk_telemetry_log
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=9]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        index = _telemetry
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        interval = 35 * * * *
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        source = instrumentation_scripted_input
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        sourcetype = splunk_telemetry_log
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/on_splunk_start.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        interval = -1
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/schedule_delete.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        disabled = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        interval = 0 0 * * *
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf        python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf     [script:///mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/bin/dmc_config.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf     interval = -1
-/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf     passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf     python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf     [script:///mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/bin/mc_auto_config.py]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf     interval = 3600
-/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf     passAuth = splunk-system-user
-/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf     python.version = python3
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         [secure_gateway_modular_input://default]
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         disabled = 1
-host = $decideOnStartup
-index = default
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         interval = 30
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         python.version = python3.9
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         run_only_one = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [splunktcp]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             acceptFrom = *
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             connection_host = ip
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             logRetireOldS2S = true
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             logRetireOldS2SMaxCache = 10000
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             logRetireOldS2SRepeatFrequency = 1d
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             route = has_key:_replicationBucketUUID:replicationQueue;has_key:_dstrx:typingQueue;has_key:_linebreaker:rulesetQueue;absent_key:_linebreaker:parsingQueue
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            [splunkversioncontrol_backup://git_backup2]
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            appsList = example_csv,search,splunk-dashboard-studio
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            debugMode = 1
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            disable_file_deletion = 1
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            disable_git_ssl_verify = 1
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            disabled = 1
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            file_per_ko = 1
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            gitRepoURL = git@github.com:d33bu/test_backup.git
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            gitTempDir = /home/deebu/test_backup
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            git_branch = main
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            git_command = git
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            git_email = deebu.rajan@gmail.com
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            git_name = d33bu
-host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            includeEntities = 
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            index = git
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            interval = * * * * *
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            noDisabled = 1
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            noPrivate = 0
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/default/inputs.conf          python.version = python3
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            remoteAppName = SplunkVersionControl
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            run_ko_diff = 1
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            run_ko_query = 1
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            show_passwords = 0
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            srcURL = https://localhost:8089
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            ssh_command = ssh
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            sslVerify = false
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            useLocalAuth = 1
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            use_wdiff = 1
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        [splunkversioncontrol_backup://gitbackup]
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        debugMode = 1
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        disable_file_deletion = 0
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        disable_git_ssl_verify = 1
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        disabled = 1
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        file_per_ko = 0
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        gitRepoURL = git@github.com:d33bu/test.git
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        gitTempDir = /home/deebu/test
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        git_branch = main
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        git_command = git
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        git_email = deebu.rajan@gmail.com
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        git_name = d33bu
+/mnt/data/opt/splunk/etc/apps/git_for_splunk/local/inputs.conf                   include_btool_output = true
+/mnt/data/opt/splunk/etc/apps/git_for_splunk/default/inputs.conf                 index = _internal
+/mnt/data/opt/splunk/etc/apps/git_for_splunk/local/inputs.conf                   interval = 60
+/mnt/data/opt/splunk/etc/apps/git_for_splunk/default/inputs.conf                 python.version = python3
+/mnt/data/opt/splunk/etc/apps/git_for_splunk/local/inputs.conf                   remote_push = true
+/mnt/data/opt/splunk/etc/apps/git_for_splunk/local/inputs.conf                   repository_directory = .git/
+/mnt/data/opt/splunk/etc/apps/git_for_splunk/default/inputs.conf                 sourcetype = gitforsplunk
+/mnt/data/opt/splunk/etc/apps/git_for_splunk/default/inputs.conf                 start_by_shell = false
+/mnt/data/opt/splunk/etc/apps/git_for_splunk/local/inputs.conf                   working_directory = etc/
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               [http]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               ackIdleCleanup = true
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               ackRequiredAnyCookie = AWSELB,AWSALB,AWSALBCORS,AWSELBCORS
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               allowSslCompression = true
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               allowSslRenegotiation = true
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               backpressureState = disabled
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               dedicatedIoThreads = 2
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               disabled = 1
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               enableSSL = 1
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               headerEnforcementMode = off
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               maxSockets = 0
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               maxThreads = 0
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               port = 8088
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               rollingRestartReturnServerBusy = true
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               route = has_key:_dstrx:typingQueue;has_key:_linebreaker:rulesetQueue;absent_key:_linebreaker:parsingQueue
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               sslVersions = tls1.2
+/mnt/data/opt/splunk/etc/apps/splunk_httpinput/default/inputs.conf               useDeploymentServer = 0
+/mnt/data/opt/splunk/etc/apps/example_csv/default/inputs.conf                    [monitor:///mnt/data/opt/splunk/etc/apps/sample_app/logs]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/example_csv/default/inputs.conf                    index = sample
+/mnt/data/opt/splunk/etc/apps/example_csv/default/inputs.conf                    sourcetype = sendmail
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [monitor:///mnt/data/opt/splunk/etc/splunk.version]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _TCP_ROUTING = *
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = _internal
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              sourcetype = splunk_version
+/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf   [monitor:///mnt/data/opt/splunk/var/log/client_events/appevents*]
+/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf   _INDEX_AND_FORWARD_ROUTING = local
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf   index = _dsappevent
+/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf   sourcetype = dsappevent
+/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf   [monitor:///mnt/data/opt/splunk/var/log/client_events/clients*]
+/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf   _INDEX_AND_FORWARD_ROUTING = local
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf   index = _dsclient
+/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf   sourcetype = dsclient
+/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf   [monitor:///mnt/data/opt/splunk/var/log/client_events/phonehomes*]
+/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf   _INDEX_AND_FORWARD_ROUTING = local
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf   index = _dsphonehome
+/mnt/data/opt/splunk/etc/apps/SplunkDeploymentServerConfig/default/inputs.conf   sourcetype = dsphonehome
+/mnt/data/opt/splunk/etc/apps/introspection_generator_addon/default/inputs.conf  [monitor:///mnt/data/opt/splunk/var/log/introspection]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/introspection_generator_addon/default/inputs.conf  index = _introspection
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [monitor:///mnt/data/opt/splunk/var/log/splunk]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = _internal
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [monitor:///mnt/data/opt/splunk/var/log/splunk/configuration_change.log]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = _configtracker
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [monitor:///mnt/data/opt/splunk/var/log/splunk/eura_*]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   index = _internal
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = python_upgrade_readiness_app
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [monitor:///mnt/data/opt/splunk/var/log/splunk/jura_*]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   index = _internal
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = python_upgrade_readiness_app
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [monitor:///mnt/data/opt/splunk/var/log/splunk/license_usage_summary.log*]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = _telemetry
+/mnt/data/opt/splunk/etc/apps/Splunk_MCP_Server/default/inputs.conf              [monitor:///mnt/data/opt/splunk/var/log/splunk/mcp_server.log]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/Splunk_MCP_Server/default/inputs.conf              index = _internal
+/mnt/data/opt/splunk/etc/apps/Splunk_MCP_Server/default/inputs.conf              sourcetype = mcp_server
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [monitor:///mnt/data/opt/splunk/var/log/splunk/pura_*]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   index = _internal
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = python_upgrade_readiness_app
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [monitor:///mnt/data/opt/splunk/var/log/splunk/splunk_instrumentation_cloud.log*]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = _telemetry
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              sourcetype = splunk_cloud_telemetry
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [monitor:///mnt/data/opt/splunk/var/log/splunk/ura_*]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   index = _internal
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = python_upgrade_readiness_app
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [monitor:///mnt/data/opt/splunk/var/log/watchdog/watchdog.log*]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = _internal
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [script]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              interval = 60.0
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              start_by_shell = true
+/mnt/data/opt/splunk/etc/apps/Splunk_TA_google-cloudplatform/default/inputs.conf [script:///mnt/data/opt/splunk/etc/apps/Splunk_TA_google-cloudplatform/bin/google_cloud_storage_bucket_conf_migrator.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/Splunk_TA_google-cloudplatform/default/inputs.conf interval = -1
+/mnt/data/opt/splunk/etc/apps/Splunk_TA_google-cloudplatform/default/inputs.conf passAuth = admin
+/mnt/data/opt/splunk/etc/apps/Splunk_TA_google-cloudplatform/default/inputs.conf python.version = python3
+/mnt/data/opt/splunk/etc/apps/introspection_generator_addon/default/inputs.conf  [script:///mnt/data/opt/splunk/etc/apps/introspection_generator_addon/bin/collector.path]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/introspection_generator_addon/default/inputs.conf  interval = 0
+/mnt/data/opt/splunk/etc/apps/introspection_generator_addon/default/inputs.conf  sourcetype = splunk_resource_usage__internal
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/eura_email_notification_switch_scripted_input.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 0 */4 * * *
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/eura_remote_latest_report.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 0 7,19 */1 * *
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/eura_remote_scan_scripted_input.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 0 */4 * * *
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/eura_scan_apps.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 0 1 */1 * *
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/eura_send_email.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 0 6 * * 1
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/jura_remote_latest_report.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 0 7,19 */1 * *
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/jura_remote_scan_scripted_input.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 0 */4 * * *
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/jura_scan_apps.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 0 4 */1 * *
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/jura_send_email.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 0 6 * * 1
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/pura_detect_python_version.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 3600
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/pura_email_notification_switch_scripted_input.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 0 */4 * * *
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/pura_get_all_apps.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 0 6 * * *
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/pura_remote_latest_report.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 0 4,16 */1 * *
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/pura_remote_scan_scripted_input.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 0 */4 * * *
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/pura_scan_apps.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 0 1 */1 * *
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/pura_send_email.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 0 6 * * 1
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   [script:///mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/bin/ura_task_clear_cache.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   disabled = 1
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   interval = 42 4,16 * * *
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   python.version = python3
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   run_only_one = false
+/mnt/data/opt/splunk/etc/apps/python_upgrade_readiness_app/default/inputs.conf   sourcetype = script
+/mnt/data/opt/splunk/etc/apps/search/default/inputs.conf                         [script:///mnt/data/opt/splunk/etc/apps/search/bin/quarantine_files.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/search/default/inputs.conf                         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/search/default/inputs.conf                         interval = * * * * *
+/mnt/data/opt/splunk/etc/apps/search/default/inputs.conf                         passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/search/default/inputs.conf                         python.required = latest
+/mnt/data/opt/splunk/etc/apps/search/default/inputs.conf                         run_only_one = false
+/mnt/data/opt/splunk/etc/apps/splunk-dashboard-studio/default/inputs.conf        [script:///mnt/data/opt/splunk/etc/apps/splunk-dashboard-studio/bin/save_image_and_icon_on_install.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/splunk-dashboard-studio/default/inputs.conf        interval = -1
+/mnt/data/opt/splunk/etc/apps/splunk-dashboard-studio/default/inputs.conf        passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk-dashboard-studio/default/inputs.conf        python.required = 3.13
+/mnt/data/opt/splunk/etc/apps/splunk-dashboard-studio/default/inputs.conf        python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk-dashboard-studio/default/inputs.conf        run_only_one = false
+/mnt/data/opt/splunk/etc/apps/splunk-rolling-upgrade/default/inputs.conf         [script:///mnt/data/opt/splunk/etc/apps/splunk-rolling-upgrade/bin/complete.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk-rolling-upgrade/default/inputs.conf         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/splunk-rolling-upgrade/default/inputs.conf         index = main
+/mnt/data/opt/splunk/etc/apps/splunk-rolling-upgrade/default/inputs.conf         interval = -1
+/mnt/data/opt/splunk/etc/apps/splunk-rolling-upgrade/default/inputs.conf         python.required = 3.13
+/mnt/data/opt/splunk/etc/apps/splunk-rolling-upgrade/default/inputs.conf         python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=0]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         index = _telemetry
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         interval = 5 * * * *
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         source = instrumentation_scripted_input
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         sourcetype = splunk_telemetry_log
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=1]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         index = _telemetry
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         interval = 15 * * * *
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         source = instrumentation_scripted_input
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         sourcetype = splunk_telemetry_log
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=10]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         index = _telemetry
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         interval = 45 * * * *
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         source = instrumentation_scripted_input
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         sourcetype = splunk_telemetry_log
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=11]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         index = _telemetry
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         interval = 55 * * * *
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         source = instrumentation_scripted_input
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         sourcetype = splunk_telemetry_log
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=2]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         index = _telemetry
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         interval = 25 * * * *
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         source = instrumentation_scripted_input
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         sourcetype = splunk_telemetry_log
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=3]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         index = _telemetry
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         interval = 35 * * * *
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         source = instrumentation_scripted_input
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         sourcetype = splunk_telemetry_log
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=4]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         index = _telemetry
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         interval = 45 * * * *
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         source = instrumentation_scripted_input
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         sourcetype = splunk_telemetry_log
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=5]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         index = _telemetry
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         interval = 55 * * * *
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         source = instrumentation_scripted_input
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         sourcetype = splunk_telemetry_log
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=6]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         index = _telemetry
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         interval = 5 * * * *
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         source = instrumentation_scripted_input
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         sourcetype = splunk_telemetry_log
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=7]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         index = _telemetry
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         interval = 15 * * * *
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         source = instrumentation_scripted_input
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         sourcetype = splunk_telemetry_log
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=8]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         index = _telemetry
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         interval = 25 * * * *
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         source = instrumentation_scripted_input
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         sourcetype = splunk_telemetry_log
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/instrumentation.py --batch-num=9]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         index = _telemetry
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         interval = 35 * * * *
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         source = instrumentation_scripted_input
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         sourcetype = splunk_telemetry_log
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/on_splunk_start.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         interval = -1
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         [script:///mnt/data/opt/splunk/etc/apps/splunk_instrumentation/bin/schedule_delete.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         disabled = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         interval = 0 0 * * *
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_instrumentation/default/inputs.conf         python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf      [script:///mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/bin/dmc_config.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf      interval = -1
+/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf      passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf      python.required = 3.13
+/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf      python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf      [script:///mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/bin/mc_auto_config.py]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf      interval = 3600
+/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf      passAuth = splunk-system-user
+/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf      python.required = 3.13
+/mnt/data/opt/splunk/etc/apps/splunk_monitoring_console/default/inputs.conf      python.version = python3
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          [secure_gateway_modular_input://default]
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          disabled = 1
 host = $decideOnStartup
 index = default
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        interval = */10 * * * *
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        noDisabled = 0
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        noPrivate = 0
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/default/inputs.conf          python.version = python3
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        remoteAppName = SplunkVersionControl
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        run_ko_diff = 0
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        run_ko_query = 0
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        show_passwords = 0
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        srcPassword = 
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        srcURL = https://localhost:8089
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        srcUsername = 
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        ssh_command = ssh
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        sslVerify = false
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        useLocalAuth = 1
-/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                        use_wdiff = 0
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            [splunkversioncontrol_restore://gitrestore]
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            debugMode = 1
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            destURL = https://localhost:8089
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            disable_git_ssl_verify = 1
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            file_per_ko = 0
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            gitRepoURL = git@github.com:d33bu/test.git
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            gitTempDir = /home/deebu/test_restore
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            git_branch = main
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          interval = 30
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          python.version = python3.9
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          run_only_one = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [splunktcp]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              acceptFrom = *
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              connection_host = ip
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              logRetireOldS2S = true
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              logRetireOldS2SMaxCache = 10000
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              logRetireOldS2SRepeatFrequency = 1d
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              route = has_key:_replicationBucketUUID:replicationQueue;has_key:_dstrx:typingQueue;has_key:_linebreaker:rulesetQueue;absent_key:_linebreaker:parsingQueue
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             [splunkversioncontrol_backup://git_backup2]
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             appsList = example_csv,search,splunk-dashboard-studio
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             debugMode = 1
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             disable_file_deletion = 1
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             disable_git_ssl_verify = 1
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             disabled = 1
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             file_per_ko = 1
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             gitRepoURL = git@github.com:d33bu/test_backup.git
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             gitTempDir = /home/deebu/test_backup
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             git_branch = main
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             git_command = git
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             git_email = deebu.rajan@gmail.com
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             git_name = d33bu
 host = $decideOnStartup
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            index = git
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/default/inputs.conf          python.version = python3
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            remoteAppName = SplunkVersionControl
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            show_passwords = 0
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            sslVerify = false
-/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf            useLocalAuth = 1
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         [ssg_alerts_ttl_modular_input://default]
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         disabled = 0
-host = $decideOnStartup
-index = default
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         interval = 3600
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         python.version = python3.9
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         ttl_days = 1
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         [ssg_deep_link_dashboard_modular_input://default]
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         disabled = 1
-host = $decideOnStartup
-index = default
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         interval = 5
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         python.version = python3.9
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         [ssg_delete_tokens_modular_input://default]
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         disabled = 1
-host = $decideOnStartup
-index = default
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         interval = 7200
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         python.version = python3.9
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         [ssg_device_role_modular_input://default]
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         disabled = 1
-host = $decideOnStartup
-index = default
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         interval = 300
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         python.version = python3.9
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         [ssg_enable_modular_input://default]
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         disabled = 0
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             includeEntities = 
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             index = git
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             interval = * * * * *
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             noDisabled = 1
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             noPrivate = 0
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/default/inputs.conf           python.version = python3
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             remoteAppName = SplunkVersionControl
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             run_ko_diff = 1
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             run_ko_query = 1
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             show_passwords = 0
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             srcURL = https://localhost:8089
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             ssh_command = ssh
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             sslVerify = false
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             useLocalAuth = 1
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             use_wdiff = 1
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         [splunkversioncontrol_backup://gitbackup]
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         debugMode = 1
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         disable_file_deletion = 0
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         disable_git_ssl_verify = 1
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         disabled = 1
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         file_per_ko = 0
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         gitRepoURL = git@github.com:d33bu/test.git
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         gitTempDir = /home/deebu/test
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         git_branch = main
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         git_command = git
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         git_email = deebu.rajan@gmail.com
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         git_name = d33bu
 host = $decideOnStartup
 index = default
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         interval = 60
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         python.version = python3.9
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         [ssg_kvstore_upgrade://default]
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         disabled = 1
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         interval = */10 * * * *
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         noDisabled = 0
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         noPrivate = 0
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/default/inputs.conf           python.version = python3
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         remoteAppName = SplunkVersionControl
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         run_ko_diff = 0
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         run_ko_query = 0
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         show_passwords = 0
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         srcPassword = 
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         srcURL = https://localhost:8089
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         srcUsername = 
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         ssh_command = ssh
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         sslVerify = false
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         useLocalAuth = 1
+/mnt/data/opt/splunk/etc/apps/launcher/local/inputs.conf                         use_wdiff = 0
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             [splunkversioncontrol_restore://gitrestore]
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             debugMode = 1
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             destURL = https://localhost:8089
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             disable_git_ssl_verify = 1
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             file_per_ko = 0
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             gitRepoURL = git@github.com:d33bu/test.git
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             gitTempDir = /home/deebu/test_restore
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             git_branch = main
+host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             index = git
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/default/inputs.conf           python.version = python3
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             remoteAppName = SplunkVersionControl
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             show_passwords = 0
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             sslVerify = false
+/mnt/data/opt/splunk/etc/apps/SplunkVersionControl/local/inputs.conf             useLocalAuth = 1
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          [ssg_alerts_ttl_modular_input://default]
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          disabled = 0
 host = $decideOnStartup
 index = default
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         python.version = python3.9
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         [ssg_metrics_modular_input://default]
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         disabled = 1
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          interval = 3600
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          python.version = python3.9
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          ttl_days = 1
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          [ssg_deep_link_dashboard_modular_input://default]
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          disabled = 1
 host = $decideOnStartup
 index = default
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         interval = 43200
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         python.version = python3.9
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         [ssg_registered_devices_modular_input://default]
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         disabled = 1
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          interval = 5
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          python.version = python3.9
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          [ssg_delete_tokens_modular_input://default]
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          disabled = 1
 host = $decideOnStartup
 index = default
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         interval = 86400
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         python.version = python3.9
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         [ssg_registered_users_list_modular_input://default]
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         disabled = 1
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          interval = 7200
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          python.version = python3.9
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          [ssg_device_role_modular_input://default]
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          disabled = 1
 host = $decideOnStartup
 index = default
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         interval = 86400
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         python.version = python3.9
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         [ssg_subscription_clean_up_modular_input://default]
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         cleanup_threshold_seconds = 120
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         disabled = 1
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          interval = 300
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          python.version = python3.9
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          [ssg_enable_modular_input://default]
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          disabled = 0
 host = $decideOnStartup
 index = default
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         interval = 120
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         python.version = python3.9
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         [ssg_subscription_modular_input://default]
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         disabled = 1
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          interval = 60
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          python.version = python3.9
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          [ssg_kvstore_upgrade://default]
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          disabled = 1
 host = $decideOnStartup
 index = default
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         interval = 30
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         maximum_iteration_time_warn_threshold_seconds = 60
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         minimum_iteration_time_seconds = 5
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         python.version = python3.9
-/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf         run_only_one = false
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [tcp]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             acceptFrom = *
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             connection_host = dns
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             [udp]
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             _rcvbuf = 1572864
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             connection_host = ip
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             host = $decideOnStartup
-/mnt/data/opt/splunk/etc/system/default/inputs.conf                             index = default
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          python.version = python3.9
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          [ssg_metrics_modular_input://default]
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          disabled = 1
+host = $decideOnStartup
+index = default
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          interval = 43200
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          python.version = python3.9
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          [ssg_registered_devices_modular_input://default]
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          disabled = 1
+host = $decideOnStartup
+index = default
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          interval = 86400
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          python.version = python3.9
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          [ssg_registered_users_list_modular_input://default]
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          disabled = 1
+host = $decideOnStartup
+index = default
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          interval = 86400
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          python.version = python3.9
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          [ssg_subscription_clean_up_modular_input://default]
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          cleanup_threshold_seconds = 120
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          disabled = 1
+host = $decideOnStartup
+index = default
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          interval = 120
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          python.version = python3.9
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          [ssg_subscription_modular_input://default]
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          disabled = 1
+host = $decideOnStartup
+index = default
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          interval = 30
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          maximum_iteration_time_warn_threshold_seconds = 60
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          minimum_iteration_time_seconds = 5
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          python.version = python3.9
+/mnt/data/opt/splunk/etc/apps/splunk_secure_gateway/default/inputs.conf          run_only_one = false
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [tcp]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              acceptFrom = *
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              connection_host = dns
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              [udp]
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              _rcvbuf = 1572864
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              connection_host = ip
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              host = $decideOnStartup
+/mnt/data/opt/splunk/etc/system/default/inputs.conf                              index = default
+/mnt/data/opt/splunk/etc/apps/TA-workday/local/inputs.conf                       [user_activity://User]
+/mnt/data/opt/splunk/etc/apps/TA-workday/local/inputs.conf                       global_account = wday_test
+host = $decideOnStartup
+/mnt/data/opt/splunk/etc/apps/TA-workday/local/inputs.conf                       include_target_details = 1
+index = default
+/mnt/data/opt/splunk/etc/apps/TA-workday/local/inputs.conf                       interval = 60
+/mnt/data/opt/splunk/etc/apps/TA-workday/default/inputs.conf                     python.version = python3
+/mnt/data/opt/splunk/etc/apps/TA-workday/default/inputs.conf                     sourcetype = workday:useractivity
+/mnt/data/opt/splunk/etc/apps/TA-workday/default/inputs.conf                     start_by_shell = false

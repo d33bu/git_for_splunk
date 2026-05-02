@@ -1,0 +1,24 @@
+[indexes/workday]
+owner = admin
+version = 10.2.0
+modtime = 1770701166.539829000
+
+[passwords/credential%3A__REST_CREDENTIAL__%23TA-workday%23configs%2Fconf-ta_workday_account%3Awday_test%60%60splunk_cred_sep%60%601%3A]
+owner = admin
+version = 10.2.0
+modtime = 1770702522.113327000
+
+[passwords/credential%3A__REST_CREDENTIAL__%23TA-workday%23configs%2Fconf-ta_workday_account%3Awday_test%60%60splunk_cred_sep%60%602%3A]
+owner = admin
+version = 10.2.0
+modtime = 1770702522.175120000
+
+[ta_workday_account/wday_test]
+owner = admin
+version = 10.2.0
+modtime = 1770702522.227861000
+
+[inputs/user_activity%3A%2F%2FUser]
+owner = admin
+version = 10.2.0
+modtime = 1770702653.520046000

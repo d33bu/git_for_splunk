@@ -1,0 +1,4 @@
+[passwords/credential%3ASplunk_MCP_Server%3Aprivate_key%3A]
+owner = splunk-system-user
+version = 10.2.0
+modtime = 1770619140.489392000

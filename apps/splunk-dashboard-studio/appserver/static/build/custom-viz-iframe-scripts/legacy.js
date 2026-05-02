@@ -305,10 +305,10 @@ var require_coreJsData = __commonJS({
 var require_isMasked = __commonJS({
   "../../node_modules/lodash/_isMasked.js"(exports, module2) {
     var coreJsData = require_coreJsData();
-    var maskSrcKey = function() {
+    var maskSrcKey = (function() {
       var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || "");
       return uid ? "Symbol(src)_1." + uid : "";
-    }();
+    })();
     function isMasked(func) {
       return !!maskSrcKey && maskSrcKey in func;
     }
@@ -1543,7 +1543,7 @@ var require_lodash = __commonJS({
       var freeModule = freeExports && typeof module2 == "object" && module2 && !module2.nodeType && module2;
       var moduleExports = freeModule && freeModule.exports === freeExports;
       var freeProcess = moduleExports && freeGlobal.process;
-      var nodeUtil = function() {
+      var nodeUtil = (function() {
         try {
           var types = freeModule && freeModule.require && freeModule.require("util").types;
           if (types) {
@@ -1552,7 +1552,7 @@ var require_lodash = __commonJS({
           return freeProcess && freeProcess.binding && freeProcess.binding("util");
         } catch (e) {
         }
-      }();
+      })();
       var nodeIsArrayBuffer = nodeUtil && nodeUtil.isArrayBuffer, nodeIsDate = nodeUtil && nodeUtil.isDate, nodeIsMap = nodeUtil && nodeUtil.isMap, nodeIsRegExp = nodeUtil && nodeUtil.isRegExp, nodeIsSet = nodeUtil && nodeUtil.isSet, nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
       function apply(func, thisArg, args) {
         switch (args.length) {
@@ -1898,7 +1898,7 @@ var require_lodash = __commonJS({
       function unicodeWords(string) {
         return string.match(reUnicodeWord) || [];
       }
-      var runInContext = function runInContext2(context) {
+      var runInContext = (function runInContext2(context) {
         context = context == null ? root : _.defaults(root.Object(), context, _.pick(root, contextProps));
         var Array2 = context.Array, Date2 = context.Date, Error2 = context.Error, Function2 = context.Function, Math2 = context.Math, Object2 = context.Object, RegExp2 = context.RegExp, String2 = context.String, TypeError2 = context.TypeError;
         var arrayProto = Array2.prototype, funcProto = Function2.prototype, objectProto = Object2.prototype;
@@ -1906,10 +1906,10 @@ var require_lodash = __commonJS({
         var funcToString = funcProto.toString;
         var hasOwnProperty = objectProto.hasOwnProperty;
         var idCounter = 0;
-        var maskSrcKey = function() {
+        var maskSrcKey = (function() {
           var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || "");
           return uid ? "Symbol(src)_1." + uid : "";
-        }();
+        })();
         var nativeObjectToString = objectProto.toString;
         var objectCtorString = funcToString.call(Object2);
         var oldDash = root._;
@@ -1917,14 +1917,14 @@ var require_lodash = __commonJS({
           "^" + funcToString.call(hasOwnProperty).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
         );
         var Buffer2 = moduleExports ? context.Buffer : undefined2, Symbol2 = context.Symbol, Uint8Array2 = context.Uint8Array, allocUnsafe = Buffer2 ? Buffer2.allocUnsafe : undefined2, getPrototype = overArg(Object2.getPrototypeOf, Object2), objectCreate = Object2.create, propertyIsEnumerable = objectProto.propertyIsEnumerable, splice = arrayProto.splice, spreadableSymbol = Symbol2 ? Symbol2.isConcatSpreadable : undefined2, symIterator = Symbol2 ? Symbol2.iterator : undefined2, symToStringTag = Symbol2 ? Symbol2.toStringTag : undefined2;
-        var defineProperty = function() {
+        var defineProperty = (function() {
           try {
             var func = getNative(Object2, "defineProperty");
             func({}, "", {});
             return func;
           } catch (e) {
           }
-        }();
+        })();
         var ctxClearTimeout = context.clearTimeout !== root.clearTimeout && context.clearTimeout, ctxNow = Date2 && Date2.now !== root.Date.now && Date2.now, ctxSetTimeout = context.setTimeout !== root.setTimeout && context.setTimeout;
         var nativeCeil = Math2.ceil, nativeFloor = Math2.floor, nativeGetSymbols = Object2.getOwnPropertySymbols, nativeIsBuffer = Buffer2 ? Buffer2.isBuffer : undefined2, nativeIsFinite = context.isFinite, nativeJoin = arrayProto.join, nativeKeys = overArg(Object2.keys, Object2), nativeMax = Math2.max, nativeMin = Math2.min, nativeNow = Date2.now, nativeParseInt = context.parseInt, nativeRandom = Math2.random, nativeReverse = arrayProto.reverse;
         var DataView = getNative(context, "DataView"), Map2 = getNative(context, "Map"), Promise2 = getNative(context, "Promise"), Set2 = getNative(context, "Set"), WeakMap2 = getNative(context, "WeakMap"), nativeCreate = getNative(Object2, "create");
@@ -1943,7 +1943,7 @@ var require_lodash = __commonJS({
           }
           return new LodashWrapper(value);
         }
-        var baseCreate = /* @__PURE__ */ function() {
+        var baseCreate = /* @__PURE__ */ (function() {
           function object() {
           }
           return function(proto) {
@@ -1958,7 +1958,7 @@ var require_lodash = __commonJS({
             object.prototype = undefined2;
             return result2;
           };
-        }();
+        })();
         function baseLodash() {
         }
         function LodashWrapper(value, chainAll) {
@@ -5250,9 +5250,9 @@ var require_lodash = __commonJS({
         var gte = createRelationalOperation(function(value, other) {
           return value >= other;
         });
-        var isArguments = baseIsArguments(/* @__PURE__ */ function() {
+        var isArguments = baseIsArguments(/* @__PURE__ */ (function() {
           return arguments;
-        }()) ? baseIsArguments : function(value) {
+        })()) ? baseIsArguments : function(value) {
           return isObjectLike(value) && hasOwnProperty.call(value, "callee") && !propertyIsEnumerable.call(value, "callee");
         };
         var isArray = Array2.isArray;
@@ -6504,7 +6504,7 @@ var require_lodash = __commonJS({
         lodash.each = forEach;
         lodash.eachRight = forEachRight;
         lodash.first = head;
-        mixin(lodash, function() {
+        mixin(lodash, (function() {
           var source = {};
           baseForOwn(lodash, function(func, methodName) {
             if (!hasOwnProperty.call(lodash.prototype, methodName)) {
@@ -6512,7 +6512,7 @@ var require_lodash = __commonJS({
             }
           });
           return source;
-        }(), { "chain": false });
+        })(), { "chain": false });
         lodash.VERSION = VERSION;
         arrayEach(["bind", "bindKey", "curry", "curryRight", "partial", "partialRight"], function(methodName) {
           lodash[methodName].placeholder = lodash;
@@ -6672,7 +6672,7 @@ var require_lodash = __commonJS({
           lodash.prototype[symIterator] = wrapperToIterator;
         }
         return lodash;
-      };
+      });
       var _ = runInContext();
       if (typeof define == "function" && typeof define.amd == "object" && define.amd) {
         root._ = _;
@@ -7757,6 +7757,74 @@ function arrayBufferToBase64(arrayBuffer) {
   }
   return btoa(binary);
 }
+var createTokenRegistry = (backbone) => {
+  const Registry = backbone.Model.extend({
+    initialize: function() {
+      this.registerInstance("default", new backbone.Model());
+    },
+    registerInstance: function(id, component, options = {}) {
+      if (!id) {
+        throw new Error("You must pass in an ID when registering an instance.");
+      }
+      if (this.has(id) && !options.replace) {
+        throw new Error(`Already have instance with id: ${id}`);
+      }
+      this.set(id, component, options);
+      return component;
+    },
+    revokeInstance: function(id, options) {
+      this.unset(id, options);
+    },
+    hasInstance: function(id) {
+      return this.has(id);
+    },
+    getInstance: function(id, options = {}) {
+      if (!this.has(id)) {
+        if (options.create) {
+          this.registerInstance(id, new backbone.Model());
+        }
+      }
+      return this.get(id);
+    },
+    getInstances: function() {
+      return Object.values(this.attributes);
+    },
+    getInstanceNames: function() {
+      return Object.keys(this.attributes);
+    }
+  });
+  return new Registry();
+};
+var mockRequireJsModules = (modules) => {
+  window.requirejs?.exposeModules({
+    modules,
+    isAllowedList: true,
+    blockPrivateImports: true
+  });
+};
+var setTokenBinding = ({
+  backbone,
+  tokenBinding,
+  tokenRegistry
+}) => {
+  Object.entries(tokenBinding).forEach(([tokenNamespace, tokenValues]) => {
+    if (!tokenRegistry.hasInstance(tokenNamespace)) {
+      tokenRegistry.registerInstance(tokenNamespace, new backbone.Model());
+    }
+    const tokenNamespaceModel = tokenRegistry.getInstance(tokenNamespace);
+    tokenNamespaceModel.set(tokenValues);
+    tokenNamespaceModel.keys().forEach((key) => {
+      if (!(key in tokenValues)) {
+        tokenNamespaceModel.unset(key);
+      }
+    });
+  });
+};
+function getMetaTagData(key) {
+  const metaData = document.querySelector(`meta[name="${key}"]`);
+  const content = metaData?.getAttribute("content") ?? null;
+  return content;
+}
 
 // src/ContentExporter/IframeExportHandler.ts
 async function exportAsPng(event) {
@@ -7832,12 +7900,22 @@ function initIframeFetchSetup() {
   registerMessageHandler("FETCH-PROXY-ERROR" /* FetchProxyError */, handleFetchError);
 }
 
+// src/FocusHandler/IframeFocusHandler.ts
+function initIframeFocusHandler() {
+  window.addEventListener("focus", () => {
+    const message = {
+      type: "FOCUS-HANDLER-FOCUS-EVENT" /* FocusEvent */
+    };
+    window.parent.postMessage(message, getParentOrigin());
+  });
+}
+
 // src/IframeUtils/Fonts.ts
 var import_url = __toESM(require_url(), 1);
 var urlRegex = /url\(['"]?([^'")]+\.woff)['"]?\)/g;
 var initIframeFonts = async () => {
   const bootstrapCSSUrl = (0, import_url.createURL)("/static/build/css/bootstrap-enterprise.css");
-  const response = await fetch(bootstrapCSSUrl);
+  const response = await fetch(bootstrapCSSUrl, { cache: "force-cache" });
   const bootstrapCSSText = await response.text();
   const fontMatches = bootstrapCSSText.matchAll(urlRegex) ?? [];
   const resolvedFonts = {};
@@ -7847,7 +7925,7 @@ var initIframeFonts = async () => {
       if (typeof fontUrl !== "string") {
         return;
       }
-      const response2 = await fetch(fontUrl);
+      const response2 = await fetch(fontUrl, { cache: "force-cache" });
       const arrayBuffer = await response2.arrayBuffer();
       const base64 = arrayBufferToBase64(arrayBuffer);
       resolvedFonts[fontUrl] = `url('data:application/x-font-woff;base64,${base64}')`;
@@ -7886,6 +7964,9 @@ var [getIframeState, setIframeState] = /* @__PURE__ */ (() => {
   };
   return [getState, setState];
 })();
+
+// src/GlobalErrorHandler/constants.ts
+var REQUIREJS_ERROR_MESSAGE = "REQUIREJS_ERROR_MESSAGE";
 
 // src/GlobalErrorHandler/IframeGlobalErrorHandler.ts
 var handleError = (error) => {
@@ -7960,6 +8041,11 @@ var toEpochSeconds = (timeValue) => {
   }
   return parsedFloat;
 };
+var tryToCoercePayloadValueToString = (value) => {
+  if (Array.isArray(value)) return value.map((val) => String(val));
+  if (value && typeof value === "object") return value;
+  return String(value);
+};
 var modifyTimeRangeDrilldownInfo = (transformedPayload) => {
   if (!("earliest" in transformedPayload)) {
     transformedPayload.earliest = void 0;
@@ -7987,12 +8073,16 @@ var modifyFieldValueDrilldownInfo = (transformedPayload) => {
     return false;
   }
   Object.entries(transformedPayload.data).forEach(([key, value]) => {
-    transformedPayload[`row.${key}.value`] = value;
+    transformedPayload[`row.${key}.value`] = tryToCoercePayloadValueToString(value);
   });
   if (!transformedPayload.name) {
-    const fields = Object.keys(transformedPayload.data);
-    fields.sort((field1, field2) => field1.localeCompare(field2));
-    transformedPayload.name = fields[0];
+    const sortedFields = Object.keys(transformedPayload.data);
+    sortedFields.sort((field1, field2) => field1.localeCompare(field2));
+    const transformedPayloadData = transformedPayload.data;
+    const firstField = sortedFields[0];
+    const firstFieldValue = transformedPayloadData[firstField];
+    transformedPayload.name = firstField;
+    transformedPayload.value = firstFieldValue;
   }
   return true;
 };
@@ -8000,7 +8090,7 @@ var drilldown = (_viz, payload, originalEvent) => {
   if (!payload || typeof payload !== "object") {
     return;
   }
-  const studioEvent = `${payload.action}.${originalEvent?.type ?? "click"}`;
+  const studioEvent = `${payload.action}.click`;
   const transformedPayload = { ...payload, name: void 0 };
   let isValidDrilldown = false;
   isValidDrilldown = modifyTimeRangeDrilldownInfo(transformedPayload);
@@ -8013,7 +8103,54 @@ var drilldown = (_viz, payload, originalEvent) => {
 };
 var drilldown_default = drilldown;
 
+// src/IframeUtils/initRequireJS.ts
+async function initRequireJS() {
+  const requireJsScript = getMetaTagData("custom-viz-requirejs-script");
+  const response = await fetch(requireJsScript, { cache: "force-cache" });
+  const script = await response.text();
+  const scriptElement = document.createElement("script");
+  scriptElement.type = "text/javascript";
+  scriptElement.textContent = script;
+  document.body.appendChild(scriptElement);
+}
+
 // src/IframeUtils/initLegacyCustomViz.ts
+var mockSplunkJsIfNeeded = (tokenRegistry) => {
+  if (!window.splunkjs) {
+    window.splunkjs = {
+      mvc: {
+        Components: tokenRegistry
+      }
+    };
+    mockRequireJsModules({
+      splunkjs: window.splunkjs,
+      "splunkjs/mvc": window.splunkjs.mvc
+    });
+  }
+};
+var initTokenRegistry = () => {
+  const serializedInitialTokenBinding = document.getElementById("root")?.getAttribute("data-initial-token-binding");
+  const initialTokenBinding = serializedInitialTokenBinding ? JSON.parse(serializedInitialTokenBinding) : {};
+  document.getElementById("root")?.removeAttribute("data-initial-token-binding");
+  return new Promise((resolve, reject) => {
+    try {
+      window.requirejs?.(["backbone"], (backbone) => {
+        const tokenRegistry = window.splunkjs?.mvc.Components ?? createTokenRegistry(backbone);
+        setIframeState("backbone", backbone);
+        setTokenBinding({
+          backbone,
+          tokenBinding: initialTokenBinding,
+          tokenRegistry
+        });
+        setIframeState("tokenRegistry", tokenRegistry);
+        mockSplunkJsIfNeeded(tokenRegistry);
+        resolve(void 0);
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 var triggers = {
   invalidateReflow: (viz) => viz.reflow(),
   invalidateFormatData: async (viz) => {
@@ -8074,13 +8211,22 @@ var initLegacyCustomViz = async () => {
   const rootElement = getRootElement();
   const jsUrl = rootElement.getAttribute("data-js-url") ?? "";
   const cssUrl = rootElement.getAttribute("data-css-url") ?? "";
-  window.DASHBOARD_THEME = rootElement.getAttribute("data-theme");
+  window.DASHBOARD_THEME = getMetaTagData("color-scheme");
   const vizType = rootElement.getAttribute("data-viz-type");
   const [appName, vizName] = vizType.split(".");
   try {
+    await initRequireJS();
+    await initTokenRegistry();
     window.requirejs?.(
       [jsUrl, cssUrl],
-      (CustomVizClass) => onRequireJSLoad(CustomVizClass, appName, vizName)
+      (CustomVizClass) => {
+        return onRequireJSLoad(CustomVizClass, appName, vizName);
+      },
+      (error) => {
+        console.error(error);
+        error.message = `${REQUIREJS_ERROR_MESSAGE} ${error.message}`;
+        handleError(error);
+      }
     );
   } catch (e) {
     console.log(e);
@@ -8102,7 +8248,7 @@ function initIframeMessageHandler() {
 var import_DataSet = __toESM(require_DataSet(), 1);
 var formatData = (dataSource, outputMode) => {
   const DataSet = "default" in import_DataSet.default ? import_DataSet.default.default : import_DataSet.default;
-  const dataSet = new DataSet(dataSource.data.fields, dataSource.data.columns);
+  const dataSet = new DataSet(dataSource.data?.fields, dataSource.data?.columns);
   switch (outputMode) {
     case "json_cols" /* COLUMN_MAJOR_OUTPUT_MODE */:
       return dataSet.toJSONCols();
@@ -8117,7 +8263,17 @@ var formatData = (dataSource, outputMode) => {
 function transformData(viz, dataSourcesFromUDF) {
   const dataSources = Object.entries(dataSourcesFromUDF).reduce((acc, [key, dataSource]) => {
     const { outputMode } = viz.getInitialDataParams();
-    acc[key] = formatData(dataSource, outputMode);
+    acc[key] = {
+      ...formatData(dataSource, outputMode),
+      meta: {
+        ...dataSource.meta,
+        done: dataSource.meta?.status === "done",
+        fetchOptions: {
+          ...dataSource.requestParams,
+          output_mode: outputMode
+        }
+      }
+    };
     return acc;
   }, {});
   return dataSources;
@@ -8180,6 +8336,16 @@ function initIframeResizeSetup() {
   registerMessageHandler("VIZ-RESIZE" /* Resize */, handleResize);
 }
 
+// src/TokenHandler/IframeTokenHandler.ts
+function handleTokenBindingChange(event) {
+  const backbone = getIframeState("backbone");
+  const tokenRegistry = getIframeState("tokenRegistry");
+  setTokenBinding({ backbone, tokenBinding: event.data.tokenBinding, tokenRegistry });
+}
+function initIframeTokenBindingSetup() {
+  registerMessageHandler("TOKEN-BINDING-UPDATE" /* TokenBindingUpdate */, handleTokenBindingChange);
+}
+
 // src/Iframe/legacy.ts
 initIframeMessageHandler();
 initIframeFetchSetup();
@@ -8188,4 +8354,6 @@ initIframeFonts();
 initContentExporter();
 initLegacyCustomViz();
 initIframeResizeSetup();
+initIframeTokenBindingSetup();
+initIframeFocusHandler();
 //# sourceMappingURL=legacy.js.map

@@ -3,8 +3,8 @@ version = 10.0.2
 modtime = 1768235605.807720000
 
 [server/general]
-version = 10.0.2
-modtime = 1768235608.656839000
+version = 10.2.0
+modtime = 1770483016.004795000
 
 [server/lmpool%3Aauto_generated_pool_download-trial]
 version = 10.0.2
@@ -54,258 +54,238 @@ modtime = 1768235650.621411000
 version = 10.0.2
 modtime = 1768235650.639391000
 
-[restmap/local-proxy%3AtlPackage-agent-management-all-endpoints]
+[authorize/role_mcp_admin]
 version = 10.0.2
-modtime = 1768716898.436813000
+modtime = 1769490682.356224000
+
+[authorize/role_mcp_tool_execute]
+version = 10.0.2
+modtime = 1769490706.892593000
+
+[authorize/role_mcp_tool_admin_execute]
+version = 10.0.2
+modtime = 1769490741.543311000
+
+[restmap/local-proxy%3AtlPackage-agent-management-all-endpoints]
+version = 10.2.0
+modtime = 1776049862.588745000
 
 [restmap/local-proxy%3AtlPackage-agent-management-all-endpoints-webport-1]
-version = 10.0.2
-modtime = 1768716898.456223000
+version = 10.2.0
+modtime = 1776049862.621118000
 
 [restmap/local-proxy%3AtlPackage-agent-management-all-endpoints-webport-2]
-version = 10.0.2
-modtime = 1768716898.472946000
+version = 10.2.0
+modtime = 1776049862.637960000
 
 [restmap/local-proxy%3AtlPackage-agent-management-all-endpoints-webport-3]
-version = 10.0.2
-modtime = 1768716898.489506000
+version = 10.2.0
+modtime = 1776049862.664687000
 
 [restmap/local-proxy%3AtlPackage-agent-management-all-endpoints-webport-4]
-version = 10.0.2
-modtime = 1768716898.509996000
+version = 10.2.0
+modtime = 1776049862.707389000
 
 [restmap/local-proxy%3AtlPackage-agent-management-all-endpoints-webport-5]
-version = 10.0.2
-modtime = 1768716898.519040000
+version = 10.2.0
+modtime = 1776049862.747247000
 
 [restmap/local-proxy%3AtlPackage-agent-management-effective-configuration]
-version = 10.0.2
-modtime = 1768716898.549445000
+version = 10.2.0
+modtime = 1776049862.781987000
 
 [web/expose%3AtlPackage-agent-management-all-endpoints]
-version = 10.0.2
-modtime = 1768716898.560578000
+version = 10.2.0
+modtime = 1776049862.913900000
 
 [web/expose%3AtlPackage-agent-management-all-endpoints-webport-1]
-version = 10.0.2
-modtime = 1768716898.571405000
+version = 10.2.0
+modtime = 1776049862.929891000
 
 [web/expose%3AtlPackage-agent-management-all-endpoints-webport-2]
-version = 10.0.2
-modtime = 1768716898.587561000
+version = 10.2.0
+modtime = 1776049862.992778000
 
 [web/expose%3AtlPackage-agent-management-all-endpoints-webport-3]
-version = 10.0.2
-modtime = 1768716898.601938000
+version = 10.2.0
+modtime = 1776049863.055198000
 
 [web/expose%3AtlPackage-agent-management-all-endpoints-webport-4]
-version = 10.0.2
-modtime = 1768716898.606391000
+version = 10.2.0
+modtime = 1776049863.098010000
 
 [web/expose%3AtlPackage-agent-management-all-endpoints-webport-5]
-version = 10.0.2
-modtime = 1768716898.629746000
+version = 10.2.0
+modtime = 1776049863.148739000
 
 [web/expose%3AtlPackage-agent-management-effective-configuration]
-version = 10.0.2
-modtime = 1768716898.634969000
-
-[restmap/local-proxy%3AtlPackage-postgres_api_spec]
-version = 10.0.2
-modtime = 1768716899.017305000
-
-[restmap/local-proxy%3AtlPackage-postgres_backup]
-version = 10.0.2
-modtime = 1768716899.046408000
-
-[restmap/local-proxy%3AtlPackage-postgres_recovery_status]
-version = 10.0.2
-modtime = 1768716899.099613000
-
-[restmap/local-proxy%3AtlPackage-postgres_restore]
-version = 10.0.2
-modtime = 1768716899.121029000
-
-[web/expose%3AtlPackage-postgres_api_spec]
-version = 10.0.2
-modtime = 1768716899.170366000
-
-[web/expose%3AtlPackage-postgres_backup]
-version = 10.0.2
-modtime = 1768716899.245953000
-
-[web/expose%3AtlPackage-postgres_recovery_status]
-version = 10.0.2
-modtime = 1768716899.267088000
-
-[web/expose%3AtlPackage-postgres_restore]
-version = 10.0.2
-modtime = 1768716899.323040000
+version = 10.2.0
+modtime = 1776049863.181459000
 
 [restmap/local-proxy%3AtlPackage-scimGroup]
-version = 10.0.2
-modtime = 1768716899.397985000
+version = 10.2.0
+modtime = 1776049863.315608000
 
 [restmap/local-proxy%3AtlPackage-scimGroups]
-version = 10.0.2
-modtime = 1768716899.428904000
+version = 10.2.0
+modtime = 1776049863.351051000
 
 [restmap/local-proxy%3AtlPackage-scimUser]
-version = 10.0.2
-modtime = 1768716899.447974000
+version = 10.2.0
+modtime = 1776049863.388420000
 
 [restmap/local-proxy%3AtlPackage-scimUsers]
-version = 10.0.2
-modtime = 1768716899.470233000
+version = 10.2.0
+modtime = 1776049863.426677000
 
 [web/expose%3AtlPackage-scimGroup]
-version = 10.0.2
-modtime = 1768716899.511258000
+version = 10.2.0
+modtime = 1776049863.481778000
 
 [web/expose%3AtlPackage-scimGroups]
-version = 10.0.2
-modtime = 1768716899.544176000
+version = 10.2.0
+modtime = 1776049863.492147000
 
 [web/expose%3AtlPackage-scimUser]
-version = 10.0.2
-modtime = 1768716899.568593000
+version = 10.2.0
+modtime = 1776049863.503532000
 
 [web/expose%3AtlPackage-scimUsers]
-version = 10.0.2
-modtime = 1768716899.609555000
+version = 10.2.0
+modtime = 1776049863.516257000
 
 [restmap/local-proxy%3AtlPackage-edit_orchestrator_single_spl2_module]
-version = 10.0.2
-modtime = 1768716907.495457000
+version = 10.2.0
+modtime = 1776049875.636116000
 
 [restmap/local-proxy%3AtlPackage-get_orchestrator_single_spl2_module]
-version = 10.0.2
-modtime = 1768716907.504564000
+version = 10.2.0
+modtime = 1776049875.642557000
 
 [restmap/local-proxy%3AtlPackage-orchestrator_create_system_pipeline]
-version = 10.0.2
-modtime = 1768716907.512781000
+version = 10.2.0
+modtime = 1776049875.654631000
 
 [restmap/local-proxy%3AtlPackage-orchestrator_datasets]
-version = 10.0.2
-modtime = 1768716907.518821000
+version = 10.2.0
+modtime = 1776049875.666201000
 
 [restmap/local-proxy%3AtlPackage-orchestrator_import_management]
-version = 10.0.2
-modtime = 1768716907.525913000
+version = 10.2.0
+modtime = 1776049875.676332000
 
 [restmap/local-proxy%3AtlPackage-orchestrator_import_management_info]
-version = 10.0.2
-modtime = 1768716907.535644000
+version = 10.2.0
+modtime = 1776049875.688567000
 
 [restmap/local-proxy%3AtlPackage-orchestrator_jobs]
-version = 10.0.2
-modtime = 1768716907.544412000
+version = 10.2.0
+modtime = 1776049875.700512000
 
 [restmap/local-proxy%3AtlPackage-orchestrator_processor_default_destination]
-version = 10.0.2
-modtime = 1768716907.551954000
+version = 10.2.0
+modtime = 1776049875.711557000
 
 [restmap/local-proxy%3AtlPackage-orchestrator_single_dataset]
-version = 10.0.2
-modtime = 1768716907.559776000
+version = 10.2.0
+modtime = 1776049875.724261000
 
 [restmap/local-proxy%3AtlPackage-orchestrator_single_jobs]
-version = 10.0.2
-modtime = 1768716907.566137000
+version = 10.2.0
+modtime = 1776049875.734434000
 
 [restmap/local-proxy%3AtlPackage-orchestrator_sourcetype_sync]
-version = 10.0.2
-modtime = 1768716907.572242000
+version = 10.2.0
+modtime = 1776049875.747722000
 
 [restmap/local-proxy%3AtlPackage-orchestrator_spl2_dispatch]
-version = 10.0.2
-modtime = 1768716907.578395000
+version = 10.2.0
+modtime = 1776049875.758776000
 
 [restmap/local-proxy%3AtlPackage-orchestrator_spl_functions]
-version = 10.0.2
-modtime = 1768716907.585238000
+version = 10.2.0
+modtime = 1776049875.771309000
 
 [restmap/local-proxy%3AtlPackage-orchestrator_spl_modules]
-version = 10.0.2
-modtime = 1768716907.593397000
+version = 10.2.0
+modtime = 1776049875.779186000
 
 [restmap/local-proxy%3AtlPackage-otto_spl2_compile]
-version = 10.0.2
-modtime = 1768716907.602697000
+version = 10.2.0
+modtime = 1776049875.793516000
 
 [restmap/local-proxy%3AtlPackage-otto_spl2_dispatch]
-version = 10.0.2
-modtime = 1768716907.610571000
+version = 10.2.0
+modtime = 1776049875.807928000
 
 [restmap/local-proxy%3AtlPackage-otto_spl2_modules]
-version = 10.0.2
-modtime = 1768716907.619567000
+version = 10.2.0
+modtime = 1776049875.820442000
 
 [restmap/local-proxy%3AtlPackage-otto_spl2_rbac_permissions]
-version = 10.0.2
-modtime = 1768716907.628983000
+version = 10.2.0
+modtime = 1776049875.828234000
 
 [restmap/ws-local-proxy%3AtlPackage-orchestrator-lsp]
-version = 10.0.2
-modtime = 1768716907.636348000
+version = 10.2.0
+modtime = 1776049875.842416000
 
 [web/expose%3AtlPackage-edit_orchestrator_single_spl2_module]
-version = 10.0.2
-modtime = 1768716907.643327000
+version = 10.2.0
+modtime = 1776049875.853985000
 
 [web/expose%3AtlPackage-get_orchestrator_single_spl2_module]
-version = 10.0.2
-modtime = 1768716907.648435000
+version = 10.2.0
+modtime = 1776049875.860472000
 
 [web/expose%3AtlPackage-orchestrator-lsp]
-version = 10.0.2
-modtime = 1768716907.653879000
+version = 10.2.0
+modtime = 1776049875.873797000
 
 [web/expose%3AtlPackage-orchestrator_create_system_pipeline]
-version = 10.0.2
-modtime = 1768716907.659963000
+version = 10.2.0
+modtime = 1776049875.881897000
 
 [web/expose%3AtlPackage-orchestrator_datasets]
-version = 10.0.2
-modtime = 1768716907.667135000
+version = 10.2.0
+modtime = 1776049875.891953000
 
 [web/expose%3AtlPackage-orchestrator_import_management]
-version = 10.0.2
-modtime = 1768716907.678175000
+version = 10.2.0
+modtime = 1776049875.900134000
 
 [web/expose%3AtlPackage-orchestrator_import_management_info]
-version = 10.0.2
-modtime = 1768716907.684694000
+version = 10.2.0
+modtime = 1776049875.911254000
 
 [web/expose%3AtlPackage-orchestrator_jobs]
-version = 10.0.2
-modtime = 1768716907.696593000
+version = 10.2.0
+modtime = 1776049875.922464000
 
 [web/expose%3AtlPackage-orchestrator_processor_default_destination]
-version = 10.0.2
-modtime = 1768716907.701782000
+version = 10.2.0
+modtime = 1776049875.932784000
 
 [web/expose%3AtlPackage-orchestrator_single_dataset]
-version = 10.0.2
-modtime = 1768716907.713596000
+version = 10.2.0
+modtime = 1776049875.943668000
 
 [web/expose%3AtlPackage-orchestrator_single_jobs]
-version = 10.0.2
-modtime = 1768716907.720278000
+version = 10.2.0
+modtime = 1776049875.956692000
 
 [web/expose%3AtlPackage-orchestrator_sourcetype_sync]
-version = 10.0.2
-modtime = 1768716907.727679000
+version = 10.2.0
+modtime = 1776049875.970439000
 
 [web/expose%3AtlPackage-orchestrator_spl2_dispatch]
-version = 10.0.2
-modtime = 1768716907.734087000
+version = 10.2.0
+modtime = 1776049875.977726000
 
 [web/expose%3AtlPackage-orchestrator_spl_functions]
-version = 10.0.2
-modtime = 1768716907.742778000
+version = 10.2.0
+modtime = 1776049875.990922000
 
 [web/expose%3AtlPackage-orchestrator_spl_modules]
-version = 10.0.2
-modtime = 1768716907.748314000
+version = 10.2.0
+modtime = 1776049875.999922000

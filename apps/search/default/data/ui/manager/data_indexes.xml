@@ -1,4 +1,4 @@
-<endpoint name="data/indexes" template="pages/system.html" showOnSearchHeadCluster="0">
+<endpoint name="data/indexes" template="pages/page_with_flag.html" packageName="admin-user-xp" showOnSearchHeadCluster="0">
     <header>Indexes</header>
     <capabilities>
         <read>indexes_edit</read>

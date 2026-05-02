@@ -1,6 +1,7 @@
 import re
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
+from typing import Match, Union
 
 logger = logging.getLogger('splunk.pdfgen')
 js_script_name = 'custom_headless_command.js'
@@ -9,22 +10,34 @@ CUSTOM_JS_SCRIPT_LOG_CATEGORY = 'CUSTOM_JS_SCRIPT_LOG'
 CHROMIUM_LOG_CATEGORY = 'CHROMIUM_LOG'
 NON_CHROMIUM_LOG_CATEGORY = 'OUTSIDE_CHROMIUM_LOG'
 
-def get_within_square_brackets(log: str):
-    # Regex to get the portion of the square brackets of the log, split by :
-    return re.findall(r'\[([^:\[\]]+):([^:\[\]]+):([^:\[\]]+)\]', log)
+EXCLUDING_BRACKETS_AND_COLON_REGEX = '(?P<{}>[^:\[\]]+)'
+EXCLUDING_BRACKETS_REGEX = '(?P<{}>[^\[\]]+)'
+TIME_CAPTURING_GROUP = EXCLUDING_BRACKETS_AND_COLON_REGEX.format('time')
+LOG_LEVEL_CAPTURING_GROUP = EXCLUDING_BRACKETS_AND_COLON_REGEX.format('log_level')
+FILE_NAME_CAPTURING_GROUP = EXCLUDING_BRACKETS_REGEX.format('file_name')
+# Regex to get the portion of the square brackets of the log, split by :
+# Matches log in form of [0630/213543.425232:WARNING:sandbox/policy/linux/sandbox_linux.cc:415] InitializeSandbox() called
+# And extracts the following to capturing groups:
+# Capturing group 0: 0630/213543.425232
+# Capturing group 1: WARNING
+# Capturing group 2: sandbox/policy/linux/sandbox_linux.cc:415
+CHROMIUM_LOG_REGEX = fr'\[{TIME_CAPTURING_GROUP}:{LOG_LEVEL_CAPTURING_GROUP}:{FILE_NAME_CAPTURING_GROUP}\]'
 
-def format_date_time(date_time_source: list):
-    if len(date_time_source) == 0:
+def get_within_square_brackets(log: str) -> Union[Match, None]:
+    return re.match(CHROMIUM_LOG_REGEX, log)
+
+def format_date_time(date_time_source: Union[Match, None]):
+    if date_time_source is None:
         return 'Unable to determine timestamp'
     
-    date_time = date_time_source[0][0]
+    date_time = date_time_source.group('time')
     date, fulltime = date_time.split('/')
     time, ms = fulltime.split('.')
     month_day = [date[i:i+2] for i in range(0, len(date), 2)]
     hh_mm_ss = [time[i:i+2] for i in range(0, len(time), 2)]
 
     timestamp = datetime(
-        datetime.utcnow().year,
+        datetime.now(timezone.utc).year,
         int(month_day[0]),
         int(month_day[1]),
         int(hh_mm_ss[0]),
@@ -42,15 +55,15 @@ def format_log(log: str, category: str, add_file_source=False):
         date_time_source = get_within_square_brackets(log)
 
         timestamp = format_date_time(date_time_source)
-        if add_file_source and len(date_time_source) != 0:
-            file_name = date_time_source[0][2]
+        if add_file_source and date_time_source:
+            file_name = date_time_source.group('file_name')
             if file_name:
                 # YYYY-MM-DD hh:mm:ss.mmmmmm "error message", source: fileName(error line #)
                 return f'[{category}] {timestamp} "{error_msg[1:]}", source: {file_name}'
         # YYYY-MM-DD hh:mm:ss.mmmmmm "error message" source:  (error line #)
         return f"[{category}] {timestamp} {error_msg}"
     except Exception as e:
-        logger.exception('Unable to format log because of error %s', str(e))
+        logger.exception(f'Unable to format log {log} because of error {str(e)}')
         return log
 
 def get_log_level(log: str, from_js_script=False):
@@ -62,9 +75,12 @@ def get_log_level(log: str, from_js_script=False):
             return match
 
         date_time_source = get_within_square_brackets(log)
-        return date_time_source[0][1]
+        if date_time_source is None:
+            logger.warning(f'Could not determine log level for log {log}. Using DEBUG as default.')
+            return 'DEBUG'
+        return date_time_source.group('log_level')
     except Exception as e:
-        logger.exception('Unable to determine log level because of error %s', str(e))
+        logger.exception(f'Unable to determine log level for log {log} because of error {str(e)}')
         return 'DEBUG'
 
 def is_log_group(groups: list, log: str, from_js_script=False):

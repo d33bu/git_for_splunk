@@ -18,11 +18,13 @@ from splunk.clilib.bundle_paths import get_base_path
 from splunk.clilib.cli_common import getAppConf, getConfStanza, readConfFile, writeConfFile
 from utils import IS_PYTHON_3, strip_uuid
 
-KVSTORE_ENDPOINT = '/servicesNS/nobody/splunk-dashboard-studio/storage/collections/data'
+APP_NAME = 'splunk-dashboard-studio'
+
+KVSTORE_ENDPOINT = '/servicesNS/nobody/{app_name}/storage/collections/data'.format(app_name=APP_NAME)
 
 KVSTORE_STATUS_ENDPOINT = '/services/kvstore/status?output_mode=json&quiet=1'
 
-KVSTORE_ICON_STATUS_CONF = join('splunk-dashboard-studio', 'kvstore_icon_status.conf')
+KVSTORE_ICON_STATUS_CONF = join(APP_NAME, 'kvstore_icon_status.conf')
 
 def get_kvstore_status(session_key=None):
     logging.debug('fetch kvstore status')
@@ -59,9 +61,9 @@ def wait_kvstore_ready(session_key=None):
 
 
 def get_dashboard_studio_version():
-    app_conf = getAppConf('app', 'splunk-dashboard-studio')
+    app_conf = getAppConf('app', APP_NAME)
     app_version = app_conf.get('launcher', {}).get('version')
-    logging.info('{} version is {}'.format('splunk-dashboard-studio', app_version))
+    logging.info('{} version is {}'.format(APP_NAME, app_version))
     return app_version
 
 
@@ -96,7 +98,6 @@ def create_kvstore_icon_status_conf(app_version=None):
         logging.error(str(e))
         logging.error('Failed to create {} with app version {}'.format(path, app_version))
     logging.info('{} is updated with {}'.format(path, dictionary))
-    return
 
 
 def get_items(collection_name=None, fields='_key'):
@@ -121,7 +122,7 @@ def update_kvstore_collection(folder_name, collection_name=None, session_key=Non
     # read files
     folder = join(
         get_base_path(),
-        'splunk-dashboard-studio',
+        APP_NAME,
         'appserver',
         'static',
         folder_name)
@@ -129,7 +130,7 @@ def update_kvstore_collection(folder_name, collection_name=None, session_key=Non
     _, _, filenames = walk(folder).__next__(
     ) if IS_PYTHON_3 else walk(folder).next()
 
-    visible_filenames = [f for f in filenames if not f[0] == '.']
+    visible_filenames = [f for f in filenames if f[0] != '.']
 
     # get _keys which are already stored in kvstore collection
     _keys = get_items(collection_name)
@@ -205,7 +206,7 @@ if __name__ == '__main__':
            kvstore_icon_status_conf_uploaded_version is not None and \
            dashboard_studio_version == kvstore_icon_status_conf_uploaded_version:
                 logging.info('Icons of {} version {} are already stored in kvstore collection. Skipping '
-                             'now and exiting.'.format('splunk-dashboard-studio', dashboard_studio_version))
+                             'now and exiting.'.format(APP_NAME, dashboard_studio_version))
                 exit(1)
 
         logging.info('dashboard studio version is not matching uploaded version in {}. '

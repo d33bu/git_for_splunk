@@ -20,6 +20,10 @@ object-assign
  * Programatically add the following
  */
 
+/*!
+Copyright (C) 2023 Splunk Inc. All Rights Reserved.
+*/
+
 /**
  * @license
  * Lodash <https://lodash.com/>

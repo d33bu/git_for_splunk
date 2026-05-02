@@ -2,6 +2,7 @@ import base64
 import logging
 import sys, subprocess, getopt
 from logging.handlers import RotatingFileHandler
+from typing import Optional
 
 from splunk.clilib.bundle_paths import make_splunkhome_path
 logPath = make_splunkhome_path(['var', 'log', 'splunk'])
@@ -19,7 +20,8 @@ USERTYPE    = "role"
 SUCCESS     = "--status=success"
 FAILED      = "--status=fail"
 ERROR_MSG   = "--errorMsg="
-
+DEFAULT_REQUEST_TIMEOUT = 10
+REQUEST_TIMEOUT = 'requestTimeout'
 
 def getLogger(path, idp):
     logger = logging.getLogger("splunk_scripted_authentication_{}".format(idp))
@@ -54,3 +56,26 @@ def urlsafe_b64encode_to_str(string):
         return base64.urlsafe_b64encode(string)
 
     return base64.urlsafe_b64encode(string.encode('utf-8')).decode('utf-8')
+
+
+def getRequestTimeout(dictIn: dict) -> tuple[int, Optional[str]]:
+    if REQUEST_TIMEOUT not in dictIn:
+        return (DEFAULT_REQUEST_TIMEOUT, None)
+
+    timeOutValue = dictIn[REQUEST_TIMEOUT].strip()
+
+    if timeOutValue.isdigit():
+        return (int(timeOutValue), None)
+    toSeconds = {"s": 1, "m": 60, "h": 3600}  # seconds  # minutes  # hours
+
+    try:
+        num = float(timeOutValue[:-1])
+        unit = timeOutValue[-1]
+        return (int(num * toSeconds[unit]), None)
+    except (ValueError, KeyError):
+        warningMsg = (
+            f"Failed to parse requestTimeout. Invalid requestTimeout value: {timeOutValue}. "
+            f"Defaulting to {DEFAULT_REQUEST_TIMEOUT} seconds. "
+            f"Valid values are: <int> or <int/float>[s|m|h]. "
+        )
+        return (DEFAULT_REQUEST_TIMEOUT, warningMsg)

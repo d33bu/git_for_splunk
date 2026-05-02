@@ -9,6 +9,8 @@ DEFAULT_TIMEOUT = 30
 DEFAULT_WIDTH = 1440
 DEFAULT_HEIGHT = 960
 DEFAULT_CHROMIUM_SCREENSHOT_DELAY = 0
+DEFAULT_EXPORT_MAX_FILE_SIZE_MB = 8
+DEFAULT_EXPORT_MAX_SCALE_FACTOR = 4
 ROOT_LINUX_EUID = 0
 
 class ChromiumEngine:
@@ -54,6 +56,7 @@ class ChromiumEngine:
 			"--disable-extensions",
 			"--font-render-hinting=none",
 		]
+
 		# sandbox must always be run on Windows, otherwise renderer processes might not be cleaned up correctly
 		if get_os() != 'windows' and (self.is_linux_root_user() or (self.previously_ran_sandbox and self.potential_sandbox_error)):
 			reason = 'run Splunk as non-root' if self.is_linux_root_user() else 'enable unprivileged user namespaces'
@@ -62,12 +65,12 @@ class ChromiumEngine:
 		else:
 			logger.info('Running Chromium with sandbox.')
 			self.previously_ran_sandbox = True
-
+		
 		chromium_args.append(html)
 
 		return chromium_args
 
-	def open_chromium(self, arg_str: str, chromium_args: dict, timeout: int, dashboard_title: str, exportErrors: list):
+	def open_chromium(self, arg_str: str, chromium_args: dict, timeout: int, dashboard_title: str, export_errors: list):
 		process = subprocess.Popen(
 			args=chromium_args,
 			stdin=subprocess.PIPE,
@@ -77,9 +80,9 @@ class ChromiumEngine:
 		# We have to base64 encode the json string since Chromium expects the command line 
 		# input in ASCII format
 		try:
-			out, errs = process.communicate(input=base64.b64encode(arg_str.encode('utf-8')), timeout=timeout)
-		except subprocess.TimeoutExpired as e:
-			exportErrors.append("PDF failed to render due to Chromium's time out limit. Adjust the time for render_chromium_timeout in the limits.conf file.")
+			_, errs = process.communicate(input=base64.b64encode(arg_str.encode('utf-8')), timeout=timeout)
+		except subprocess.TimeoutExpired:
+			export_errors.append("PDF failed to render due to Chromium's time out limit. Adjust the time for render_chromium_timeout in the limits.conf file.")
 			logger.error('Failed to take screenshot of dashboard %s due to timeout limit' % dashboard_title)
 			logger.exception('Killing process for dashboard %s' % dashboard_title)
 			self.kill_process(process, dashboard_title)
@@ -96,12 +99,12 @@ class ChromiumEngine:
 			logs.append(categorized_log['log'])
 
 	# For legacy exports
-	def get_svg_from_chromium(self, arg_str: str, width: int = DEFAULT_WIDTH, height: int = DEFAULT_HEIGHT, sxmlErrors: list = None, timeout: int = DEFAULT_TIMEOUT):
+	def get_svg_from_chromium(self, arg_str: str, width: int = DEFAULT_WIDTH, height: int = DEFAULT_HEIGHT, sxml_errors: list = None, timeout: int = DEFAULT_TIMEOUT):
 		dashboard_title = "ClassicDashboard"
 		chromium_args = self.determine_chromium_args("--custom-headless-command", width, height, get_legacy_html_path())
 		invalid_locale_message = 'SVG cannot be rendered due to invalid locale:'
 		try:
-			errs = self.open_chromium(arg_str, chromium_args, timeout=timeout, dashboard_title=dashboard_title, exportErrors=sxmlErrors)
+			errs = self.open_chromium(arg_str, chromium_args, timeout=timeout, dashboard_title=dashboard_title, export_errors=sxml_errors)
 			if not errs:
 				return False
 			
@@ -133,16 +136,16 @@ class ChromiumEngine:
 			logger.error('Failed to take screenshot of dashboard %s' %dashboard_title)
 			return False
 		except Exception as e:
-			errorMsg = 'Failed to take screenshot of dashboard %s because of error: %s' % (dashboard_title, str(e))
-			logger.exception(errorMsg)
-			sxmlErrors.append(errorMsg)
+			error_msg = 'Failed to take screenshot of dashboard %s because of error: %s' % (dashboard_title, str(e))
+			logger.exception(error_msg)
+			sxml_errors.append(error_msg)
 			return False
 
-	def get_screenshot_from_chromium(self, arg_str, definition, timeout, dashboard_title, studioErrors):
+	def get_screenshot_from_chromium(self, arg_str, definition, timeout, dashboard_title, studio_errors):
 		width, height = self.get_definition_dimensions(definition)
 		chromium_args = self.determine_chromium_args("--custom-headless-command", width, height, get_studio_html_path())
 		try:
-			errs = self.open_chromium(arg_str, chromium_args, timeout=timeout, dashboard_title=dashboard_title, exportErrors=studioErrors)
+			errs = self.open_chromium(arg_str, chromium_args, timeout=timeout, dashboard_title=dashboard_title, export_errors=studio_errors)
 			screenshot = None
 			js_script_logs = []
 			non_js_chromium_logs = []
@@ -150,17 +153,26 @@ class ChromiumEngine:
 				return False
 
 			for index, err in enumerate(errs):
-				if 'data:image/png;base64' in err:
-					import re
-					# Regex to match "data:image/png;base64,<base64_string>"
-					regex_match = re.search('"data:image\/png;base64,.+"', err).group(0)
-					base64_txt = regex_match.split('"')[1].split("data:image/png;base64,")[1]
-					log_messages(js_script_logs)
-					logger.info(f'Successfully found screenshot for {dashboard_title}')
-					screenshot = 'data:image/png;base64,' + base64_txt
-					break
-				self.append_log(js_script_logs, non_js_chromium_logs, err, index)
-				
+				import re
+
+				# Try to pull out the screenshot data‐URL (png *or* jpeg)
+				screenshot_match = re.search(
+					r'"(data:image/(?:png|jpeg);base64,[^"]+)"',
+					err
+				)
+				if not screenshot_match:
+					self.append_log(js_script_logs, non_js_chromium_logs, err, index)
+					continue
+
+				# it—group(1) is ex: "data:image/png;base64,AAAA..."
+				screenshot = screenshot_match.group(1)
+
+				# emit all accumulated logs
+				log_messages(js_script_logs)
+
+				logger.info(f'Found screenshot for {dashboard_title}')
+				break
+
 			if screenshot:
 				return screenshot
 			if len(js_script_logs) == 0:
@@ -174,36 +186,38 @@ class ChromiumEngine:
 
 			return False
 		except Exception as e:
-			errorMsg = 'Failed to take screenshot of dashboard %s because of error: %s' % (dashboard_title, str(e))
-			logger.exception(errorMsg)
-			studioErrors.append(errorMsg)
+			error_msg = 'Failed to take screenshot of dashboard %s because of error: %s' % (dashboard_title, str(e))
+			logger.exception(error_msg)
+			studio_errors.append(error_msg)
 			return False
 
-	def get_screenshot(self, definition: dict, theme: str, feature_flags: dict, studioErrors: list, timeout: int = DEFAULT_TIMEOUT, screenshotDelay: int = DEFAULT_CHROMIUM_SCREENSHOT_DELAY):
-		arg_str = json.dumps({ "definition": definition, "theme": theme, "featureFlags": feature_flags, "screenshotDelay": screenshotDelay})
+	def get_screenshot(self, definition: dict, theme: str, feature_flags: dict, studio_errors: list, timeout: int = DEFAULT_TIMEOUT, screenshot_delay: int = DEFAULT_CHROMIUM_SCREENSHOT_DELAY, export_max_file_size_mb: int = DEFAULT_EXPORT_MAX_FILE_SIZE_MB, export_max_scale_factor: int = DEFAULT_EXPORT_MAX_SCALE_FACTOR, file_format: str = "pdf"):
+		arg_str = json.dumps({ "definition": definition, "theme": theme, "featureFlags": feature_flags, "screenshotDelay": screenshot_delay, "exportMaxFileSizeMB": export_max_file_size_mb, "exportMaxScaleFactor": export_max_scale_factor, "fileFormat": file_format.lower()})
 		dashboard_title = definition.get('title', '')
 		logger.info('Starting export of %s' % dashboard_title)
-		first_screenshot_attempt = self.get_screenshot_from_chromium(arg_str, definition, timeout, dashboard_title, studioErrors)
+
+		first_screenshot_attempt = self.get_screenshot_from_chromium(arg_str, definition, timeout, dashboard_title, studio_errors)
 		first_attempt_failed = first_screenshot_attempt == False
 
 		if get_os() != 'windows' and first_attempt_failed and self.previously_ran_sandbox and self.potential_sandbox_error:
-			studioErrors.clear()
-			second_screenshot_attempt = self.get_screenshot_from_chromium(arg_str, definition, timeout, dashboard_title, studioErrors)
+			studio_errors.clear()
+			second_screenshot_attempt = self.get_screenshot_from_chromium(arg_str, definition, timeout, dashboard_title, studio_errors)
 			log_if_screenshot_error(second_screenshot_attempt, dashboard_title)
 			return second_screenshot_attempt
 		
 		log_if_screenshot_error(first_screenshot_attempt, dashboard_title)
+		
 		return first_screenshot_attempt
 	
-	def get_svg(self, dashboard_title: str, viz: str, data: dict, width: int = DEFAULT_WIDTH, height: int = DEFAULT_HEIGHT, sxmlErrors: list = None, timeout: int = DEFAULT_TIMEOUT):
+	def get_svg(self, dashboard_title: str, viz: str, data: dict, width: int = DEFAULT_WIDTH, height: int = DEFAULT_HEIGHT, sxml_errors: list = None, timeout: int = DEFAULT_TIMEOUT):
 		arg_str = json.dumps({ "type": "legacy", "viz": viz, "data": data })
 		logger.info('Starting export of %s' % dashboard_title)
-		first_screenshot_attempt = self.get_svg_from_chromium(arg_str, width, height, sxmlErrors, timeout)
+		first_screenshot_attempt = self.get_svg_from_chromium(arg_str, width, height, sxml_errors, timeout)
 		first_attempt_failed = first_screenshot_attempt == False
 
 		if get_os() != 'windows' and first_attempt_failed and self.previously_ran_sandbox and self.potential_sandbox_error:
-			sxmlErrors.clear()
-			second_screenshot_attempt = self.get_svg_from_chromium(arg_str, width, height, sxmlErrors, timeout)
+			sxml_errors.clear()
+			second_screenshot_attempt = self.get_svg_from_chromium(arg_str, width, height, sxml_errors, timeout)
 			log_if_screenshot_error(second_screenshot_attempt, dashboard_title)
 			return second_screenshot_attempt
 		

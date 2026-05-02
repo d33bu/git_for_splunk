@@ -96,6 +96,18 @@ def checkPreDefinedDomains(allowedDomainsList, logger, sender, recipientsList, l
             return filteredDomains
     else:
         return None
+    
+def filterRecipientsByAllowedDomains(recipients, allowedDomains):
+    if ALLOWED_DOMAIN_LIST_ALLOW_ALL in allowedDomains:
+        return recipients
+    if ALLOWED_DOMAIN_LIST_DENY_ALL in allowedDomains:
+        return []
+    validRecipients = []
+    for recipient in recipients:
+        domain = recipient.strip().lower().partition('@')[2]
+        if domain in allowedDomains:
+            validRecipients.append(recipient)
+    return validRecipients
 
 defaultLogger = dcu.getLogger()
 

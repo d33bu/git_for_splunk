@@ -342,3 +342,53 @@ modtime = 1768753627.731116000
 owner = nobody
 version = 10.0.2
 modtime = 1768753841.186569000
+
+[props/git_for_splunk_gitforsplunk-2]
+owner = nobody
+version = 10.0.2
+modtime = 1769184943.382750000
+
+[sourcetypes/%2Fmnt%2Fdata%2Fopt%2Fsplunk%2Fvar%2Flog%2Fsplunk%2Fgit_for_splunk_gitforsplunk.log_Fri_Jan_23_21%3A45%3A43_2026_996777623]
+owner = nobody
+version = 10.0.2
+modtime = 1769184943.580911000
+
+[props/splunk_ta_google-cloudplatform_util-too_small]
+owner = nobody
+version = 10.0.2
+modtime = 1770266693.821148000
+
+[props/splunk_ta_google-cloudplatform_ucc_lib-too_small]
+owner = nobody
+version = 10.0.2
+modtime = 1770266700.144584000
+
+[props/splunk_ta_google_cloud_platform_cloud_storage_bucket_conf_migration-too_small]
+owner = nobody
+version = 10.0.2
+modtime = 1770266700.424782000
+
+[props/splunk_ta_google-cloudplatform_util-2]
+owner = nobody
+version = 10.2.0
+modtime = 1770483049.800795000
+
+[sourcetypes/%2Fmnt%2Fdata%2Fopt%2Fsplunk%2Fvar%2Flog%2Fsplunk%2Fsplunk_ta_google-cloudplatform_util.log_Sat_Feb__7_22%3A20%3A49_2026_761303785]
+owner = nobody
+version = 10.2.0
+modtime = 1770483050.068400000
+
+[props/splunk_ta_google-cloudplatform_ucc_lib-2]
+owner = nobody
+version = 10.2.0
+modtime = 1770483053.961573000
+
+[sourcetypes/%2Fmnt%2Fdata%2Fopt%2Fsplunk%2Fvar%2Flog%2Fsplunk%2Fsplunk_ta_google-cloudplatform_ucc_lib.log_Sat_Feb__7_22%3A20%3A54_2026_1728364194]
+owner = nobody
+version = 10.2.0
+modtime = 1770483054.125432000
+
+[props/supervisor-start-too_small]
+owner = nobody
+version = 10.2.0
+modtime = 1770483055.760616000

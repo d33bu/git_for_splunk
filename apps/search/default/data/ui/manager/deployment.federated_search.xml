@@ -3,10 +3,4 @@
   <capabilities>
       <read>indexes_edit</read>
   </capabilities>
-  <menu name="deployment_configurations">
-    <label>Federation</label>
-    <url>/manager/%(namespace)s/federated_search</url>
-    <order>76</order>
-    <id>federated_search</id>
-  </menu>
 </endpoint>

@@ -444,7 +444,7 @@
   }
   var isWindows = _isWindows;
   var isMacintosh = _isMacintosh;
-  var setImmediate = function defineSetImmediate() {
+  var setImmediate = (function defineSetImmediate() {
     if (globals.setImmediate) {
       return globals.setImmediate.bind(globals);
     }
@@ -477,7 +477,7 @@
     }
     const _promise = Promise.resolve();
     return (callback) => _promise.then(callback);
-  }();
+  })();
 
   // ../../node_modules/monaco-editor/esm/vs/base/common/types.js
   function getAllPropertyNames(obj) {
@@ -8315,7 +8315,7 @@
   })(WorkspaceEdit || (WorkspaceEdit = {}));
   var TextEditChangeImpl = (
     /** @class */
-    function() {
+    (function() {
       function TextEditChangeImpl2(edits, changeAnnotations) {
         this.edits = edits;
         this.changeAnnotations = changeAnnotations;
@@ -8389,11 +8389,11 @@
         }
       };
       return TextEditChangeImpl2;
-    }()
+    })()
   );
   var ChangeAnnotations = (
     /** @class */
-    function() {
+    (function() {
       function ChangeAnnotations2(annotations) {
         this._annotations = annotations === void 0 ? /* @__PURE__ */ Object.create(null) : annotations;
         this._counter = 0;
@@ -8432,11 +8432,11 @@
         return this._counter.toString();
       };
       return ChangeAnnotations2;
-    }()
+    })()
   );
   var WorkspaceChange = (
     /** @class */
-    function() {
+    (function() {
       function WorkspaceChange2(workspaceEdit) {
         var _this = this;
         this._textEditChanges = /* @__PURE__ */ Object.create(null);
@@ -8599,7 +8599,7 @@
         }
       };
       return WorkspaceChange2;
-    }()
+    })()
   );
   var TextDocumentIdentifier;
   (function(TextDocumentIdentifier2) {
@@ -9042,7 +9042,7 @@
   })(TextDocument || (TextDocument = {}));
   var FullTextDocument = (
     /** @class */
-    function() {
+    (function() {
       function FullTextDocument3(uri, languageId, version, content) {
         this._uri = uri;
         this._languageId = languageId;
@@ -9144,7 +9144,7 @@
         configurable: true
       });
       return FullTextDocument3;
-    }()
+    })()
   );
   var Is;
   (function(Is2) {
@@ -9198,7 +9198,7 @@
   // ../../node_modules/monaco-editor/esm/vs/language/json/_deps/vscode-languageserver-textdocument/lib/esm/main.js
   var FullTextDocument2 = (
     /** @class */
-    function() {
+    (function() {
       function FullTextDocument3(uri, languageId, version, content) {
         this._uri = uri;
         this._languageId = languageId;
@@ -9324,7 +9324,7 @@
         return candidate !== void 0 && candidate !== null && typeof candidate.text === "string" && candidate.range === void 0 && candidate.rangeLength === void 0;
       };
       return FullTextDocument3;
-    }()
+    })()
   );
   var TextDocument2;
   (function(TextDocument3) {
@@ -9492,7 +9492,7 @@
   }
 
   // ../../node_modules/monaco-editor/esm/vs/language/json/_deps/vscode-json-languageservice/parser/jsonParser.js
-  var __extends = /* @__PURE__ */ function() {
+  var __extends = /* @__PURE__ */ (function() {
     var extendStatics = function(d, b) {
       extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d2, b2) {
         d2.__proto__ = b2;
@@ -9510,7 +9510,7 @@
       }
       d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
-  }();
+  })();
   var localize2 = loadMessageBundle();
   var formats = {
     "color-hex": { errorMessage: localize2("colorHexFormatWarning", "Invalid color format. Use #RGB, #RGBA, #RRGGBB or #RRGGBBAA."), pattern: /^#([0-9A-Fa-f]{3,4}|([0-9A-Fa-f]{2}){3,4})$/ },
@@ -9521,7 +9521,7 @@
   };
   var ASTNodeImpl = (
     /** @class */
-    function() {
+    (function() {
       function ASTNodeImpl2(parent, offset, length) {
         if (length === void 0) {
           length = 0;
@@ -9541,11 +9541,11 @@
         return "type: " + this.type + " (" + this.offset + "/" + this.length + ")" + (this.parent ? " parent: {" + this.parent.toString() + "}" : "");
       };
       return ASTNodeImpl2;
-    }()
+    })()
   );
   var NullASTNodeImpl = (
     /** @class */
-    function(_super) {
+    (function(_super) {
       __extends(NullASTNodeImpl2, _super);
       function NullASTNodeImpl2(parent, offset) {
         var _this = _super.call(this, parent, offset) || this;
@@ -9554,11 +9554,11 @@
         return _this;
       }
       return NullASTNodeImpl2;
-    }(ASTNodeImpl)
+    })(ASTNodeImpl)
   );
   var BooleanASTNodeImpl = (
     /** @class */
-    function(_super) {
+    (function(_super) {
       __extends(BooleanASTNodeImpl2, _super);
       function BooleanASTNodeImpl2(parent, boolValue, offset) {
         var _this = _super.call(this, parent, offset) || this;
@@ -9567,11 +9567,11 @@
         return _this;
       }
       return BooleanASTNodeImpl2;
-    }(ASTNodeImpl)
+    })(ASTNodeImpl)
   );
   var ArrayASTNodeImpl = (
     /** @class */
-    function(_super) {
+    (function(_super) {
       __extends(ArrayASTNodeImpl2, _super);
       function ArrayASTNodeImpl2(parent, offset) {
         var _this = _super.call(this, parent, offset) || this;
@@ -9587,11 +9587,11 @@
         configurable: true
       });
       return ArrayASTNodeImpl2;
-    }(ASTNodeImpl)
+    })(ASTNodeImpl)
   );
   var NumberASTNodeImpl = (
     /** @class */
-    function(_super) {
+    (function(_super) {
       __extends(NumberASTNodeImpl2, _super);
       function NumberASTNodeImpl2(parent, offset) {
         var _this = _super.call(this, parent, offset) || this;
@@ -9601,11 +9601,11 @@
         return _this;
       }
       return NumberASTNodeImpl2;
-    }(ASTNodeImpl)
+    })(ASTNodeImpl)
   );
   var StringASTNodeImpl = (
     /** @class */
-    function(_super) {
+    (function(_super) {
       __extends(StringASTNodeImpl2, _super);
       function StringASTNodeImpl2(parent, offset, length) {
         var _this = _super.call(this, parent, offset, length) || this;
@@ -9614,11 +9614,11 @@
         return _this;
       }
       return StringASTNodeImpl2;
-    }(ASTNodeImpl)
+    })(ASTNodeImpl)
   );
   var PropertyASTNodeImpl = (
     /** @class */
-    function(_super) {
+    (function(_super) {
       __extends(PropertyASTNodeImpl2, _super);
       function PropertyASTNodeImpl2(parent, offset, keyNode) {
         var _this = _super.call(this, parent, offset) || this;
@@ -9635,11 +9635,11 @@
         configurable: true
       });
       return PropertyASTNodeImpl2;
-    }(ASTNodeImpl)
+    })(ASTNodeImpl)
   );
   var ObjectASTNodeImpl = (
     /** @class */
-    function(_super) {
+    (function(_super) {
       __extends(ObjectASTNodeImpl2, _super);
       function ObjectASTNodeImpl2(parent, offset) {
         var _this = _super.call(this, parent, offset) || this;
@@ -9655,7 +9655,7 @@
         configurable: true
       });
       return ObjectASTNodeImpl2;
-    }(ASTNodeImpl)
+    })(ASTNodeImpl)
   );
   function asSchema(schema) {
     if (isBoolean(schema)) {
@@ -9670,7 +9670,7 @@
   })(EnumMatch || (EnumMatch = {}));
   var SchemaCollector = (
     /** @class */
-    function() {
+    (function() {
       function SchemaCollector2(focusOffset, exclude) {
         if (focusOffset === void 0) {
           focusOffset = -1;
@@ -9692,11 +9692,11 @@
         return new SchemaCollector2(-1, this.exclude);
       };
       return SchemaCollector2;
-    }()
+    })()
   );
   var NoOpSchemaCollector = (
     /** @class */
-    function() {
+    (function() {
       function NoOpSchemaCollector2() {
       }
       Object.defineProperty(NoOpSchemaCollector2.prototype, "schemas", {
@@ -9718,11 +9718,11 @@
       };
       NoOpSchemaCollector2.instance = new NoOpSchemaCollector2();
       return NoOpSchemaCollector2;
-    }()
+    })()
   );
   var ValidationResult = (
     /** @class */
-    function() {
+    (function() {
       function ValidationResult2() {
         this.problems = [];
         this.propertiesMatches = 0;
@@ -9783,7 +9783,7 @@
         return this.propertiesMatches - other.propertiesMatches;
       };
       return ValidationResult2;
-    }()
+    })()
   );
   function newJSONDocument(root, diagnostics) {
     if (diagnostics === void 0) {
@@ -9805,7 +9805,7 @@
   }
   var JSONDocument = (
     /** @class */
-    function() {
+    (function() {
       function JSONDocument2(root, syntaxErrors, comments) {
         if (syntaxErrors === void 0) {
           syntaxErrors = [];
@@ -9867,7 +9867,7 @@
         return matchingSchemas.schemas;
       };
       return JSONDocument2;
-    }()
+    })()
   );
   function validate(n, schema, validationResult, matchingSchemas) {
     if (!n || !matchingSchemas.include(n)) {
@@ -10786,7 +10786,7 @@
   var propertyCommitCharacters = [":"];
   var JSONCompletion = (
     /** @class */
-    function() {
+    (function() {
       function JSONCompletion2(schemaService, contributions, promiseConstructor, clientCapabilities) {
         if (contributions === void 0) {
           contributions = [];
@@ -11702,13 +11702,13 @@
         return this.supportsCommitCharacters;
       };
       return JSONCompletion2;
-    }()
+    })()
   );
 
   // ../../node_modules/monaco-editor/esm/vs/language/json/_deps/vscode-json-languageservice/services/jsonHover.js
   var JSONHover = (
     /** @class */
-    function() {
+    (function() {
       function JSONHover2(schemaService, contributions, promiseConstructor) {
         if (contributions === void 0) {
           contributions = [];
@@ -11800,7 +11800,7 @@
         });
       };
       return JSONHover2;
-    }()
+    })()
   );
   function toMarkdown(plain) {
     if (plain) {
@@ -11941,10 +11941,10 @@
         return -1 === r3 || -1 === o || 0 === a2 || 1 === a2 && r3 === o - 1 && r3 === n2 + 1 ? "" : t3.slice(r3, o);
       }, format: function(t3) {
         if (null === t3 || "object" != typeof t3) throw new TypeError('The "pathObject" argument must be of type Object. Received type ' + typeof t3);
-        return function(t4, e3) {
+        return (function(t4, e3) {
           var r3 = e3.dir || e3.root, n2 = e3.base || (e3.name || "") + (e3.ext || "");
           return r3 ? r3 === e3.root ? r3 + n2 : r3 + "/" + n2 : n2;
-        }(0, t3);
+        })(0, t3);
       }, parse: function(t3) {
         e2(t3);
         var r3 = { root: "", dir: "", base: "", ext: "", name: "" };
@@ -11977,11 +11977,11 @@
           this.constructor = t3;
         }
         i(t3, e3), t3.prototype = null === e3 ? Object.create(e3) : (r3.prototype = e3.prototype, new r3());
-      }), s = /^\w[\w\d+.-]*$/, f2 = /^\//, u = /^\/\//, c = "", l = "/", p = /^(([^:/?#]+?):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/, g = function() {
+      }), s = /^\w[\w\d+.-]*$/, f2 = /^\//, u = /^\/\//, c = "", l = "/", p = /^(([^:/?#]+?):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/, g = (function() {
         function t3(t4, e3, r3, n2, o2, i2) {
-          void 0 === i2 && (i2 = false), "object" == typeof t4 ? (this.scheme = t4.scheme || c, this.authority = t4.authority || c, this.path = t4.path || c, this.query = t4.query || c, this.fragment = t4.fragment || c) : (this.scheme = /* @__PURE__ */ function(t5, e4) {
+          void 0 === i2 && (i2 = false), "object" == typeof t4 ? (this.scheme = t4.scheme || c, this.authority = t4.authority || c, this.path = t4.path || c, this.query = t4.query || c, this.fragment = t4.fragment || c) : (this.scheme = /* @__PURE__ */ (function(t5, e4) {
             return t5 || e4 ? t5 : "file";
-          }(t4, i2), this.authority = e3 || c, this.path = function(t5, e4) {
+          })(t4, i2), this.authority = e3 || c, this.path = (function(t5, e4) {
             switch (t5) {
               case "https":
               case "http":
@@ -11989,7 +11989,7 @@
                 e4 ? e4[0] !== l && (e4 = l + e4) : e4 = l;
             }
             return e4;
-          }(this.scheme, r3 || c), this.query = n2 || c, this.fragment = o2 || c, function(t5, e4) {
+          })(this.scheme, r3 || c), this.query = n2 || c, this.fragment = o2 || c, (function(t5, e4) {
             if (!t5.scheme && e4) throw new Error('[UriError]: Scheme is missing: {scheme: "", authority: "' + t5.authority + '", path: "' + t5.path + '", query: "' + t5.query + '", fragment: "' + t5.fragment + '"}');
             if (t5.scheme && !s.test(t5.scheme)) throw new Error("[UriError]: Scheme contains illegal characters.");
             if (t5.path) {
@@ -11997,7 +11997,7 @@
                 if (!f2.test(t5.path)) throw new Error('[UriError]: If a URI contains an authority component, then the path component must either be empty or begin with a slash ("/") character');
               } else if (u.test(t5.path)) throw new Error('[UriError]: If a URI does not contain an authority component, then the path cannot begin with two slash characters ("//")');
             }
-          }(this, i2));
+          })(this, i2));
         }
         return t3.isUri = function(e3) {
           return e3 instanceof t3 || !!e3 && "string" == typeof e3.authority && "string" == typeof e3.fragment && "string" == typeof e3.path && "string" == typeof e3.query && "string" == typeof e3.scheme && "function" == typeof e3.fsPath && "function" == typeof e3.with && "function" == typeof e3.toString;
@@ -12032,7 +12032,7 @@
           }
           return e3;
         }, t3;
-      }(), d = n ? 1 : void 0, v = function(t3) {
+      })(), d = n ? 1 : void 0, v = (function(t3) {
         function e3() {
           var e4 = null !== t3 && t3.apply(this, arguments) || this;
           return e4._formatted = null, e4._fsPath = null, e4;
@@ -12045,7 +12045,7 @@
           var t4 = { $mid: 1 };
           return this._fsPath && (t4.fsPath = this._fsPath, t4._sep = d), this._formatted && (t4.external = this._formatted), this.path && (t4.path = this.path), this.scheme && (t4.scheme = this.scheme), this.authority && (t4.authority = this.authority), this.query && (t4.query = this.query), this.fragment && (t4.fragment = this.fragment), t4;
         }, e3;
-      }(g), m = ((a2 = {})[58] = "%3A", a2[47] = "%2F", a2[63] = "%3F", a2[35] = "%23", a2[91] = "%5B", a2[93] = "%5D", a2[64] = "%40", a2[33] = "%21", a2[36] = "%24", a2[38] = "%26", a2[39] = "%27", a2[40] = "%28", a2[41] = "%29", a2[42] = "%2A", a2[43] = "%2B", a2[44] = "%2C", a2[59] = "%3B", a2[61] = "%3D", a2[32] = "%20", a2);
+      })(g), m = ((a2 = {})[58] = "%3A", a2[47] = "%2F", a2[63] = "%3F", a2[35] = "%23", a2[91] = "%5B", a2[93] = "%5D", a2[64] = "%40", a2[33] = "%21", a2[36] = "%24", a2[38] = "%26", a2[39] = "%27", a2[40] = "%28", a2[41] = "%29", a2[42] = "%2A", a2[43] = "%2B", a2[44] = "%2C", a2[59] = "%3B", a2[61] = "%3D", a2[32] = "%20", a2);
       function y(t3, e3) {
         for (var r3 = void 0, n2 = -1, o2 = 0; o2 < t3.length; o2++) {
           var i2 = t3.charCodeAt(o2);
@@ -12098,9 +12098,9 @@
       }
       var _ = /(%[0-9A-Za-z][0-9A-Za-z])+/g;
       function x(t3) {
-        return t3.match(_) ? t3.replace(_, function(t4) {
+        return t3.match(_) ? t3.replace(_, (function(t4) {
           return w(t4);
-        }) : t3;
+        })) : t3;
       }
       var O, P = r2(470), j = function() {
         for (var t3 = 0, e3 = 0, r3 = arguments.length; e3 < r3; e3++) t3 += arguments[e3].length;
@@ -12108,7 +12108,7 @@
         for (e3 = 0; e3 < r3; e3++) for (var i2 = arguments[e3], a3 = 0, h2 = i2.length; a3 < h2; a3++, o2++) n2[o2] = i2[a3];
         return n2;
       }, U = P.posix || P;
-      !function(t3) {
+      !(function(t3) {
         t3.joinPath = function(t4) {
           for (var e3 = [], r3 = 1; r3 < arguments.length; r3++) e3[r3 - 1] = arguments[r3];
           return t4.with({ path: U.join.apply(U, j([t4.path], e3)) });
@@ -12124,7 +12124,7 @@
         }, t3.extname = function(t4) {
           return U.extname(t4.path);
         };
-      }(O || (O = {}));
+      })(O || (O = {}));
     } }, e = {};
     function r(n) {
       if (e[n]) return e[n].exports;
@@ -12236,7 +12236,7 @@
   var PATH_SEP = "/";
   var FilePatternAssociation = (
     /** @class */
-    function() {
+    (function() {
       function FilePatternAssociation2(pattern, uris) {
         this.globWrappers = [];
         try {
@@ -12277,11 +12277,11 @@
         return this.uris;
       };
       return FilePatternAssociation2;
-    }()
+    })()
   );
   var SchemaHandle = (
     /** @class */
-    function() {
+    (function() {
       function SchemaHandle2(service, url, unresolvedSchemaContent) {
         this.service = service;
         this.url = url;
@@ -12311,11 +12311,11 @@
         this.dependencies = {};
       };
       return SchemaHandle2;
-    }()
+    })()
   );
   var UnresolvedSchema = (
     /** @class */
-    /* @__PURE__ */ function() {
+    /* @__PURE__ */ (function() {
       function UnresolvedSchema2(schema, errors) {
         if (errors === void 0) {
           errors = [];
@@ -12324,11 +12324,11 @@
         this.errors = errors;
       }
       return UnresolvedSchema2;
-    }()
+    })()
   );
   var ResolvedSchema = (
     /** @class */
-    function() {
+    (function() {
       function ResolvedSchema2(schema, errors) {
         if (errors === void 0) {
           errors = [];
@@ -12373,11 +12373,11 @@
         return void 0;
       };
       return ResolvedSchema2;
-    }()
+    })()
   );
   var JSONSchemaService = (
     /** @class */
-    function() {
+    (function() {
       function JSONSchemaService2(requestService, contextService, promiseConstructor) {
         this.contextService = contextService;
         this.requestService = requestService;
@@ -12738,7 +12738,7 @@
         });
       };
       return JSONSchemaService2;
-    }()
+    })()
   );
   var idCounter = 0;
   function normalizeId(id) {
@@ -12770,7 +12770,7 @@
   var localize5 = loadMessageBundle();
   var JSONValidation = (
     /** @class */
-    function() {
+    (function() {
       function JSONValidation2(jsonSchemaService, promiseConstructor) {
         this.jsonSchemaService = jsonSchemaService;
         this.promise = promiseConstructor;
@@ -12855,7 +12855,7 @@
         });
       };
       return JSONValidation2;
-    }()
+    })()
   );
   var idCounter2 = 0;
   function schemaAllowsComments(schemaRef) {
@@ -12969,7 +12969,7 @@
   // ../../node_modules/monaco-editor/esm/vs/language/json/_deps/vscode-json-languageservice/services/jsonDocumentSymbols.js
   var JSONDocumentSymbols = (
     /** @class */
-    function() {
+    (function() {
       function JSONDocumentSymbols2(schemaService) {
         this.schemaService = schemaService;
       }
@@ -13226,7 +13226,7 @@
         return result;
       };
       return JSONDocumentSymbols2;
-    }()
+    })()
   );
   function getRange(document, node) {
     return Range2.create(document.positionAt(node.offset), document.positionAt(node.offset + node.length));
@@ -14174,7 +14174,7 @@
   }
   var JSONWorker = (
     /** @class */
-    function() {
+    (function() {
       function JSONWorker2(ctx, createData) {
         this._ctx = ctx;
         this._languageSettings = createData.languageSettings;
@@ -14312,7 +14312,7 @@
         return null;
       };
       return JSONWorker2;
-    }()
+    })()
   );
   var Slash = "/".charCodeAt(0);
   var Dot = ".".charCodeAt(0);

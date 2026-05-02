@@ -1,9 +1,10 @@
-<%!
+<%
 from splunk.appserver.mrsparkle.lib import util
+import json
+import base64
 
-app_name = cherrypy.request.path_info.split('/')[3]
-app_root = "/" + "/".join(["static","app",app_name])
 config_qs = dict(autoload=1)
+base64SplunkdString = base64.b64encode(json.dumps(splunkd, separators=(',', ':')).encode('utf-8')).decode('utf-8')
 %>\
 <!doctype html>
 <html class="no-js" lang="">
@@ -39,13 +40,16 @@ config_qs = dict(autoload=1)
     ## This is loaded by a fetch in pages/dashboard/index.jsx which is later used for the
     ## redirection modal and configuring the charting library
     <link rel="preload" href="${make_url('/splunkd/__raw/services/web-features?output_mode=json')}" as="fetch" crossorigin="use-credentials" />
+    <link rel="preload" href="${make_url('/splunkd/__raw/services/authentication/current-context')}" as="fetch" crossorigin="use-credentials" />
+    <link rel="preload" href="${make_url('/splunkd/__raw/services/orchestrator/v1/spl2/enabled')}" as="fetch" crossorigin="use-credentials" />
 </head>
 <body>
     <script id="config-script" src="${make_url('/config', _qs=config_qs)}"></script>
     <script id="i18n-script" src="${make_url('/static/js/i18n.js')}"></script>
     <script id="i18n-catalog-script" src="${make_url('/i18ncatalog?autoload=1')}"></script>
     <script id="splunkd-partials-script">
-        __splunkd_partials__ = ${json_decode(splunkd)};
+        __splunkd_partials__ = JSON.parse(atob("${base64SplunkdString}"));
+
     </script>
     <script type="module" src="${make_url('/static/app/splunk-dashboard-studio/build/%s.js' % (page))}"></script>
 </body>

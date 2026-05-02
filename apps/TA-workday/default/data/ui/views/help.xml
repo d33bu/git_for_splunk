@@ -1,0 +1,148 @@
+<dashboard version="1.1" stylesheet="css/workday-custom.css">
+  <label>Help</label>
+  <row>
+    <panel>
+      <title>Support</title>
+      <html>
+        If the Workday Add-on for Splunk is not working as expected, please have a Workday Administrator in your organization create a case to receive assistance from Workday Support.
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Setup API Client</title>
+      <html>
+        <section class="doc">
+          <ol class="doc_steps">
+            <li>See the setup guide in <a href="https://community.workday.com/AddOnForSplunk">Workday Community</a> to create an API client in Workday</li>
+            <li>Copy the following values for your client into the <a href="/app/TA-workday/configuration#tenant-details">Configuration</a> tab and Save
+              <ul>
+                <li>Workday REST API Endpoint</li>
+                <li>Token Endpoint</li>
+                <li>Client ID</li>
+                <li>Client Secret</li>
+                <li>Refresh Token</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Setup Signon Activity</title>
+      <html>
+        <section class="doc">
+          <ol class="doc_steps">
+            <li>Create a new Signon Activity input from the <a href="/app/TA-workday/inputs">Inputs</a> tab to start collecting logs
+              <ul>
+                <li>Interval: Time between poll attempts on the Workday API (in seconds)</li>
+                <li>Index: Splunk storage index (consider using a custom "workday" index to have better control over security permissions)</li>
+                <li>Name: Unique name for the Tenant input configuration</li>
+                <li>Report URL: Custom Signon Report URL copied from the tenant. Should be in the format 'https://&lt;workday_hostname&gt;/ccx/service/customreport2/&lt;tenant&gt;/&lt;accountname&gt;/&lt;reportname&gt;/&lt;tomoment&gt;/&lt;frommoment&gt;/&lt;format&gt;/'</li>
+                <li>From Moment: Time from which the add-on will start collecting data. Start time should be in '%Y-%m-%dT%H:%M:%SZ' format. Default is T-24 hours. </li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Setup User Activity</title>
+      <html>
+        <section class="doc">
+          <ol class="doc_steps">
+            <li>Create a new User Activity input from the <a href="/app/TA-workday/inputs">Inputs</a> tab to start collecting logs
+              <ul>
+                <li>Interval: Time between poll attempts on the Workday API (in seconds)</li>
+                <li>Index: Splunk storage index (consider using a custom "workday" index to have better control over security permissions)</li>
+                <li>Name: Unique name for the Tenant input configuration</li>
+                <li>Include target details: Check to include the "target" field of user actions in the audit log</li>
+                <li>Start Time: Time from which the add-on will start collecting data. Start time should be in '%Y-%m-%dT%H:%M:%SZ' format. Default is T-60 minutes. </li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>FAQ</title>
+      <html>
+        <section class="doc">
+          <ul id="faq" class="doc_steps">
+            <h3>Where can I view script execution logs?</h3>
+            <h4>User Activity Logs</h4>
+            <li>
+              Splunk Search: <pre>index=_internal source=*/ta_workday_user_activity.log</pre> Filesystem: <pre>$SPLUNK_HOME/var/log/splunk/ta_workday_user_activity.log</pre>
+            </li>
+            <h4>Signon Logs</h4>
+            <li>
+              Splunk Search: <pre>index=_internal source=*/ta_workday_signon_activity.log</pre> Filesystem: <pre>$SPLUNK_HOME/var/log/splunk/ta_workday_signon_activity.log</pre>
+            </li>
+            <h3>How do I enable DEBUG logging?</h3>
+            <li>
+              Log level can be changed in the <a href="/app/TA-workday/configuration#logging">Configuration</a> tab. Default log level is INFO.
+            </li>
+            <h3>Why is the User Activity input not returning any data?</h3>
+            <li>
+              Make sure that "Enable User Activity Logging" is checked in the "Edit Tenant Setup - System" task. Any user activity from before this setting is enabled will not be retrievable.
+            </li>
+            <h3>Why am I receiving a 401 Unauthorized Error for Signon Logs?</h3>
+            <li>
+              You may not have the right configurations in your tenant for the Splunk_ISU. Please work with your Workday administrator to enable permissions.
+            </li>
+            <h3>What is the "Include target details" setting?</h3>
+            <li>
+              In Workday audit logging the target is the object that was operated on by a task, for example a manager viewing the compensation details for a specific employee. This field may contain more sensitive information than the standard log and is therefore disabled by default. Workday strongly recommends limiting access to the storage index before enabling this setting.
+            </li>
+            
+            <h3>Where can I find the current checkpoint time (end time of the last request)?</h3>
+            <li>
+              The checkpoint is stored in the Splunk KVStore on the same server running the input. As a Splunk administrator visit this link in your system to see the current value.
+              https://&lt;splunk host&gt;:&lt;splunk mgmt port|8089&gt;/servicesNS/nobody/TA-workday/storage/collections/data/TA_workday_checkpointer/&lt;input_name&gt;
+            </li>
+            <h3>Does the Add-on support multiple tenants?</h3>
+            <li>
+              As of Workday add-on version 2.0.0, multiple tenants can be configured within the same configuration page. Be sure to provide a unique name to the tenant for it to be mapped when creating an input.
+            </li>
+            <h3>Before you upgrade to 2.0.0 version of the Workday add-on for Splunk!</h3>
+            <ul class="a">
+              <li>If clean install is an option, this is recommended as it will remove any stale configurations that were laid down by default in the app.</li>
+              <li>Note: To preserve any local changes, either backup the local changes OR proceed to updating the app rather than a clean install<br/></li>
+            </ul>
+            
+            <h3>To update the app to version 2.0.0</h3>
+              <ul class="a">
+                <li>Disable &amp; Delete the current input from the app setup page of the add-on.</li>
+                <li>Note the time/start_time from where you stopped the data collection (Should be 30 days or less). This can be used to configure it for when you update to version 2.0.0 where start times are configurable</li>
+                <li>(Optional) : Remove entries from passwords.conf for the Workday add-on either through Splunk REST manager app on the UI or manually from the backend cli.</li>
+                <li>The data from the user activity is unchanged, however, during multi-tenant configuration, you can differentiate the tenants from the following fields : tenantId and tenantHost</li>
+            </ul>
+            <h3>Note: Inputs Page</h3>
+              <ul class="a>">
+                <li>Under the dropdown for each input you'll see a button "Show &lt;input name&gt; input events". If you have named your input something different than the source name of the input, you may be directed to a search that produces empty results. Use these searches under "Where can I view script execution logs?" instead.</li>
+              </ul>
+          </ul>
+        </section>
+      </html>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Additional Resources</title>
+      <html>
+        <section class="doc">
+          <ul class="doc_steps">
+            <li><a href="https://community.workday.com/">Workday Community</a></li>
+            <li><a href="https://docs.splunk.com/Documentation">Splunk Documentation</a></li>
+          </ul>
+        </section>
+      </html>
+    </panel>
+  </row>
+</dashboard>

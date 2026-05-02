@@ -1,19 +1,44 @@
 "use strict";
-const DEFAULT_POLLING_TIMEOUT = 500;
-const DEFAULT_RETRIES = 3;
-const DEFAULT_RENDER_SCREENSHOT_DELAY = 0;
-const RESIZE_POLLING_TIMEOUT = 50;
-const VIZ_FULLY_RENDERED_TIMEOUT = 2e3;
-const DEFAULT_TITLE_AND_INPUT = 160;
-const MAX_WIDTH = 1440;
-const MAX_HEIGHT = 960;
-const MAX_PIXELS = MAX_WIDTH * (MAX_HEIGHT + DEFAULT_TITLE_AND_INPUT);
-const DATA_LOADING_INDICATOR_SELECTOR = '[data-test="viz-item"] [data-test="status-icon-container"] circle';
-const formatConsoleLog = (message, level = "debug") => {
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+
+// src/headless_commands/constants.ts
+var DEFAULT_POLLING_TIMEOUT = 500;
+var DEFAULT_RETRIES = 3;
+var DEFAULT_RENDER_SCREENSHOT_DELAY = 0;
+var RESIZE_POLLING_TIMEOUT = 50;
+var VIZ_FULLY_RENDERED_TIMEOUT = 2e3;
+var DEFAULT_TITLE_AND_INPUT = 160;
+var MAX_WIDTH = 1440;
+var MAX_HEIGHT = 960;
+var MAX_PIXELS = MAX_WIDTH * (MAX_HEIGHT + DEFAULT_TITLE_AND_INPUT);
+var DATA_LOADING_INDICATOR_SELECTOR = '[data-test="viz-item"] [data-test="status-icon-container"] circle';
+var DEFAULT_EXPORT_MAX_FILE_SIZE_MB = 8;
+var DEFAULT_EXPORT_MAX_SCALE_FACTOR = 4;
+var MAX_ALLOWED_EXPORT_SCALE_FACTOR = 10;
+
+// src/headless_commands/utils.ts
+var formatConsoleLog = (message, level = "debug") => {
   return `${message} custom_headless_command.js:${level.toUpperCase()}`;
 };
-const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-const checkIfProtocolReturnedError = (response, operation, throwError = true) => {
+var checkIfProtocolReturnedError = (response, operation, throwError = true) => {
   if (response.error) {
     const errorString = `${operation} failed with error ${JSON.stringify(response.error)}`;
     console.error(formatConsoleLog(errorString, "error"));
@@ -23,7 +48,108 @@ const checkIfProtocolReturnedError = (response, operation, throwError = true) =>
   }
   return !!response.error;
 };
-const waitUntilCondition = async ({
+var calculateFileSize = (base64data) => {
+  const decodedBase64Binary = atob(base64data);
+  const base64Size = new Blob([decodedBase64Binary]).size;
+  const fileSizeKB = base64Size / 1024;
+  const fileSizeMB = fileSizeKB / 1024;
+  return fileSizeMB;
+};
+function calculateClampedScaleFactor(originalDimensions, maxScale = 4) {
+  const originalPixels = originalDimensions.width * originalDimensions.height;
+  const startingScaleFactor = Math.floor(originalPixels / MAX_PIXELS);
+  const clampedScaleFactor = Math.min(startingScaleFactor, maxScale);
+  console.log(
+    formatConsoleLog(
+      `originalPixels: ${originalPixels}, MAX_PIXELS: ${MAX_PIXELS}, startingScaleFactor: ${startingScaleFactor}, clampedScaleFactor: ${clampedScaleFactor}`
+    )
+  );
+  return Math.max(clampedScaleFactor, 1);
+}
+function determineScreenshotFormat(fileFormat, scaleFactor) {
+  if (fileFormat === "pdf" && scaleFactor === 1) {
+    return "png";
+  }
+  if (fileFormat === "pdf" && scaleFactor > 1) {
+    return "jpeg";
+  }
+  if (fileFormat === "png") {
+    return "png";
+  }
+  return "png";
+}
+async function takeScreenshotOfDash({
+  dp,
+  screenshotParams
+}) {
+  var _a;
+  const screenshotResponse = await dp.Page.captureScreenshot(screenshotParams);
+  checkIfProtocolReturnedError(
+    screenshotResponse,
+    `Failed when taking screenshot with params ${JSON.stringify(screenshotParams)}`
+  );
+  const imageData = (_a = screenshotResponse.result) == null ? void 0 : _a.data;
+  if (!imageData) {
+    throw new Error(
+      `Screenshot failed to return valid image data with screenshot params: ${JSON.stringify(screenshotParams)}`
+    );
+  }
+  return imageData;
+}
+async function takeScaledScreenshotOfDash({
+  dp,
+  boundingRect,
+  format,
+  sizeLimitMB
+}) {
+  var _a;
+  const screenshotParams = { clip: boundingRect, format };
+  let screenshotData = await takeScreenshotOfDash({ dp, screenshotParams });
+  let fileSizeMB = calculateFileSize(screenshotData);
+  const scaledBoundingRect = __spreadValues({}, boundingRect);
+  let currentScale = Math.floor((_a = scaledBoundingRect.scale) != null ? _a : 1);
+  while (fileSizeMB > sizeLimitMB && currentScale > 1) {
+    console.log(
+      formatConsoleLog(
+        `File size ${fileSizeMB.toFixed(3)} MB exceeds limit of ${sizeLimitMB} MB. Reducing scale from ${currentScale} to ${currentScale - 1}`,
+        "warning"
+      )
+    );
+    currentScale -= 1;
+    scaledBoundingRect.scale = currentScale;
+    screenshotData = await takeScreenshotOfDash({
+      dp,
+      screenshotParams: { clip: scaledBoundingRect, format }
+    });
+    fileSizeMB = calculateFileSize(screenshotData);
+    console.log(
+      formatConsoleLog(`New screenshot file size at scale ${currentScale}: ${fileSizeMB.toFixed(3)} MB`)
+    );
+  }
+  console.log(formatConsoleLog(`Finalized raw ${format} screenshot file size: ${fileSizeMB.toFixed(3)} MB`, "info"));
+  return screenshotData;
+}
+function buildScreenshotParams({
+  dashboardDimensions,
+  baseClip,
+  fileFormat,
+  exportMaxScaleFactor,
+  exportMaxFileSizeMB,
+  enableUpscaling
+}) {
+  const maxScaleFactor = Math.min(exportMaxScaleFactor, MAX_ALLOWED_EXPORT_SCALE_FACTOR);
+  const scale = enableUpscaling ? calculateClampedScaleFactor(dashboardDimensions, maxScaleFactor) : 1;
+  const format = determineScreenshotFormat(fileFormat, scale);
+  return {
+    clip: __spreadProps(__spreadValues({}, baseClip), { scale }),
+    format,
+    sizeLimitMB: exportMaxFileSizeMB
+  };
+}
+
+// src/headless_commands/custom_headless_command.ts
+var wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+var waitUntilCondition = async ({
   pollingFn,
   pollingTime = DEFAULT_POLLING_TIMEOUT,
   retries = DEFAULT_RETRIES
@@ -37,7 +163,7 @@ const waitUntilCondition = async ({
   }
   return false;
 };
-const resolveNode = async (dp, documentNodeId, selector) => {
+var resolveNode = async (dp, documentNodeId, selector) => {
   var _a;
   const nodeResult = await dp.DOM.querySelector({ nodeId: documentNodeId, selector });
   console.log(formatConsoleLog(`Node result for selector ${selector} is ${JSON.stringify(nodeResult)}}`));
@@ -46,7 +172,7 @@ const resolveNode = async (dp, documentNodeId, selector) => {
   console.log(formatConsoleLog(`Resolved node result for selector ${selector} is ${JSON.stringify(resolvedNode)}`));
   return resolvedNode;
 };
-const hasDashboardRendered = (dp, documentNodeId, pollingTime = DEFAULT_POLLING_TIMEOUT, retries = DEFAULT_RETRIES) => {
+var hasDashboardRendered = (dp, documentNodeId, pollingTime = DEFAULT_POLLING_TIMEOUT, retries = DEFAULT_RETRIES) => {
   return waitUntilCondition({
     pollingFn: async () => {
       const resolvedNode = await resolveNode(dp, documentNodeId, `[data-finished-rendering='true']`);
@@ -56,7 +182,7 @@ const hasDashboardRendered = (dp, documentNodeId, pollingTime = DEFAULT_POLLING_
     retries
   });
 };
-const boundingRectFunc = function() {
+var boundingRectFunc = function() {
   const e = this.getBoundingClientRect();
   const t = this.ownerDocument.documentElement.getBoundingClientRect();
   const x = e.left - t.left;
@@ -71,7 +197,7 @@ const boundingRectFunc = function() {
     scale: 1
   });
 };
-const getBoundingRectAroundElement = async (dp, documentNodeId, selector) => {
+var getBoundingRectAroundElement = async (dp, documentNodeId, selector) => {
   const element = await resolveNode(dp, documentNodeId, selector);
   if (checkIfProtocolReturnedError(element, `Resolving node with selector ${selector}`, false)) {
     return void 0;
@@ -89,7 +215,7 @@ const getBoundingRectAroundElement = async (dp, documentNodeId, selector) => {
   }
   return JSON.parse(runtimeCallOnResult.result.result.value);
 };
-const getElementDimensions = async (dp, documentNodeId, selector) => {
+var getElementDimensions = async (dp, documentNodeId, selector) => {
   var _a, _b;
   const boundingRect = await getBoundingRectAroundElement(dp, documentNodeId, selector);
   const height = (_a = boundingRect == null ? void 0 : boundingRect.height) != null ? _a : 0;
@@ -103,7 +229,7 @@ const getElementDimensions = async (dp, documentNodeId, selector) => {
   }
   return { width, height };
 };
-const getAllElementHeights = async (dp, documentNodeId, elements) => {
+var getAllElementHeights = async (dp, documentNodeId, elements) => {
   const heightPromises = elements.map(async (element) => {
     const { height: elementHeight } = await getElementDimensions(dp, documentNodeId, element);
     return elementHeight;
@@ -112,7 +238,7 @@ const getAllElementHeights = async (dp, documentNodeId, elements) => {
   const totalHeight = heights.reduce((accHeight, currentHeight) => accHeight + currentHeight, 0);
   return totalHeight;
 };
-const getInputAndHeaderDimensions = async (dp, documentNodeId, isTabbedDefinition) => {
+var getInputAndHeaderDimensions = async (dp, documentNodeId, isTabbedDefinition) => {
   const elements = ['[data-test="input-layout-container"]', '[data-test="dashboard-header"]'];
   if (isTabbedDefinition) {
     elements.push('[data-test="tabs-container"]');
@@ -120,20 +246,20 @@ const getInputAndHeaderDimensions = async (dp, documentNodeId, isTabbedDefinitio
   const elementHeights = await getAllElementHeights(dp, documentNodeId, elements);
   return Math.ceil(elementHeights);
 };
-const getDimensionsFromDefinition = (definition) => {
+var getDimensionsFromDefinition = (definition) => {
   var _a, _b, _c, _d, _e;
   const layoutOptions = getIsTabbedDefinition(definition) ? (_a = getFirstTabLayout(definition)) == null ? void 0 : _a.options : (_c = (_b = definition.layout) == null ? void 0 : _b.options) != null ? _c : {};
   const width = (_d = layoutOptions == null ? void 0 : layoutOptions.width) != null ? _d : MAX_WIDTH;
   const height = (_e = layoutOptions == null ? void 0 : layoutOptions.height) != null ? _e : MAX_HEIGHT;
   return { width, height };
 };
-const getFirstTabLayout = (definition) => {
+var getFirstTabLayout = (definition) => {
   var _a, _b, _c, _d, _e, _f, _g, _h;
   const firstTabId = ((_b = (_a = definition == null ? void 0 : definition.layout) == null ? void 0 : _a.tabs) == null ? void 0 : _b.items.length) && ((_e = (_d = (_c = definition == null ? void 0 : definition.layout) == null ? void 0 : _c.tabs) == null ? void 0 : _d.items[0]) == null ? void 0 : _e.layoutId);
   const firstTabLayout = firstTabId && firstTabId in ((_g = (_f = definition == null ? void 0 : definition.layout) == null ? void 0 : _f.layoutDefinitions) != null ? _g : {}) && ((_h = definition == null ? void 0 : definition.layout) == null ? void 0 : _h.layoutDefinitions[firstTabId]);
   return firstTabLayout || void 0;
 };
-const calculateRequiredScreenDimensions = async (dp, documentNodeId, definition, resizeDetectorAttribute, isTabbedDefinition) => {
+var calculateRequiredScreenDimensions = async (dp, documentNodeId, definition, resizeDetectorAttribute, isTabbedDefinition) => {
   let { width, height } = getDimensionsFromDefinition(definition);
   let { width: canvasWidth, height: canvasHeight } = await getElementDimensions(
     dp,
@@ -174,7 +300,7 @@ const calculateRequiredScreenDimensions = async (dp, documentNodeId, definition,
   }
   return { width, height: canvasHeight + titleInputHeight };
 };
-const waitForDashboardToResize = async ({
+var waitForDashboardToResize = async ({
   dp,
   documentNodeId,
   width,
@@ -183,7 +309,7 @@ const waitForDashboardToResize = async ({
   let boundingRect;
   const hasResized = await waitUntilCondition({
     pollingFn: async () => {
-      boundingRect = await getBoundingRectAroundElement(dp, documentNodeId, "#root");
+      boundingRect = await getBoundingRectAroundElement(dp, documentNodeId, "div#root");
       if (!boundingRect) {
         return false;
       }
@@ -201,7 +327,7 @@ const waitForDashboardToResize = async ({
   }
   return boundingRect;
 };
-const waitForCanvasToResize = async ({
+var waitForCanvasToResize = async ({
   dp,
   documentNodeId,
   width,
@@ -225,13 +351,13 @@ const waitForCanvasToResize = async ({
     console.log(formatConsoleLog("Canvas resize was not detected, screenshot may include whitespace", "warning"));
   }
 };
-const getDocumentNodeId = async (dp) => {
+var getDocumentNodeId = async (dp) => {
   const documentResult = await dp.DOM.getDocument({});
   console.log(formatConsoleLog(`Document result is ${JSON.stringify(documentResult)}}`));
   checkIfProtocolReturnedError(documentResult, "Getting root dashboard node");
   return documentResult.result.root.nodeId;
 };
-const renderStudioDashboard = async (dp, args) => {
+var renderStudioDashboard = async (dp, args) => {
   var _a, _b;
   const scriptKickOff = await dp.Runtime.evaluate({
     expression: `SplunkStudioDashboard.render(${JSON.stringify(args)})`,
@@ -246,7 +372,7 @@ const renderStudioDashboard = async (dp, args) => {
   }
   console.log(formatConsoleLog(JSON.stringify(scriptKickOff)));
 };
-const renderLegacyViz = async (dp, args) => {
+var renderLegacyViz = async (dp, args) => {
   var _a, _b, _c;
   const scriptKickOff = await dp.Runtime.evaluate({
     expression: `SplunkLegacyExporter.render(${JSON.stringify(args)})`,
@@ -263,13 +389,13 @@ const renderLegacyViz = async (dp, args) => {
   console.log(formatConsoleLog(JSON.stringify(scriptKickOff)));
   return svg;
 };
-const containsVisualizationType = (definition, visualizationType) => {
+var containsVisualizationType = (definition, visualizationType) => {
   const { visualizations = {} } = definition;
   return Object.values(visualizations).some((visualization) => {
     return visualization.type === visualizationType;
   });
 };
-const waitForAllVizToRender = async (dp, documentNodeId, definition) => {
+var waitForAllVizToRender = async (dp, documentNodeId, definition) => {
   if (containsVisualizationType(definition, "splunk.map")) {
     await wait(VIZ_FULLY_RENDERED_TIMEOUT);
   } else {
@@ -294,7 +420,7 @@ const waitForAllVizToRender = async (dp, documentNodeId, definition) => {
     }
   }
 };
-const resizeWindow = async (dp, documentNodeId, width, height) => {
+var resizeWindow = async (dp, documentNodeId, width, height) => {
   console.log(formatConsoleLog(`Setting width=${width} and height=${height}`));
   const deviceMetricsOverrideResult = await dp.Emulation.setDeviceMetricsOverride({
     // width and height need to be integers
@@ -316,12 +442,26 @@ const resizeWindow = async (dp, documentNodeId, width, height) => {
   });
   return boundingRect;
 };
-const getIsTabbedDefinition = (definition) => "layout" in definition && "layoutDefinitions" in definition.layout;
+var getIsTabbedDefinition = (definition) => "layout" in definition && "layoutDefinitions" in definition.layout;
 async function screenshotRootDashboardNode(dp, args) {
-  var _a, _b, _c, _d;
-  const { definition, screenshotDelay = DEFAULT_RENDER_SCREENSHOT_DELAY } = args;
+  var _a, _b, _c, _d, _e;
+  const {
+    definition,
+    screenshotDelay = DEFAULT_RENDER_SCREENSHOT_DELAY,
+    exportMaxFileSizeMB = DEFAULT_EXPORT_MAX_FILE_SIZE_MB,
+    exportMaxScaleFactor = DEFAULT_EXPORT_MAX_SCALE_FACTOR,
+    fileFormat = "pdf",
+    featureFlags = {}
+  } = args;
+  const pdfgenFlags = (_a = featureFlags["feature:pdfgen"]) != null ? _a : {};
+  const { activate_scheduled_export_upscaling } = pdfgenFlags;
+  console.log(
+    formatConsoleLog(
+      `Configured scheduled export arguments: ${JSON.stringify({ screenshotDelay, exportMaxFileSizeMB, exportMaxScaleFactor, fileFormat, featureFlags })}`
+    )
+  );
   const isTabbedDefinition = getIsTabbedDefinition(definition);
-  const isGrid = isTabbedDefinition ? ((_a = getFirstTabLayout(definition)) == null ? void 0 : _a.type) === "grid" : ((_b = definition.layout) == null ? void 0 : _b.type) === "grid";
+  const isGrid = isTabbedDefinition ? ((_b = getFirstTabLayout(definition)) == null ? void 0 : _b.type) === "grid" : ((_c = definition.layout) == null ? void 0 : _c.type) === "grid";
   const resizeDetectorAttribute = isGrid ? "grid-layout" : "absolute-layout";
   await renderStudioDashboard(dp, args);
   const documentNodeId = await getDocumentNodeId(dp);
@@ -340,21 +480,33 @@ async function screenshotRootDashboardNode(dp, args) {
     resizeDetectorAttribute,
     isTabbedDefinition
   );
-  const boundingRect = await resizeWindow(dp, documentNodeId, width, height);
-  if (boundingRect) {
-    const { right: canvasHorizontalEnd, bottom: canvasVerticalEnd } = (_c = await getBoundingRectAroundElement(dp, documentNodeId, `[data-test="${resizeDetectorAttribute}"]`)) != null ? _c : {};
-    boundingRect.height = Number(canvasVerticalEnd) > 0 ? Number(canvasVerticalEnd) : height;
-    boundingRect.width = Number(canvasHorizontalEnd) > 0 ? Number(canvasHorizontalEnd) : boundingRect.width;
-  }
-  const format = "png";
-  const screenshotParams = {
-    format,
-    clip: boundingRect
+  const boundingRect = (_d = await resizeWindow(dp, documentNodeId, width, height)) != null ? _d : {
+    x: 0,
+    y: 0,
+    width,
+    height,
+    scale: 1
   };
-  console.log(formatConsoleLog(`Taking screenshot with params ${JSON.stringify(screenshotParams)}`));
-  const response = await dp.Page.captureScreenshot(screenshotParams);
-  checkIfProtocolReturnedError(response, "Failed when taking screenshot");
-  return `data:image/png;base64,${(_d = response.result) == null ? void 0 : _d.data}`;
+  const { right: canvasHorizontalEnd, bottom: canvasVerticalEnd } = (_e = await getBoundingRectAroundElement(dp, documentNodeId, `[data-test="${resizeDetectorAttribute}"]`)) != null ? _e : {};
+  boundingRect.height = Number(canvasVerticalEnd) > 0 ? Number(canvasVerticalEnd) : height;
+  boundingRect.width = Number(canvasHorizontalEnd) > 0 ? Number(canvasHorizontalEnd) : boundingRect.width;
+  const originalDimensions = getDimensionsFromDefinition(definition);
+  const { clip, format, sizeLimitMB } = buildScreenshotParams({
+    dashboardDimensions: originalDimensions,
+    baseClip: boundingRect,
+    fileFormat,
+    exportMaxScaleFactor,
+    exportMaxFileSizeMB,
+    enableUpscaling: !!activate_scheduled_export_upscaling
+  });
+  const screenshotData = await takeScaledScreenshotOfDash({
+    dp,
+    boundingRect: clip,
+    format,
+    sizeLimitMB
+  });
+  const dataURL = `data:image/${format};base64,${screenshotData}`;
+  return dataURL;
 }
 async function generateSVGFromViz(dp, args) {
   const svg = await renderLegacyViz(dp, args);

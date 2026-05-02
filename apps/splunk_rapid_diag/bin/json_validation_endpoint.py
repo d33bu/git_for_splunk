@@ -1,24 +1,26 @@
 # pylint: disable=missing-function-docstring,missing-class-docstring
 # python imports
+import json
 import os
 import sys
-import json
 from typing import Optional, Union
 
 # Reloading the rapid_diag bin path
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)))
 
-from splunk.persistconn.application import PersistentServerConnectionApplication
+from urllib import parse
 
 # local imports
 import logger_manager as log
-from splunklib.six.moves.urllib import parse
-from rapid_diag_handler_utils import persistent_handler_wrap_handle, create_rapiddiag_payload
+
+from rapid_diag.collector import *  # pylint: disable=wildcard-import
+from rapid_diag.collector.trigger import *  # pylint: disable=wildcard-import
 from rapid_diag.serializable import JsonObject
 from rapid_diag.util import get_json_validated
-from rapid_diag.collector.trigger import * # pylint: disable=wildcard-import
-from rapid_diag.collector import * # pylint: disable=wildcard-import
-from rapid_diag import task # pylint: disable=unused-import
+from rapid_diag_handler_utils import (create_rapiddiag_payload,
+                                      persistent_handler_wrap_handle)
+from splunk.persistconn.application import \
+    PersistentServerConnectionApplication
 
 _LOGGER = log.setup_logging("json_validation_endpoint")
 

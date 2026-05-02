@@ -24,11 +24,12 @@
 /mnt/data/opt/splunk/etc/system/default/outputs.conf                            compressed = false
 /mnt/data/opt/splunk/etc/system/default/outputs.conf                            connectionTTL = 0
 /mnt/data/opt/splunk/etc/system/default/outputs.conf                            connectionTimeout = 20
-/mnt/data/opt/splunk/etc/system/default/outputs.conf                            disabled = false
+/mnt/data/opt/splunk/etc/system/local/outputs.conf                              defaultGroup = cribl, <optional_clone_target_group>, ...
+/mnt/data/opt/splunk/etc/system/local/outputs.conf                              disabled = false
 /mnt/data/opt/splunk/etc/system/default/outputs.conf                            dropClonedEventsOnQueueFull = 5
 /mnt/data/opt/splunk/etc/system/default/outputs.conf                            dropEventsOnQueueFull = -1
 /mnt/data/opt/splunk/etc/system/default/outputs.conf                            ecdhCurves = prime256v1, secp384r1, secp521r1
-/mnt/data/opt/splunk/etc/system/default/outputs.conf                            enableOldS2SProtocol = false
+/mnt/data/opt/splunk/etc/system/local/outputs.conf                              enableOldS2SProtocol = true
 /mnt/data/opt/splunk/etc/system/default/outputs.conf                            forceTimebasedAutoLB = false
 /mnt/data/opt/splunk/etc/system/default/outputs.conf                            forwardedindex.0.whitelist = .*
 /mnt/data/opt/splunk/etc/system/default/outputs.conf                            forwardedindex.1.blacklist = _.*
@@ -48,3 +49,7 @@
 /mnt/data/opt/splunk/etc/system/default/outputs.conf                            useACK = false
 /mnt/data/opt/splunk/etc/system/default/outputs.conf                            useClientSSLCompression = true
 /mnt/data/opt/splunk/etc/system/default/outputs.conf                            writeTimeout = 300
+/mnt/data/opt/splunk/etc/system/local/outputs.conf                              [tcpout:cribl]
+/mnt/data/opt/splunk/etc/system/local/outputs.conf                              compressed = false
+/mnt/data/opt/splunk/etc/system/local/outputs.conf                              sendCookedData = true
+/mnt/data/opt/splunk/etc/system/local/outputs.conf                              server = 127.0.0.1:9997

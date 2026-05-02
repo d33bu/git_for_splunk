@@ -243,6 +243,36 @@
     {
       "dataPoints": [
         {
+          "saved_search": "instrumentation.deployment.dsLookupsUsage",
+          "type": "SPLDataPoint"
+        }
+      ],
+      "phase": 1,
+      "interval": "nightly",
+      "roles": [ "deployment_server" ],
+      "component": "usage.deploymentserver.lookups",
+      "priority": "high",
+      "visibility": "anonymous,support",
+      "batch": 2
+    },
+    {
+      "dataPoints": [
+        {
+          "saved_search": "instrumentation.deployment.dsSavedSearches",
+          "type": "SPLDataPoint"
+        }
+      ],
+      "phase": 1,
+      "interval": "nightly",
+      "roles": [ "deployment_server" ],
+      "component": "usage.deploymentserver.savedsearches",
+      "priority": "high",
+      "visibility": "anonymous,support",
+      "batch": 2
+    },
+    {
+      "dataPoints": [
+        {
           "saved_search": "instrumentation.usage.search.type",
           "type": "SPLDataPoint"
         }
@@ -1294,6 +1324,66 @@
     {
       "dataPoints": [
         {
+          "saved_search": "instrumentation.usage.agentmanagement.forwarderspageviews",
+          "type": "SPLDataPoint"
+        }
+      ],
+      "phase": 1,
+      "interval": "nightly",
+      "roles": [ "deployment_server" ],
+      "component": "usage.agentmanagement.forwarderspageviews",
+      "priority": "high",
+      "visibility": "anonymous,support",
+      "batch": 1
+    },
+    {
+      "dataPoints": [
+        {
+          "saved_search": "instrumentation.usage.agentmanagement.dsapi",
+          "type": "SPLDataPoint"
+        }
+      ],
+      "phase": 1,
+      "interval": "nightly",
+      "roles": [ "deployment_server" ],
+      "component": "usage.agentmanagement.dsapi",
+      "priority": "high",
+      "visibility": "anonymous,support",
+      "batch": 1
+    },
+    {
+      "dataPoints": [
+        {
+          "saved_search": "instrumentation.usage.agentmanagement.dsphonehomeapi",
+          "type": "SPLDataPoint"
+        }
+      ],
+      "phase": 1,
+      "interval": "nightly",
+      "roles": [ "deployment_server" ],
+      "component": "usage.agentmanagement.dsphonehomeapi",
+      "priority": "high",
+      "visibility": "anonymous,support",
+      "batch": 1
+    },
+    {
+      "dataPoints": [
+        {
+          "saved_search": "instrumentation.usage.agentmanagement.amuiapi",
+          "type": "SPLDataPoint"
+        }
+      ],
+      "phase": 1,
+      "interval": "nightly",
+      "roles": [ "deployment_server" ],
+      "component": "usage.agentmanagement.amuiapi",
+      "priority": "high",
+      "visibility": "anonymous,support",
+      "batch": 1
+    },
+    {
+      "dataPoints": [
+        {
           "saved_search": "instrumentation.usage.datamanagement.agents",
           "type": "SPLDataPoint"
         }
@@ -1302,6 +1392,36 @@
       "interval": "nightly",
       "roles": [ "lead_node" ],
       "component": "usage.datamanagement.agents",
+      "priority": "high",
+      "visibility": "anonymous,support",
+      "batch": 1
+    },
+    {
+      "dataPoints": [
+        {
+          "saved_search": "instrumentation.usage.agentmanagement.otelagents",
+          "type": "SPLDataPoint"
+        }
+      ],
+      "phase": 1,
+      "interval": "nightly",
+      "roles": [ ],
+      "component": "usage.agentmanagement.otelagents",
+      "priority": "high",
+      "visibility": "anonymous,support",
+      "batch": 1
+    },
+    {
+      "dataPoints": [
+        {
+          "saved_search": "instrumentation.usage.agentmanagement.otelpageviews",
+          "type": "SPLDataPoint"
+        }
+      ],
+      "phase": 1,
+      "interval": "nightly",
+      "roles": [ ],
+      "component": "usage.agentmanagement.otelpageviews",
       "priority": "high",
       "visibility": "anonymous,support",
       "batch": 1
